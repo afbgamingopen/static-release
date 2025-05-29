@@ -1,1 +1,1 @@
-# static-release
+# anubisriches
