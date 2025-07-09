@@ -1,0 +1,18 @@
+[{
+    "updateUrl": "rgc.luckyinc.net",
+    "lobbyUrl": "http://10.8.8.206:10021",
+    "socketUrl": "10.8.8.206:10023/ws",
+    "landingPage": "https://anubisriches-adv.pages.dev"
+},
+{
+    "updateUrl": "testupdate.afbgaming.net",
+    "lobbyUrl": "https://testapp.afbgaming.net",
+    "socketUrl": "testapp.afbgaming.net/ws",
+    "landingPage": "https://anubisriches-adv.pages.dev"
+},
+{
+    "updateUrl": "update.vip88b.net",
+    "lobbyUrl": "https://app.afbgaming.net",
+    "socketUrl": "app.afbgaming.net/ws",
+    "landingPage": "https://anubisriches-adv.pages.dev"
+}]
