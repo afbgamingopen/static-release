@@ -2,17 +2,17 @@
     "updateUrl": "rgc.luckyinc.net",
     "lobbyUrl": "http://10.8.8.206:10021",
     "socketUrl": "10.8.8.206:10023/ws",
-    "landingPage": "https://anubisriches-adv.pages.dev"
+    "anubisrichesUpdateUrl": "rgc.luckyinc.net"
 },
 {
     "updateUrl": "testupdate.vip68a.com",
     "lobbyUrl": "https://testapp.vip68a.com",
     "socketUrl": "testapp.vip68a.com/ws",
-    "landingPage": "https://anubisriches-adv.pages.dev"
+    "anubisrichesUpdateUrl": "testupdate.vip68a.com"
 },
 {
     "updateUrl": "update.vip68a.com",
     "lobbyUrl": "https://app.vip68a.com",
     "socketUrl": "app.vip68a.com/ws",
-    "landingPage": "https://anubisriches-adv.pages.dev"
+    "anubisrichesUpdateUrl": "cairo-update.vip68a.com"
 }]
