@@ -5,14 +5,14 @@
     "anubisrichesUpdateUrl": "rgc.luckyinc.net"
 },
 {
-    "updateUrl": "rgc1.vip68b.uk",
+    "updateUrl": "testupdate.vip68a.com",
     "lobbyUrl": "https://testapp.vip68a.com",
     "socketUrl": "testapp.vip68a.com/ws",
     "anubisrichesUpdateUrl": "testupdate.vip68a.com"
 },
 {
-    "updateUrl": "update.vip68b.uk",
+    "updateUrl": "rgc1.vip68b.uk",
     "lobbyUrl": "https://app.vip68a.com",
     "socketUrl": "app.vip68a.com/ws",
-    "anubisrichesUpdateUrl": "update.vip68b.uk"
+    "anubisrichesUpdateUrl": "rgc1.vip68b.uk"
 }]
