@@ -1,7 +1,7 @@
 [{
     "updateUrl": "rgc.luckyinc.net",
-    "lobbyUrl": "http://10.8.8.206:10021",
-    "socketUrl": "10.8.8.206:10023/ws",
+    "lobbyUrl": "http://10.8.8.212:10021",
+    "socketUrl": "10.8.8.212:10023/ws",
     "anubisrichesUpdateUrl": "rgc.luckyinc.net",
     "banners": "rgc.luckyinc.net"
 },
