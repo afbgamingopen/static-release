@@ -1,6 +1,6 @@
 [{
     "updateUrl": "rgc.luckyinc.net",
-    "lobbyUrl": "app.luckyinc.net",
+    "lobbyUrl": "https://app.luckyinc.net",
     "socketUrl": "app.luckyinc.net/ws",
     "anubisrichesUpdateUrl": "rgc.luckyinc.net",
     "banners": "rgc.luckyinc.net"
