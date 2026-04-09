@@ -1,1 +1,1 @@
-# static-release
+# static-release test
