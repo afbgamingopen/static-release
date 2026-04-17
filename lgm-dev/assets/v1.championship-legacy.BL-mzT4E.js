@@ -1,0 +1,1 @@
+System.register(["./v1.index-legacy.BPP3_Yjp.js"],function(t,e){"use strict";var i;return{setters:[function(t){i=t.s}],execute:function(){t("g",function(t){return i({url:"/game/activity/championship/records",method:"post",data:t})}),t("a",function(t){return i({url:"/game/activity/championship/results",method:"post",data:t})})}}});
