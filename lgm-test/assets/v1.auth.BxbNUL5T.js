@@ -1,1 +1,0 @@
-import{s as t}from"./v1.index.Bh54Y9db.js";const a=a=>t({url:"/auth/register",method:"post",data:a}),s=a=>t({url:"/auth/forgot-password",method:"post",data:a}),o=a=>t({url:"/auth/reset-password",method:"post",data:a});export{o as a,s as f,a as r};

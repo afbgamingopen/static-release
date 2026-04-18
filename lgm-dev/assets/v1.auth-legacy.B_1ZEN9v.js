@@ -1,1 +1,0 @@
-System.register(["./v1.index-legacy.BPP3_Yjp.js"],function(t,r){"use strict";var e;return{setters:[function(t){e=t.s}],execute:function(){t("r",function(t){return e({url:"/auth/register",method:"post",data:t})}),t("f",function(t){return e({url:"/auth/forgot-password",method:"post",data:t})}),t("a",function(t){return e({url:"/auth/reset-password",method:"post",data:t})})}}});

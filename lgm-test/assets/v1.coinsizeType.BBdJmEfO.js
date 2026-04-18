@@ -1,1 +1,0 @@
-import{s as e}from"./v1.index.Bh54Y9db.js";const o=o=>e({url:"/game/coinsizeType/list",method:"post",data:o,donNotShowLoading:!0}),a=o=>e({url:"/game/coinsizeType/update",method:"put",data:o}),t=o=>e({url:"/game/coinsizeType/copy",method:"post",data:o}),s=()=>e({url:"/game/coinsizeType/currencies",method:"get"});export{o as a,t as c,s as g,a as u};
