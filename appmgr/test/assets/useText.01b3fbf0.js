@@ -1,0 +1,1 @@
+import{u as e}from"./index.5d3f2638.js";const t={1:"general.pleaseEnter",2:"general.pleaseSelect"};function n(){const{t:n,locale:r}=e();return{jt:(e,a,o=!1)=>{const s=o?a:n(a);return n(t[e]||e,{name:"en"===r.value?s.toLowerCase():s})},t:n}}export{n as u};
