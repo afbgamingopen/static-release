@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JP168THB</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://ligagaming.cloud/JS/LigaTracking.js?v=21"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="background">
+            <img src="background.png" alt="" class="bg">
+            <a href="" id="apk-download-link" onclick="onClickBtn();" class="apk-download-link">
+                <img src="button.png" alt="" class="btndown" >
+            </a>
+        </div>
+    </div>
+</body>
+<script>
+    // Fetch and set APK URL dynamically
+    (async function () {
+        try {
+            const apkLink = document.getElementById('apk-download-link');
+            if (apkLink) {
+                apkLink.href = "https://downloads.ligagaming.app/jp168thb.prod.6.17.749299.apk";
+            } else {
+                console.error('APK download link element not found');
+            }
+        } catch (error) {
+            console.error('Error setting APK download link:', error);
+        }
+    })();
+</script>
+</html>
