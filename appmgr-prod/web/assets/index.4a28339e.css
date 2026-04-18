@@ -1,1 +1,0 @@
-.dialog-scale-enter-active,.dialog-scale-leave-active,.dialog-scale-enter-active .el-dialog,.dialog-scale-leave-active .el-dialog{transition:all .2s cubic-bezier(.645,.045,.355,1)}.dialog-scale-enter-from,.dialog-scale-leave-to{opacity:0}.dialog-scale-enter-from .el-dialog,.dialog-scale-leave-to .el-dialog{transform:scale(.5);opacity:0}

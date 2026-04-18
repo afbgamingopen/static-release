@@ -1,1 +1,0 @@
-System.register(["./index-legacy.bdb88215.js"],function(t,e){"use strict";var n,r;return{setters:[function(t){n=t.s,r=t.j}],execute:function(){t("u",function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0],e=n();return t?e.matched[e.matched.length-2].meta.btns||r({}):e.meta.btns||r({})})}}});
