@@ -1,0 +1,1 @@
+import{s as a}from"./v1.index.DQi6p6EL.js";const t=t=>a({url:"/game/activity/championship/records",method:"post",data:t}),s=t=>a({url:"/game/activity/championship/results",method:"post",data:t});export{s as a,t as g};
