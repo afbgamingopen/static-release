@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://mahjongidr.anubisriches.com/store/apps/details/ -->
+<html lang="en" style="cursor: pointer">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta property="og:locale" content="ar_EG" />
+    <meta
+      property="og:title"
+      content="Gold Nile - مكافأة الإحالة | ألعاب شائعة | ربح جوائز كبيرة بسهولة |"
+    />
+    <meta property="og:description" content="سحب نقدي سريع" />
+    <meta property="og:image" content="https://app.goldnile.xyz/ogimage.jpg" />
+    <meta
+      property="og:image:secure_url"
+      content="https://app.goldnile.xyz/ogimage.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://app.goldnile.xyz/" />
+    <meta property="og:type" content="article" />
+    <meta property="article:modified_time" content="2025-10-24T12:53:37+0000" />
+    <meta property="article:author" content="" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Gold Nile - مكافأة الإحالة | ألعاب شائعة | ربح جوائز كبيرة بسهولة |"
+    />
+    <meta name="twitter:description" content="Fast Cash Withdrawal" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <title>Goldnile</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        -webkit-font-smoothing: antialiased;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        /* font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; */
+      }
+
+      h3 {
+        height: 28px;
+        size: 28px;
+        text-align: left;
+      }
+
+      img {
+        margin: 0;
+        padding: 0;
+      }
+
+      span {
+        display: inline-block;
+        height: 100%;
+      }
+
+      .container {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        max-width: 550px;
+      }
+
+      .container .BG {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .container .btn-container {
+        position: absolute;
+        left: 0%;
+        top: 29.5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
+      }
+      .container .btn {
+        width: 40%;
+      }
+      .footer {
+        color: transparent;
+        position: absolute;
+        left: 0%;
+        bottom: 0%;
+        width: 100%;
+      }
+      .footer img {
+        width: 100%;
+        height: auto;
+      }
+      .footer .download {
+        width: 32%;
+        position: absolute;
+        right: 2%;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container" onclick="onClickBtn()">
+      <img class="BG" src="/files/background.jpg" />
+      <div class="btn-container">
+        <img class="btn" onclick="goToTelegram(event)" src="/files/TG.png" />
+        <img class="btn" src="/files/GP.png" />
+      </div>
+      <div class="footer" onclick="onClickBtn()">
+        <img src="/files/footer.png" />
+        <img class="download" src="/files/download.png" />
+      </div>
+    </div>
+    <script src="/files/Adjustscript.js"></script>
+    <script>
+      const APK_URL = "https://downloads.afbgaming.app/goldnile.prod.1.2.apk";
+      const TG_URL = "https://t.me/GoldNile_game";
+      const API_BASE = "https://api.anubisriches.com/api/advertising";
+
+      const getCookie = (name) =>
+        document.cookie
+          .split("; ")
+          .find((c) => c.startsWith(name + "="))
+          ?.split("=")[1] ?? null;
+
+      const cookiesAsQuery = () =>
+        document.cookie ? document.cookie.split("; ").join("&") : "";
+
+      function withTracking(url) {
+        const parts = [window.location.search.slice(1), cookiesAsQuery()].filter(Boolean);
+        const requestUrl = parts.length ? `${url}?${parts.join("&")}` : url;
+        console.log("requestUrl", requestUrl);
+        return requestUrl;
+      }
+
+      const downloadLink = (() => {
+        const params = new URLSearchParams(window.location.search);
+        const url = buildURL(
+          params.get("ajtoken"),
+          params.get("p1"),
+          params.get("p2"),
+          params.get("p3"),
+          params.get("p4"),
+          params.get("p5"),
+          params.get("p6"),
+          params.get("fbclid"),
+          getFbPid()
+        );
+        return url
+          ? `${url}&redirect=${encodeURIComponent(APK_URL)}`
+          : APK_URL;
+      })();
+
+      const track = (path) =>
+        fetch(withTracking(`${API_BASE}/${path}`)).catch(() => {});
+
+      window.addEventListener("load", () => track("onshow"));
+
+      function downloadApk() {
+        console.log("clicked", downloadLink);
+        const iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = downloadLink;
+        document.body.appendChild(iframe);
+        setTimeout(() => iframe.remove(), 1000);
+      }
+
+      function copyLeadPayload() {
+        const params = new URLSearchParams(window.location.search);
+        const payload = JSON.stringify({
+          fbc: params.get("fbclid") ?? "",
+          fbp: getCookie("_fbp") ?? "",
+          leadId: params.get("leadId") ?? "",
+          link: withTracking(location.origin + location.pathname),
+        });
+        const textArea = document.createElement("textarea");
+        textArea.value = payload;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        textArea.remove();
+      }
+
+      function onClickBtn() {
+        downloadApk();
+        track("ondownload");
+        copyLeadPayload();
+      }
+
+      function goToTelegram(e) {
+        e.stopPropagation();
+        window.open(TG_URL);
+      }
+    </script>
+  </body>
+</html>
