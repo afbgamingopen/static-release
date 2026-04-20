@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" style="cursor: pointer">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta property="og:locale" content="ar_EG" />
+    <meta
+      property="og:title"
+      content="Mahjong777 - Referral Bonus | Popular Games | Win Big Prizes Easily |"
+    />
+    <meta property="og:description" content="Fast Cash Withdrawal" />
+    <meta property="og:image" content="https://mah.21th.uk/ogimage.jpg" />
+    <meta
+      property="og:image:secure_url"
+      content="https://mah.21th.uk/ogimage.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://mah.21th.uk/" />
+    <meta property="og:type" content="article" />
+    <meta property="article:modified_time" content="2025-10-24T12:53:37+0000" />
+    <meta property="article:author" content="" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Mahjong777 - Referral Bonus | Popular Games | Win Big Prizes Easily |"
+    />
+    <meta name="twitter:description" content="Fast Cash Withdrawal" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <title>Mahjong777</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        -webkit-font-smoothing: antialiased;
+        /* font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; */
+
+        margin: 0;
+        padding: 0;
+        direction: ltr;
+      }
+
+      h3 {
+        height: 28px;
+        size: 28px;
+        text-align: left;
+      }
+
+      img {
+        margin: 0;
+        padding: 0;
+      }
+
+      span {
+        display: inline-block;
+        height: 100%;
+      }
+
+      .container {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+      .container img {
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+      }
+      .container .btn {
+        color: transparent;
+        width: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 22%;
+      }
+      .footer {
+        color: transparent;
+        position: fixed;
+        left: 0%;
+        bottom: 0%;
+      }
+    </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "1593041251721026");
+      fbq("track", "PageView");
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1593041251721026&ev=PageView&noscript=1"
+      />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+  </head>
+
+  <body>
+    <div class="container w-full">
+      <img src="/files/background.jpg" onclick="onClickBtn()" />
+      <!-- <img class="btn" onclick="onClickBtn()" src="/files/button.png" /> -->
+      <img class="footer" onclick="onClickBtn()" src="/files/footer.png" />
+    </div>
+    <script src="/files/Adjustscript.js"></script>
+    <script>
+      const APK_URL =
+        "https://downloads.afbgaming.app/mahjongidr.prod.4.15.481897.apk";
+      const API_BASE = "https://api.anubisriches.com/api/advertising";
+      const urlParams = new URLSearchParams(window.location.search);
+
+      const link = (() => {
+        const trackUrl = buildURL(
+          urlParams.get("ajtoken"),
+          urlParams.get("p1"),
+          urlParams.get("p2"),
+          urlParams.get("p3"),
+          urlParams.get("p4"),
+          urlParams.get("p5"),
+          urlParams.get("p6"),
+          urlParams.get("fbclid"),
+          getFbPid()
+        );
+        return trackUrl
+          ? trackUrl + "&redirect=" + encodeURIComponent(APK_URL)
+          : APK_URL;
+      })();
+
+      function getUrl(url) {
+        const cookieQuery = document.cookie.replace(/; ?/g, "&");
+        const sep = window.location.search ? "&" : "?";
+        const requestUrl =
+          url + (window.location.search || "") + sep + cookieQuery;
+        console.log("requestUrl", requestUrl);
+        return requestUrl;
+      }
+
+      function getCookie(name) {
+        const match = document.cookie.match(
+          new RegExp("(?:^|; )" + name + "=([^;]*)")
+        );
+        return match ? match[1] : null;
+      }
+
+      function reportEvent(path, label) {
+        fetch(getUrl(`${API_BASE}/${path}`)).then(
+          (r) => r.ok && console.log(label)
+        );
+      }
+
+      function downloadApk() {
+        console.log("clicked", link);
+        const iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = link;
+        document.body.appendChild(iframe);
+        setTimeout(() => iframe.remove(), 1000);
+      }
+
+      function onClickBtn() {
+        downloadApk();
+        reportEvent("ondownload", "click");
+        const { location } = window;
+        const payload = {
+          fbc: urlParams.get("fbclid") || "",
+          fbp: getCookie("_fbp") || "",
+          leadId: urlParams.get("leadId") || "",
+          link: getUrl(location.origin + location.pathname),
+        };
+        const textArea = document.createElement("textarea");
+        textArea.value = JSON.stringify(payload);
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        textArea.remove();
+      }
+
+      window.onload = () => reportEvent("onshow", "show");
+    </script>
+  </body>
+</html>
