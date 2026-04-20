@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" style="cursor: pointer">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta property="og:locale" content="ar_EG" />
+    <meta
+      property="og:title"
+      content="ENJOY++ - Bonus Referensi | Game Populer | Menangkan Hadiah Besar dengan Mudah"
+    />
+    <meta property="og:description" content="Penarikan Tunai Cepat" />
+    <meta
+      property="og:image"
+      content="https://www.enjoyplusplus.com/ogimage.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://www.enjoyplusplus.com/ogimage.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://www.enjoyplusplus.com/" />
+    <meta property="og:type" content="article" />
+    <meta property="article:modified_time" content="2026-02-03T9:00:00+0000" />
+    <meta property="article:author" content="" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="ENJOY++ - Bonus Referensi | Game Populer | Menangkan Hadiah Besar dengan Mudah"
+    />
+    <meta name="twitter:description" content="Penarikan Tunai Cepat" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <title>ENJOY++</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        -webkit-font-smoothing: antialiased;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        /* font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; */
+      }
+
+      h3 {
+        height: 28px;
+        size: 28px;
+        text-align: left;
+      }
+
+      img {
+        margin: 0;
+        padding: 0;
+      }
+
+      span {
+        display: inline-block;
+        height: 100%;
+      }
+
+      .container {
+        width: 100%;
+        aspect-ratio: 2880 / 6240; /* mobile 默认 */
+        background: url("/files/background.jpg") center / cover no-repeat;
+        position: relative;
+      }
+
+      .container .btn-container {
+        position: absolute;
+        left: 0%;
+        bottom: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
+      }
+      .container .btn {
+        width: 40%;
+      }
+      /* pc */
+      @media (min-width: 1024px) {
+        .container {
+          aspect-ratio: 5700 / 3300; /* pc */
+          background-image: url("/files/background-pc.jpg");
+        }
+
+        .container .btn-container {
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 2%;
+          width: 45%;
+          gap: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="btn-container">
+        <img class="btn" onclick="goToTelegram(event)" src="/files/TG.png" />
+        <img class="btn" onclick="onClickBtn()" src="/files/GP.png" />
+      </div>
+    </div>
+    <script src="/files/Adjustscript.js"></script>
+    <script>
+      let link;
+      function initLink() {
+        const urlParams = new URLSearchParams(window.location.search);
+        var p0 = urlParams.get("ajtoken");
+        var p1 = urlParams.get("p1");
+        var p2 = urlParams.get("p2");
+        var p3 = urlParams.get("p3");
+        var p4 = urlParams.get("p4");
+        var p5 = urlParams.get("p5");
+        var p6 = urlParams.get("p6");
+        var fbPid = getFbPid();
+        var fbClickId = urlParams.get("fbclid");
+        var url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
+
+        var p7 = urlParams.get("p7") + ".apk";
+        var apkname = "enjoyplusplus.prod.3.14.apk";
+        if (url == "") {
+          link = "https://downloads.afbgaming.app/" + apkname;
+        } else {
+          link =
+            url +
+            "&redirect=" +
+            encodeURIComponent("https://downloads.afbgaming.app/" + apkname);
+        }
+      }
+      initLink();
+
+      window.onload = function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open(
+          "GET",
+          getUrl("https://api.anubisriches.com/api/advertising/onshow"),
+          true,
+        );
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log("show");
+          }
+        };
+        xhr.send();
+      };
+
+      function getUrl(url) {
+        let requestUrl = url;
+        if (window.location.search.length) {
+          requestUrl +=
+            window.location.search +
+            "&" +
+            document.cookie.replace("; ", "&").replace(";", "&");
+        } else {
+          requestUrl +=
+            "?" + document.cookie.replace("; ", "&").replace(";", "&");
+        }
+        console.log("requestUrl", requestUrl);
+        return requestUrl;
+      }
+
+      function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length === 2) return parts.pop().split(";").shift();
+        return null; // Return null if cookie not found
+      }
+
+      function onClickBtn() {
+        downloadApk();
+        var xhr = new XMLHttpRequest();
+        xhr.open(
+          "GET",
+          getUrl("https://api.anubisriches.com/api/advertising/ondownload"),
+          true,
+        );
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log("click");
+          }
+        };
+        xhr.send();
+        const { location } = window;
+        var queryString = location.search;
+        var params = {};
+        if (queryString) {
+          queryString = queryString.substring(1);
+          var paramPairs = queryString.split("&");
+          for (var i = 0; i < paramPairs.length; i++) {
+            var pair = paramPairs[i].split("=");
+            var key = decodeURIComponent(pair[0]);
+            var value = decodeURIComponent(pair[1]);
+            params[key] = value;
+          }
+        }
+
+        // console.log("id", params["id"]);
+
+        var leadId = params["leadId"];
+        if (leadId == null) {
+          leadId = "";
+        }
+        var fbc = params["fbclid"];
+        if (fbc == null) {
+          fbc = "";
+        }
+        var fbp = getCookie("_fbp");
+        if (fbp == null) {
+          fbp = "";
+        }
+
+        var copyParam = {
+          fbc: fbc,
+          fbp: fbp,
+          leadId: leadId,
+          link: getUrl(location.origin + location.pathname),
+        };
+        var copyJsonString = JSON.stringify(copyParam);
+
+        var textToCopy = copyJsonString;
+        var textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        // alert("已复制到剪贴板: " + textToCopy);
+      }
+
+      function downloadApk() {
+        console.log("clicked", link);
+        // 创建一个隐藏的 iframe 来触发 APK 下载
+        const iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = link;
+        document.body.appendChild(iframe);
+
+        // 几秒后移除 iframe
+        setTimeout(() => {
+          document.body.removeChild(iframe);
+        }, 1000);
+      }
+
+      function goToTelegram(e) {
+        e.stopPropagation(); // 阻止冒泡
+        const tgLink = "https://t.me/enjoyplusplus_bot";
+        window.open(tgLink);
+      }
+    </script>
+  </body>
+</html>
