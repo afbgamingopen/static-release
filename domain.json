@@ -6,16 +6,16 @@
     "banners": "rgc.luckyinc.net"
 },
 {
-    "updateUrl": "rgctest.vip68b.uk/rgcTest/v44",
+    "updateUrl": "rgctest.vip68b.uk/rgcTest/v45",
     "lobbyUrl": "https://testapp.vip68a.com",
     "socketUrl": "testapp.vip68a.com/ws",
-    "anubisrichesUpdateUrl": "rgctest.vip68b.uk/rgcTest/v44",
+    "anubisrichesUpdateUrl": "rgctest.vip68b.uk/rgcTest/v45",
     "banners": "testupdate.vip68a.com"
 },
 {
-    "updateUrl": "rgc.vip68b.uk/rgc/v44",
+    "updateUrl": "rgc.vip68b.uk/rgc/v45",
     "lobbyUrl": "https://app.vip68a.com",
     "socketUrl": "app.vip68a.com/ws",
-    "anubisrichesUpdateUrl": "rgc.vip68b.uk/rgc/v44",
+    "anubisrichesUpdateUrl": "rgc.vip68b.uk/rgc/v45",
     "banners": "update.vip68b.uk"
 }]
