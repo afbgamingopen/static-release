@@ -1,21 +1,23 @@
-[{
-    "updateUrl": "rgc.luckyinc.net",
-    "lobbyUrl": "https://app.luckyinc.net",
-    "socketUrl": "app.luckyinc.net/ws",
-    "anubisrichesUpdateUrl": "rgc.luckyinc.net",
-    "banners": "rgc.luckyinc.net"
-},
-{
-    "updateUrl": "rgctest.vip68b.uk/rgcTest/v52",
-    "lobbyUrl": "https://testapp.vip68a.com",
-    "socketUrl": "testapp.vip68a.com/ws",
-    "anubisrichesUpdateUrl": "rgctest.vip68b.uk/rgcTest/v52",
-    "banners": "testupdate.vip68a.com"
-},
-{
-    "updateUrl": "rgc.vip68b.uk/rgc/v45",
-    "lobbyUrl": "https://app.vip68a.com",
-    "socketUrl": "app.vip68a.com/ws",
-    "anubisrichesUpdateUrl": "rgc.vip68b.uk/rgc/v45",
-    "banners": "update.vip68b.uk"
-}]
+[
+    {
+        "updateUrl": "rgc.luckyinc.net",
+        "lobbyUrl": "https://app.luckyinc.net",
+        "socketUrl": "app.luckyinc.net/ws",
+        "anubisrichesUpdateUrl": "rgc.luckyinc.net",
+        "banners": "rgc.luckyinc.net"
+    },
+    {
+        "updateUrl": "rgctest.vip68b.uk/rgcTest/v57",
+        "lobbyUrl": "https://testapp.vip68a.com",
+        "socketUrl": "testapp.vip68a.com/ws",
+        "anubisrichesUpdateUrl": "rgctest.vip68b.uk/rgcTest/v57",
+        "banners": "testupdate.vip68a.com"
+    },
+    {
+        "updateUrl": "rgc.vip68b.uk/rgc/v45",
+        "lobbyUrl": "https://app.vip68a.com",
+        "socketUrl": "app.vip68a.com/ws",
+        "anubisrichesUpdateUrl": "rgc.vip68b.uk/rgc/v45",
+        "banners": "update.vip68b.uk"
+    }
+]
