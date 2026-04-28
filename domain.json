@@ -14,10 +14,10 @@
         "banners": "testupdate.vip68a.com"
     },
     {
-        "updateUrl": "rgc.vip68b.uk/rgc/v45",
+        "updateUrl": "rgc.vip68b.uk/rgc/v57",
         "lobbyUrl": "https://app.vip68a.com",
         "socketUrl": "app.vip68a.com/ws",
-        "anubisrichesUpdateUrl": "rgc.vip68b.uk/rgc/v45",
+        "anubisrichesUpdateUrl": "rgc.vip68b.uk/rgc/v57",
         "banners": "update.vip68b.uk"
     }
 ]
