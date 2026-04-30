@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>EgyBall IOS download guide</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family:
+        "Prompt",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      font-family: -apple-system, system-ui, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding-bottom: 120px;
+      position: relative;
+    }
+
+    .container::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 500px;
+      height: 100%;
+      background: url("files/bg.png") no-repeat center top;
+      background-size: 100% auto;
+      z-index: -1;
+    }
+
+    .app-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .app-icon {
+      height: 80px;
+    }
+
+    .install-text {
+      font-size: 22px;
+      font-weight: 800;
+      color: #f7ca7d;
+      margin-top: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .install-card {
+      background-color: #2e0052;
+      margin: 0 15px;
+      border-radius: 15px;
+      padding: 20px 15px;
+      border: 1px solid #520092;
+    }
+
+    .card-title {
+      text-align: center;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .step-item {
+      margin-bottom: 25px;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .step-number {
+      background: #a125d7;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-right: 10px;
+      margin-top: 2px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      line-height: 1.4;
+      color: #eee;
+    }
+
+    .step-desc span {
+      color: #efe739;
+      font-weight: bold;
+    }
+
+    .step-img-box {
+      width: 90%;
+      background: #3b1b5f;
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 16px;
+      margin-left: 30px;
+      margin-right: 20px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .step-img-box img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 500px;
+      background: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .download-btn-small-img {
+      height: 40px;
+      width: auto;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .download-btn-small-img:active {
+      transform: scale(0.96);
+    }
+
+    .bottom-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bottom-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    .bottom-name {
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .app-title-img {
+      width: 60%;
+      max-width: 300px;
+      display: block;
+      margin: 20px auto;
+      filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="app-header">
+      <img src="files/egyBall-logo.png" class="app-icon" alt="EgyBall Logo" />
+      <img src="files/title-egyball.png" class="app-title-img" alt="Install EgyBall APP" />
+    </div>
+
+    <div class="install-card">
+      <h2 class="card-title">Installation Step</h2>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">1</span>
+          <p class="step-desc">Click "<span>Settings</span>" on your phone</p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/1.png" alt="Step 1" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">2</span>
+          <p class="step-desc">Click "<span>General</span>" in settings</p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/2.png" alt="Step 2" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">3</span>
+          <p class="step-desc">
+            Click "<span>VPN & Device Management</span>" in general
+          </p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/3.png" alt="Step 3" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">4</span>
+          <p class="step-desc">
+            In device management, select the file starting with
+            "<span>EgyBall</span>"
+          </p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/4.png" alt="Step 4" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">5</span>
+          <p class="step-desc">
+            Click "<span>Install</span>" in the upper right corner
+          </p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/5.png" alt="Step 5" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">6</span>
+          <p class="step-desc">Click "<span>Install</span>" at the bottom</p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/6.png" alt="Step 6" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">7</span>
+          <p class="step-desc">
+            After the installation is complete, open the application
+          </p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/7.png" alt="Step 7" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="bottom-info">
+      <img src="files/EgyBall-icon.png" class="bottom-icon" alt="EgyBall Logo" />
+      <span class="bottom-name">EgyBall</span>
+    </div>
+    <img src="files/btndownload.png" class="download-btn-small-img" alt="Download Now" id="downloadBtn" />
+  </div>
+
+  <script src="files/Adjustscript.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const IOS_NAME = "webclips/egyball.prod.812097.egyballvip88bnet.signed.mobileconfig";
+    const IOS_BASE = "https://downloads.afbgaming.app/";
+    const API_BASE = "https://api.anubisriches.com/api/advertising";
+
+    let link;
+
+    function initLink() {
+      const p0 = urlParams.get("ajtoken");
+      const p1 = urlParams.get("p1");
+      const p2 = urlParams.get("p2");
+      const p3 = urlParams.get("p3");
+      const p4 = urlParams.get("p4");
+      const p5 = urlParams.get("p5");
+      const p6 = urlParams.get("p6");
+      const fbPid = getFbPid();
+      const fbClickId = urlParams.get("fbclid");
+      const url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
+      const iosUrl = IOS_BASE + IOS_NAME;
+
+      link = url === ""
+        ? iosUrl
+        : url + "&redirect=" + encodeURIComponent(iosUrl);
+    }
+    initLink();
+
+    function getUrl(url) {
+      const cookieParams = document.cookie.replaceAll("; ", "&").replaceAll(";", "&");
+      const separator = window.location.search.length ? "&" : "?";
+      const requestUrl = url + (window.location.search || "?") + separator + cookieParams;
+      return requestUrl;
+    }
+
+    function sendTrack(endpoint) {
+      fetch(getUrl(API_BASE + endpoint)).catch(() => {});
+    }
+
+    window.onload = function () {
+      sendTrack("/onshow");
+    };
+
+    function onClickBtn() {
+      downloadIos();
+      sendTrack("/ondownload");
+    }
+
+    function downloadIos() {
+      if (!IOS_NAME) return;
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = link;
+      document.body.appendChild(iframe);
+      setTimeout(() => document.body.removeChild(iframe), 1000);
+    }
+
+    document.getElementById("downloadBtn").addEventListener("click", onClickBtn);
+  </script>
+</body>
+
+</html>
