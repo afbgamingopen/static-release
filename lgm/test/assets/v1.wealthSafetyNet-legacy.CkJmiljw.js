@@ -1,0 +1,1 @@
+System.register(["./v1.index-legacy.Dza-HscG.js"],function(t,e){"use strict";var a;return{setters:[function(t){a=t.s}],execute:function(){t("g",function(t){return a({url:"/game/activity/wealthSafetyNet/events",method:"post",data:t})}),t("a",function(t){return a({url:"/game/activity/wealthSafetyNet/statDay",method:"post",data:t})})}}});
