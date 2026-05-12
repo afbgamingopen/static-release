@@ -1,1 +1,0 @@
-System.register(["./_flatRest-legacy.d178bbb2.js","./index-legacy.e5af44fc.js"],function(t,e){"use strict";var n,i,r,u,c;return{setters:[function(t){n=t.s,i=t.o,r=t.i},function(t){u=t.ba,c=t.a$}],execute:function(){t({b:function(t,e){return n(i(t,e,r),t+"")},i:function(t){return u(t)&&c(t)}})}}});
