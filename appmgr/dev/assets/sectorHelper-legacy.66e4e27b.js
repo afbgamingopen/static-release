@@ -1,1 +1,0 @@
-System.register(["./installCanvasRenderer-legacy.288b872f.js"],function(r,e){"use strict";var n,t,u;return{setters:[function(r){n=r.a3,t=r.v,u=r.bi}],execute:function(){r("g",function(r,e,a){var i=r.get("borderRadius");if(null==i)return a?{cornerRadius:0}:null;n(i)||(i=[i,i,i,i]);var s=Math.abs(e.r||0-e.r0||0);return{cornerRadius:t(i,function(r){return u(r,s)})}})}}});
