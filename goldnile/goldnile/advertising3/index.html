@@ -140,17 +140,17 @@
 
   <body>
     <div class="container" onclick="onClickBtn()">
-      <img class="BG" src="/files/background.jpg" alt="background" />
+      <img class="BG" src="files/background.jpg" alt="background" />
       <div class="btn-container">
-        <img class="btn" onclick="goToTelegram(event)" src="/files/TG.png" alt="Telegram" />
-        <img class="btn" src="/files/GP.png" alt="Google Play" />
+        <img class="btn" onclick="goToTelegram(event)" src="files/TG.png" alt="Telegram" />
+        <img class="btn" src="files/GP.png" alt="Google Play" />
       </div>
-      <div class="footer" onclick="onClickBtn()">
-        <img src="/files/footer.png" alt="footer" />
-        <img class="download" src="/files/download.png" alt="download" />
+      <div class="footer">
+        <img src="files/footer.png" alt="footer" />
+        <img class="download" src="files/download.png" alt="download" />
       </div>
     </div>
-    <script src="/files/Adjustscript.js"></script>
+    <script src="files/Adjustscript.js"></script>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const APK_NAME = "goldnile.prod.1.2.242941.apk";
@@ -179,9 +179,9 @@
 
       function getUrl(url) {
         const cookieParams = document.cookie.replaceAll("; ", "&").replaceAll(";", "&");
-        const separator = window.location.search.length ? "&" : "?";
-        const requestUrl = url + (window.location.search || "?") + separator + cookieParams;
-        return requestUrl;
+        const search = window.location.search;
+        const separator = search.length ? "&" : "?";
+        return url + search + separator + cookieParams;
       }
 
       function getCookie(name) {

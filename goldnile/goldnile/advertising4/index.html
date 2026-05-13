@@ -165,12 +165,10 @@
       })();
 
       function getUrl(url) {
-        const cookieQuery = document.cookie.replace(/; ?/g, "&");
-        const sep = window.location.search ? "&" : "?";
-        const requestUrl =
-          url + (window.location.search || "") + sep + cookieQuery;
-        console.log("requestUrl", requestUrl);
-        return requestUrl;
+        const cookieParams = document.cookie.replaceAll("; ", "&").replaceAll(";", "&");
+        const search = window.location.search;
+        const separator = search.length ? "&" : "?";
+        return url + search + separator + cookieParams;
       }
 
       function getCookie(name) {
