@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <!-- saved from url=(0048)https://mahjongidr.anubisriches.com/store/apps/details/ -->
 <html lang="en" style="cursor: pointer">
   <head>
@@ -13,7 +13,10 @@
       content="Gold Nile - مكافأة الإحالة | ألعاب شائعة | ربح جوائز كبيرة بسهولة |"
     />
     <meta property="og:description" content="سحب نقدي سريع" />
-    <meta property="og:image" content="https://egyball1.luckykingegy.com/ogimage.jpg" />
+    <meta
+      property="og:image"
+      content="https://egyball1.luckykingegy.com/ogimage.jpg"
+    />
     <meta
       property="og:image:secure_url"
       content="https://egyball1.luckykingegy.com/ogimage.jpg"
@@ -103,7 +106,12 @@
     <div class="container" onclick="onClickBtn()">
       <img class="BG" src="/files/background.jpg" alt="background" />
       <div class="btn-container">
-        <img class="btn" onclick="goToTelegram(event)" src="/files/TG.png" alt="Telegram" />
+        <img
+          class="btn"
+          onclick="goToTelegram(event)"
+          src="/files/TG.png"
+          alt="Telegram"
+        />
         <img class="btn" src="/files/GP.png" alt="Google Play" />
       </div>
       <!-- <div class="footer" onclick="onClickBtn()">
@@ -133,17 +141,18 @@
         const url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
         const apkUrl = APK_BASE + APK_NAME;
 
-        link = url === ""
-          ? apkUrl
-          : url + "&redirect=" + encodeURIComponent(apkUrl);
+        link =
+          url === "" ? apkUrl : url + "&redirect=" + encodeURIComponent(apkUrl);
       }
       initLink();
 
       function getUrl(url) {
-        const cookieParams = document.cookie.replaceAll("; ", "&").replaceAll(";", "&");
-        const separator = window.location.search.length ? "&" : "?";
-        const requestUrl = url + (window.location.search || "?") + separator + cookieParams;
-        return requestUrl;
+        const cookieParams = document.cookie
+          .replaceAll("; ", "&")
+          .replaceAll(";", "&");
+        const search = window.location.search;
+        const separator = search.length ? "&" : "?";
+        return url + search + separator + cookieParams;
       }
 
       function getCookie(name) {
@@ -177,7 +186,9 @@
           link: getUrl(origin + pathname),
         };
 
-        navigator.clipboard.writeText(JSON.stringify(copyParam)).catch(() => {});
+        navigator.clipboard
+          .writeText(JSON.stringify(copyParam))
+          .catch(() => {});
       }
 
       function downloadApk() {

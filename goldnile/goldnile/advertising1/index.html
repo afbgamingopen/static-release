@@ -180,9 +180,9 @@
 
       function getUrl(url) {
         const cookieParams = document.cookie.replaceAll("; ", "&").replaceAll(";", "&");
-        const separator = window.location.search.length ? "&" : "?";
-        const requestUrl = url + (window.location.search || "?") + separator + cookieParams;
-        return requestUrl;
+        const search = window.location.search;
+        const separator = search.length ? "&" : "?";
+        return url + search + separator + cookieParams;
       }
 
       function getCookie(name) {
