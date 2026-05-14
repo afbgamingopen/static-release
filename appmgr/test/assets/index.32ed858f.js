@@ -1,0 +1,1 @@
+import{K as e,X as a,k as o}from"./index.56af3c4c.js";const t=({from:t,replacement:s,scope:c,version:n,ref:i,type:r="API"},p)=>{e(()=>o(p),e=>{e&&a(c,"[".concat(r,"] ").concat(t," is about to be deprecated in version ").concat(n,", please use ").concat(s," instead.\nFor more detail, please visit: ").concat(i,"\n"))},{immediate:!0})};export{t as u};
