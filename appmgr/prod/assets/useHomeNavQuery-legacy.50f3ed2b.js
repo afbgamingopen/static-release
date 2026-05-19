@@ -1,1 +1,0 @@
-System.register(["./index-legacy.a615a7b7.js"],function(t,e){"use strict";var n,i;return{setters:[function(t){n=t.s,i=t.v}],execute:function(){t("u",function(t,e){var u=n().query||{},r=u.start,s=u.end,c=u.siteId,f=!1;r&&s&&(t.value.time=[String(r),String(s)],f=!0),c&&(t.value.siteId=Number(c),f=!0),i(function(){f&&"function"==typeof e&&e()})})}}});
