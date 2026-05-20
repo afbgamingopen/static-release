@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <!-- saved from url=(0048)https://anubisriches-adv.pages.dev/store/apps/details/ -->
 <html lang="en" style="cursor: pointer">
   <head>
@@ -289,16 +289,12 @@
     </div>
 
     <div onclick="onClickBtn()">
-      <a
-        id="dapk"
-        class=""
-        href="https://downloads.afbgaming.app/mahjongidr.prod.3.15.apk"
-        ><img
-          style="padding-top: 30px; width: 100%"
-          src="/files/install.png"
-          alt=""
-          height="48px"
-      /></a>
+      <img
+        style="padding-top: 30px; width: 100%"
+        src="/files/install.png"
+        alt=""
+        height="48px"
+      />
     </div>
 
     <div>
@@ -662,7 +658,7 @@
 
         function getCookie(name) {
           const match = document.cookie.match(
-            new RegExp("(?:^|; )" + name + "=([^;]*)")
+            new RegExp("(?:^|; )" + name + "=([^;]*)"),
           );
           return match ? match[1] : null;
         }
@@ -678,7 +674,7 @@
 
         function reportEvent(path, label) {
           fetch(getUrl(`${API_BASE}/${path}`)).then(
-            (r) => r.ok && console.log(label)
+            (r) => r.ok && console.log(label),
           );
         }
 
@@ -692,7 +688,7 @@
             urlParams.get("p5"),
             urlParams.get("p6"),
             urlParams.get("fbclid"),
-            getFbPid()
+            getFbPid(),
           );
           return trackUrl
             ? trackUrl + "&redirect=" + encodeURIComponent(APK_URL)
