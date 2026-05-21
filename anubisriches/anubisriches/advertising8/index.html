@@ -658,80 +658,92 @@
       <script src="files/Adjustscript.js"></script>
 
       <script>
-        const APK_URL =
-          "https://downloads.afbgaming.app/anubisriches.prod.3.14.apk";
+        const urlParams = new URLSearchParams(window.location.search);
+        const APK_NAME = "anubisriches.prod.3.14.apk";
+        const APK_BASE = "https://downloads.afbgaming.app/";
         const API_BASE = "https://api.anubisriches.com/api/advertising";
 
-        function getCookie(name) {
-          const m = document.cookie.match(
-            new RegExp("(?:^|; )" + name + "=([^;]*)"),
-          );
-          return m ? m[1] : null;
-        }
+        let link;
 
-        function cookieAsQuery() {
-          return document.cookie.split("; ").filter(Boolean).join("&");
+        function initLink() {
+          const p0 = urlParams.get("ajtoken");
+          const p1 = urlParams.get("p1");
+          const p2 = urlParams.get("p2");
+          const p3 = urlParams.get("p3");
+          const p4 = urlParams.get("p4");
+          const p5 = urlParams.get("p5");
+          const p6 = urlParams.get("p6");
+          const fbPid = getFbPid();
+          const fbClickId = urlParams.get("fbclid");
+          const url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
+          const apkUrl = APK_BASE + APK_NAME;
+
+          link =
+            url === ""
+              ? apkUrl
+              : url + "&redirect=" + encodeURIComponent(apkUrl);
         }
+        initLink();
 
         function getUrl(url) {
+          const cookieParams = document.cookie
+            .replaceAll("; ", "&")
+            .replaceAll(";", "&");
           const search = window.location.search;
-          const cookies = cookieAsQuery();
-          const sep = search
-            ? search + (cookies ? "&" : "")
-            : cookies
-              ? "?"
-              : "";
-          return url + sep + cookies;
+          const separator = search.length ? "&" : "?";
+          return url + search + separator + cookieParams;
         }
 
-        function ping(path) {
-          const xhr = new XMLHttpRequest();
-          xhr.open("GET", getUrl(API_BASE + path), true);
-          xhr.send();
+        function getCookie(name) {
+          const value = "; " + document.cookie;
+          const parts = value.split("; " + name + "=");
+          if (parts.length === 2) return parts.pop().split(";").shift();
+          return null;
+        }
+
+        function sendTrack(endpoint) {
+          fetch(getUrl(API_BASE + endpoint)).catch(() => {});
         }
 
         window.onload = function () {
-          const urlParams = new URLSearchParams(window.location.search);
-          const p = (k) => urlParams.get(k);
-          const fbClickId = p("fbclid");
-          const url = buildURL(
-            p("ajtoken"),
-            p("p1"),
-            p("p2"),
-            p("p3"),
-            p("p4"),
-            p("p5"),
-            p("p6"),
-            fbClickId,
-            getFbPid(),
-          );
-
-          const link = url
-            ? url + "&redirect=" + encodeURIComponent(APK_URL)
-            : APK_URL;
-          document.getElementById("dapk").href = link;
-
-          ping("/onshow");
+          sendTrack("/onshow");
         };
+        // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
+        // document.addEventListener("click", onClickBtn, true);
+        // document.addEventListener("touchend", onClickBtn, true);
 
+        // let clicked = false;
         function onClickBtn() {
-          ping("/ondownload");
+          // if (clicked) return;
+          // clicked = true;
+          // setTimeout(() => (clicked = false), 1000);
 
-          const urlParams = new URLSearchParams(window.location.search);
+          downloadApk();
+          sendTrack("/ondownload");
+
+          const leadId = urlParams.get("leadId") || "";
+          const fbc = urlParams.get("fbclid") || "";
+          const fbp = getCookie("_fbp") || "";
+          const { origin, pathname } = window.location;
+
           const copyParam = {
-            fbc: urlParams.get("fbclid") || "",
-            fbp: getCookie("_fbp") || "",
-            leadId: urlParams.get("leadId") || "",
-            link: getUrl(location.origin + location.pathname),
+            fbc,
+            fbp,
+            leadId,
+            link: getUrl(origin + pathname),
           };
-          const text = JSON.stringify(copyParam);
 
-          const textArea = document.createElement("textarea");
-          textArea.value = text;
-          document.body.appendChild(textArea);
-          textArea.select();
-          document.execCommand("copy");
-          document.body.removeChild(textArea);
+          navigator.clipboard
+            .writeText(JSON.stringify(copyParam))
+            .catch(() => {});
+        }
+
+        function downloadApk() {
+          const iframe = document.createElement("iframe");
+          iframe.style.display = "none";
+          iframe.src = link;
+          document.body.appendChild(iframe);
+          setTimeout(() => document.body.removeChild(iframe), 1000);
         }
       </script>
 
