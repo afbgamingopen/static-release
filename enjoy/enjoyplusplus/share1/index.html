@@ -69,7 +69,7 @@
       .container {
         width: 100%;
         aspect-ratio: 2880 / 6240; /* mobile 默认 */
-        background: url("/files/background.jpg") center / cover no-repeat;
+        background: url("files/background.jpg") center / cover no-repeat;
         position: relative;
       }
 
@@ -90,7 +90,7 @@
       @media (min-width: 1024px) {
         .container {
           aspect-ratio: 5700 / 3300; /* pc */
-          background-image: url("/files/background-pc.jpg");
+          background-image: url("files/background-pc.jpg");
         }
 
         .container .btn-container {
@@ -107,149 +107,49 @@
   <body>
     <div class="container">
       <div class="btn-container">
-        <img class="btn" onclick="goToTelegram(event)" src="/files/TG.png" />
-        <img class="btn" onclick="onClickBtn()" src="/files/GP.png" />
+        <img class="btn" onclick="goToTelegram(event)" src="files/TG.png" />
+        <img class="btn" onclick="onClickBtn()" src="files/GP.png" />
       </div>
     </div>
-    <script src="/files/Adjustscript.js"></script>
+    <script src="files/common.js"></script>
     <script>
-      let link;
-      function initLink() {
-        const urlParams = new URLSearchParams(window.location.search);
-        var p0 = urlParams.get("ajtoken");
-        var p1 = urlParams.get("p1");
-        var p2 = urlParams.get("p2");
-        var p3 = urlParams.get("p3");
-        var p4 = urlParams.get("p4");
-        var p5 = urlParams.get("p5");
-        var p6 = urlParams.get("p6");
-        var fbPid = getFbPid();
-        var fbClickId = urlParams.get("fbclid");
-        var url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
+      const urlParams = new URLSearchParams(window.location.search);
+      const APK_NAME = "enjoyplusplus.prod.3.14.apk";
+      const APK_BASE = "https://downloads.afbgaming.app/";
+      const API_BASE = "https://api.anubisriches.com/api/advertising";
 
-        var p7 = urlParams.get("p7") + ".apk";
-        var apkname = "enjoyplusplus.prod.3.14.apk";
-        if (url == "") {
-          link = "https://downloads.afbgaming.app/" + apkname;
-        } else {
-          link =
-            url +
-            "&redirect=" +
-            encodeURIComponent("https://downloads.afbgaming.app/" + apkname);
-        }
+      function sendTrack(endpoint) {
+        fetch(getUrl(API_BASE + endpoint)).catch(() => {});
       }
-      initLink();
 
       window.onload = function () {
-        var xhr = new XMLHttpRequest();
-        xhr.open(
-          "GET",
-          getUrl("https://api.anubisriches.com/api/advertising/onshow"),
-          true,
-        );
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log("show");
-          }
-        };
-        xhr.send();
+        sendTrack("/onshow");
       };
 
-      function getUrl(url) {
-        let requestUrl = url;
-        if (window.location.search.length) {
-          requestUrl +=
-            window.location.search +
-            "&" +
-            document.cookie.replace("; ", "&").replace(";", "&");
-        } else {
-          requestUrl +=
-            "?" + document.cookie.replace("; ", "&").replace(";", "&");
-        }
-        console.log("requestUrl", requestUrl);
-        return requestUrl;
-      }
-
-      function getCookie(name) {
-        var value = "; " + document.cookie;
-        var parts = value.split("; " + name + "=");
-        if (parts.length === 2) return parts.pop().split(";").shift();
-        return null; // Return null if cookie not found
+      function downloadApk() {
+        const apkUrl = APK_BASE + APK_NAME;
+        const iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = apkUrl;
+        document.body.appendChild(iframe);
+        setTimeout(() => document.body.removeChild(iframe), 1000);
       }
 
       function onClickBtn() {
+        const leadId = urlParams.get("leadId") || "";
+        const fbc = urlParams.get("fbclid") || "";
+        const fbp = getCookie("_fbp") || "";
+        const { origin, pathname } = window.location;
+
+        const copyParam = {
+          fbc,
+          fbp,
+          leadId,
+          link: getUrl(origin + pathname),
+        };
+        copyText(JSON.stringify(copyParam));
         downloadApk();
-        var xhr = new XMLHttpRequest();
-        xhr.open(
-          "GET",
-          getUrl("https://api.anubisriches.com/api/advertising/ondownload"),
-          true,
-        );
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log("click");
-          }
-        };
-        xhr.send();
-        const { location } = window;
-        var queryString = location.search;
-        var params = {};
-        if (queryString) {
-          queryString = queryString.substring(1);
-          var paramPairs = queryString.split("&");
-          for (var i = 0; i < paramPairs.length; i++) {
-            var pair = paramPairs[i].split("=");
-            var key = decodeURIComponent(pair[0]);
-            var value = decodeURIComponent(pair[1]);
-            params[key] = value;
-          }
-        }
-
-        // console.log("id", params["id"]);
-
-        var leadId = params["leadId"];
-        if (leadId == null) {
-          leadId = "";
-        }
-        var fbc = params["fbclid"];
-        if (fbc == null) {
-          fbc = "";
-        }
-        var fbp = getCookie("_fbp");
-        if (fbp == null) {
-          fbp = "";
-        }
-
-        var copyParam = {
-          fbc: fbc,
-          fbp: fbp,
-          leadId: leadId,
-          link: getUrl(location.origin + location.pathname),
-        };
-        var copyJsonString = JSON.stringify(copyParam);
-
-        var textToCopy = copyJsonString;
-        var textArea = document.createElement("textarea");
-        textArea.value = textToCopy;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textArea);
-        // alert("已复制到剪贴板: " + textToCopy);
-      }
-
-      function downloadApk() {
-        console.log("clicked", link);
-        // 创建一个隐藏的 iframe 来触发 APK 下载
-        const iframe = document.createElement("iframe");
-        iframe.style.display = "none";
-        iframe.src = link;
-        document.body.appendChild(iframe);
-
-        // 几秒后移除 iframe
-        setTimeout(() => {
-          document.body.removeChild(iframe);
-        }, 1000);
+        sendTrack("/ondownload");
       }
 
       function goToTelegram(e) {
