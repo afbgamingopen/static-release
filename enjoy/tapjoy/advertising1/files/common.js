@@ -24,9 +24,11 @@ function getUrl(url) {
   const cookieParams = document.cookie
     .replaceAll("; ", "&")
     .replaceAll(";", "&");
-  const search = window.location.search;
-  const separator = search.length ? "&" : "?";
-  return url + search + separator + cookieParams;
+  const params = [window.location.search.replace(/^\?/, ""), cookieParams]
+    .filter(Boolean)
+    .join("&");
+
+  return params ? url + "?" + params : url;
 }
 
 function getCookie(name) {
