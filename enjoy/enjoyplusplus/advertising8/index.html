@@ -88,48 +88,12 @@
     <div class="container" onclick="onClickBtn()">
       <img class="BG" src="files/background.jpg" alt="background" />
     </div>
-    <script src="files/Adjustscript.js"></script>
+    <script src="files/common.js"></script>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const APK_NAME = "721078/irnsctpywtpyw.tvsh.3.14.721078.apk";
       const APK_BASE = "https://downloads.afbgaming.app/";
       const API_BASE = "https://api.anubisriches.com/api/advertising";
-
-      let link;
-
-      function initLink() {
-        const p0 = urlParams.get("ajtoken");
-        const p1 = urlParams.get("p1");
-        const p2 = urlParams.get("p2");
-        const p3 = urlParams.get("p3");
-        const p4 = urlParams.get("p4");
-        const p5 = urlParams.get("p5");
-        const p6 = urlParams.get("p6");
-        const fbPid = getFbPid();
-        const fbClickId = urlParams.get("fbclid");
-        const url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
-        const apkUrl = APK_BASE + APK_NAME;
-
-        link =
-          url === "" ? apkUrl : url + "&redirect=" + encodeURIComponent(apkUrl);
-      }
-      initLink();
-
-      function getUrl(url) {
-        const cookieParams = document.cookie
-          .replaceAll("; ", "&")
-          .replaceAll(";", "&");
-        const search = window.location.search;
-        const separator = search.length ? "&" : "?";
-        return url + search + separator + cookieParams;
-      }
-
-      function getCookie(name) {
-        const value = "; " + document.cookie;
-        const parts = value.split("; " + name + "=");
-        if (parts.length === 2) return parts.pop().split(";").shift();
-        return null;
-      }
 
       function sendTrack(endpoint) {
         fetch(getUrl(API_BASE + endpoint)).catch(() => {});
@@ -139,10 +103,16 @@
         sendTrack("/onshow");
       };
 
-      function onClickBtn() {
-        downloadApk();
-        sendTrack("/ondownload");
+      function downloadApk() {
+        const apkUrl = APK_BASE + APK_NAME;
+        const iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = apkUrl;
+        document.body.appendChild(iframe);
+        setTimeout(() => document.body.removeChild(iframe), 1000);
+      }
 
+      function onClickBtn() {
         const leadId = urlParams.get("leadId") || "";
         const fbc = urlParams.get("fbclid") || "";
         const fbp = getCookie("_fbp") || "";
@@ -154,18 +124,9 @@
           leadId,
           link: getUrl(origin + pathname),
         };
-
-        navigator.clipboard
-          .writeText(JSON.stringify(copyParam))
-          .catch(() => {});
-      }
-
-      function downloadApk() {
-        const iframe = document.createElement("iframe");
-        iframe.style.display = "none";
-        iframe.src = link;
-        document.body.appendChild(iframe);
-        setTimeout(() => document.body.removeChild(iframe), 1000);
+        copyText(JSON.stringify(copyParam));
+        downloadApk();
+        sendTrack("/ondownload");
       }
     </script>
   </body>
