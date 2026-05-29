@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en" style="cursor: pointer">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <title>Goldnile</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        -webkit-font-smoothing: antialiased;
+        /* font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; */
+
+        margin: 0;
+        padding: 0;
+        direction: ltr;
+      }
+
+      h3 {
+        height: 28px;
+        size: 28px;
+        text-align: left;
+      }
+
+      img {
+        margin: 0;
+        padding: 0;
+      }
+
+      span {
+        display: inline-block;
+        height: 100%;
+      }
+
+      .container {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+
+      .container img {
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+      }
+
+      .container .btn {
+        color: transparent;
+        width: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 22%;
+      }
+
+      .footer {
+        color: transparent;
+        position: fixed;
+        left: 0%;
+        bottom: 0%;
+      }
+    </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "1482791893644643");
+      fbq("track", "PageView");
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1482791893644643&ev=PageView&noscript=1"
+      />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+  </head>
+
+  <body>
+    <div class="container w-full" onclick="onClickBtn()">
+      <img src="files/background.webp" />
+      <img class="footer" src="files/footer.webp" />
+    </div>
+    <script src="files/common.js"></script>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const APK_NAME = "goldnile.prod.1.2.apk";
+      const APK_BASE = "https://downloads.momospin.com/";
+      const API_BASE = "https://api.anubisriches.com/api/advertising";
+
+      function sendTrack(endpoint) {
+        fetch(getUrl(API_BASE + endpoint)).catch(() => {});
+      }
+
+      window.onload = function () {
+        sendTrack("/onshow");
+      };
+
+      function downloadApk() {
+        const apkUrl = APK_BASE + APK_NAME;
+        const iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = apkUrl;
+        document.body.appendChild(iframe);
+        setTimeout(() => document.body.removeChild(iframe), 1000);
+      }
+
+      function onClickBtn() {
+        const leadId = urlParams.get("leadId") || "";
+        const fbc = urlParams.get("fbclid") || "";
+        const fbp = getCookie("_fbp") || "";
+        const { origin, pathname } = window.location;
+
+        const copyParam = {
+          fbc,
+          fbp,
+          leadId,
+          link: getUrl(origin + pathname),
+        };
+        copyText(JSON.stringify(copyParam));
+        downloadApk();
+        sendTrack("/ondownload");
+      }
+    </script>
+  </body>
+</html>
