@@ -224,13 +224,14 @@
       fbq("init", "1186182396811394");
       fbq("track", "PageView");
     </script>
-    <noscript
-      ><img
+    <noscript>
+      <img
         height="1"
         width="1"
         style="display: none"
         src="https://www.facebook.com/tr?id=1186182396811394&ev=PageView&noscript=1"
-    /></noscript>
+      />
+    </noscript>
     <!-- End Meta Pixel Code -->
 
     <!-- <script>
@@ -655,117 +656,46 @@
         </div>
       </div>
 
-      <script src="files/Adjustscript.js"></script>
+      <script src="files/common.js"></script>
 
       <script>
+        const urlParams = new URLSearchParams(window.location.search);
         const APK_NAME = "goldnile.prod.1.2.apk";
-        const APK_BASE_URL = "https://downloads.afbgaming.app/";
-        const DOWNLOAD_URL = APK_BASE_URL + APK_NAME;
+        const APK_BASE = "https://downloads.afbgaming.com/";
+        const API_BASE = "https://api.anubisriches.com/api/advertising";
 
-        let link;
-        function initLink() {
-          const urlParams = new URLSearchParams(window.location.search);
-          const p0 = urlParams.get("ajtoken");
-          const p1 = urlParams.get("p1");
-          const p2 = urlParams.get("p2");
-          const p3 = urlParams.get("p3");
-          const p4 = urlParams.get("p4");
-          const p5 = urlParams.get("p5");
-          const p6 = urlParams.get("p6");
-          const fbPid = getFbPid();
-          const fbClickId = urlParams.get("fbclid");
-          const url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
-
-          link =
-            url === ""
-              ? DOWNLOAD_URL
-              : url + "&redirect=" + encodeURIComponent(DOWNLOAD_URL);
+        function sendTrack(endpoint) {
+          fetch(getUrl(API_BASE + endpoint)).catch(() => {});
         }
-        initLink();
 
         window.onload = function () {
-          sendBeacon(
-            "https://api.anubisriches.com/api/advertising/onshow",
-            "show",
-          );
+          sendTrack("/onshow");
         };
 
-        function sendBeacon(url, label) {
-          const xhr = new XMLHttpRequest();
-          xhr.open("GET", getUrl(url), true);
-          xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-              console.log(label);
-            }
-          };
-          xhr.send();
-        }
-
-        function getUrl(url) {
-          const cookieStr = document.cookie
-            .replace("; ", "&")
-            .replace(";", "&");
-          const sep = window.location.search.length
-            ? window.location.search + "&"
-            : "?";
-          const requestUrl = url + sep + cookieStr;
-          console.log("requestUrl", requestUrl);
-          return requestUrl;
-        }
-
-        function getCookie(name) {
-          const value = "; " + document.cookie;
-          const parts = value.split("; " + name + "=");
-          if (parts.length === 2) return parts.pop().split(";").shift();
-          return null;
+        function downloadApk() {
+          const apkUrl = APK_BASE + APK_NAME;
+          const iframe = document.createElement("iframe");
+          iframe.style.display = "none";
+          iframe.src = apkUrl;
+          document.body.appendChild(iframe);
+          setTimeout(() => document.body.removeChild(iframe), 1000);
         }
 
         function onClickBtn() {
-          downloadApk();
-          sendBeacon(
-            "https://api.anubisriches.com/api/advertising/ondownload",
-            "click",
-          );
-
-          const { location } = window;
-          const params = {};
-          let queryString = location.search;
-          if (queryString) {
-            queryString = queryString.substring(1);
-            const paramPairs = queryString.split("&");
-            for (let i = 0; i < paramPairs.length; i++) {
-              const pair = paramPairs[i].split("=");
-              params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
-            }
-          }
+          const leadId = urlParams.get("leadId") || "";
+          const fbc = urlParams.get("fbclid") || "";
+          const fbp = getCookie("_fbp") || "";
+          const { origin, pathname } = window.location;
 
           const copyParam = {
-            fbc: params["fbclid"] || "",
-            fbp: getCookie("_fbp") || "",
-            leadId: params["leadId"] || "",
-            link: getUrl(location.origin + location.pathname),
+            fbc,
+            fbp,
+            leadId,
+            link: getUrl(origin + pathname),
           };
-          copyParams(copyParam);
-        }
-
-        async function copyParams(copyParam) {
-          try {
-            await navigator.clipboard.writeText(JSON.stringify(copyParam));
-            console.log("复制成功");
-          } catch (err) {
-            console.error("复制失败", err);
-          }
-        }
-
-        function downloadApk() {
-          console.log("clicked", link);
-          const iframe = document.createElement("iframe");
-          iframe.style.display = "none";
-          iframe.src = link;
-          document.body.appendChild(iframe);
-          setTimeout(() => {
-            document.body.removeChild(iframe);
-          }, 1000);
+          copyText(JSON.stringify(copyParam));
+          downloadApk();
+          sendTrack("/ondownload");
         }
       </script>
 
