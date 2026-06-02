@@ -2,7 +2,10 @@
 <html lang="en" style="cursor: pointer">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+    />
     <link rel="shortcut icon" href="/favicon.ico" />
     <title>Anubis Riches</title>
     <style>
@@ -15,18 +18,9 @@
 
       body {
         -webkit-font-smoothing: antialiased;
-        /* font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; */
-        color: rgba(0, 0, 0, 0.87);
-        padding: 16px;
-        max-width: 500px;
-        margin: auto;
-        direction: rtl;
-      }
-
-      h3 {
-        height: 28px;
-        size: 28px;
-        text-align: right;
+        background-color: black;
+        display: flex;
+        justify-content: center;
       }
 
       img {
@@ -34,138 +28,30 @@
         padding: 0;
       }
 
-      span {
-        display: inline-block;
-        height: 100%;
-      }
-
-      header {
-        display: flex;
-        margin-bottom: 3rem;
-        text-align: right;
-      }
-
-      header div {
-        line-height: 56px;
-      }
-
-      header .p2 {
-        margin-left: 40px;
-      }
-
-      .p2 img {
-        padding-left: 1rem;
-      }
-
-      .icon {
-        width: 24px;
-        height: 24px;
-        margin: 0px;
-        padding: 3px;
-      }
-
-      .tag {
-        flex: 1;
-        position: relative;
-      }
-
-      .tag::after {
-        content: "";
-        position: absolute;
-        top: 35px;
-        right: -10px;
-        bottom: 10px;
-        width: 2px;
-        background-color: #797676;
-      }
-
-      .slider {
-        display: flex;
-        animation: slide-left 30s linear infinite;
-      }
-
-      .slider img {
-        flex: 0 0 auto;
+      .container {
         width: 100%;
-        height: auto;
+        height: 100vh;
+        position: relative;
+        max-width: 550px;
       }
 
-      .box-item {
-        margin-bottom: 20px;
+      .container .BG {
+        width: 100%;
+        object-fit: cover;
       }
 
-      .gamename img {
-        height: 2.2rem;
-      }
-
-      .l4 {
-        margin-top: 4rem;
-      }
-
-      .l3,
-      .l2,
-      .l1 {
-        margin-top: 3rem;
-      }
-
-      .l2 span {
-        margin-right: 1rem;
-        padding: 0;
-      }
-
-      .l1 span {
-        margin-right: 1rem;
-        padding: 0;
-      }
-
-      .disabledURL {
-        pointer-events: none;
-        color: gray;
-      }
-
-      .review {
-        margin-top: 2rem;
-      }
-      .review-head {
+      .container .btn-container {
+        position: absolute;
+        left: 0%;
+        top: 45.5%;
         display: flex;
         align-items: center;
-        height: 4rem;
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
       }
-      .review-head-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .review-head-inner span {
-        margin-left: 1rem;
-      }
-      .review-point {
-        height: 2rem;
-        line-height: 2rem;
-        margin-left: auto;
-      }
-      .review-point img {
-        height: 1rem;
-        margin-right: 2rem;
-      }
-      .review-date {
-        display: flex;
-        align-items: center;
-        height: 2rem;
-        justify-content: flex-end;
-      }
-      .review-date img {
-        margin-right: 1rem;
-      }
-      .review-helpful {
-        display: flex;
-        align-items: center;
-      }
-      .review-helpful img {
-        height: 1.5rem;
-      }
-      .review-helpful .yes {
-        margin-left: 3rem;
+      .container .btn {
+        width: 40%;
       }
     </style>
 
@@ -208,482 +94,64 @@
     <!-- End Meta Pixel Code -->
   </head>
 
-  <body onclick="onClickBtn()">
-    <header
-      style="display: flex; justify-content: space-between; align-items: center"
-    >
-      <div style="height: 56px; margin-left: auto"></div>
-      <div class="p2" style="margin-right: auto; display: flex; gap: 1rem">
-        <img src="files/search.png" alt="" class="icon" />
-        <img src="files/q.png" alt="" class="icon" />
-        <img src="files/lg.png" alt="" class="icon" />
-      </div>
-    </header>
-
-    <div style="display: flex">
-      <img src="files/appicon1.png" alt="" style="height: 72px; width: 72px" />
-      <div style="height: 72px; vertical-align: text-top; margin-right: auto">
-        <div>
-          <h5
-            style="padding: 0; margin: 0; font-size: 1.2rem; padding-left: 1rem"
-          >
-            Anubis Riches
-          </h5>
-        </div>
-        <h4
-          style="
-            color: #01875f;
-            padding: 0 0 0 1rem;
-            margin: 0;
-            font-size: 1.1rem;
-          "
-        >
-          Anubis Riches
-        </h4>
-        <div style="padding-left: 1rem; font-size: 0.9rem">
-          يتضمن إعلانات وشراء داخل التطبيق
-        </div>
+  <body>
+    <div class="container" onclick="onClickBtn()">
+      <img class="BG" src="files/background.jpg" alt="background" />
+      <div class="btn-container">
+        <img
+          class="btn"
+          onclick="goToTelegram(event)"
+          src="files/TG.png"
+          alt="Telegram"
+        />
+        <img class="btn" src="files/GP.png" alt="Google Play" />
       </div>
     </div>
-    <div style="height: 1rem"></div>
+    <script src="files/common.js"></script>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const APK_NAME = "anubisriches.prod.3.14.561408.apk";
+      const APK_BASE = "https://downloads.afbgaming.app/";
+      const API_BASE = "https://api.anubisriches.com/api/advertising";
 
-    <div style="display: flex" class="ads">
-      <div style="width: 40%; padding-top: 1.5rem" class="tag">
-        <div
-          style="
-            text-align: center;
-            height: 1.5rem;
-            padding-bottom: 0.5rem;
-            font-weight: bold;
-          "
-        >
-          4.2
-          <img src="files/bstart.png" alt="" style="height: 0.8rem" />
-        </div>
-        <div style="text-align: center; font-size: 0.8rem">
-          2.83 مليون مراجعة
-        </div>
-      </div>
+      function sendTrack(endpoint) {
+        fetch(getUrl(API_BASE + endpoint)).catch(() => {});
+      }
 
-      <div style="width: 30%; padding-top: 1.5rem" class="tag">
-        <div
-          style="
-            text-align: center;
-            height: 1.5rem;
-            padding-bottom: 0.5rem;
-            font-weight: bold;
-          "
-        >
-          +1000 مليون
-        </div>
-        <div style="text-align: center; font-size: 0.8rem">عملية تنزيل</div>
-      </div>
+      window.onload = function () {
+        sendTrack("/onshow");
+      };
 
-      <div style="width: 30%; padding-top: 1.5rem" class="tag">
-        <div
-          style="
-            text-align: center;
-            height: 1.5rem;
-            padding-bottom: 0.5rem;
-            font-weight: bold;
-          "
-        >
-          <img src="files/18+.png" alt="" style="height: 1.2rem" />
-        </div>
-        <div style="text-align: center; font-size: 0.8rem">
-          مناسب لأعمار 18 عامًا وما فوق
-        </div>
-      </div>
-    </div>
+      function downloadApk() {
+        const apkUrl = APK_BASE + APK_NAME;
+        const iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = apkUrl;
+        document.body.appendChild(iframe);
+        setTimeout(() => document.body.removeChild(iframe), 1000);
+      }
 
-    <div>
-      <img
-        style="padding-top: 30px; width: 100%"
-        src="files/install.png"
-        alt=""
-        height="48px"
-      />
-    </div>
+      function onClickBtn() {
+        const leadId = urlParams.get("leadId") || "";
+        const fbc = urlParams.get("fbclid") || "";
+        const fbp = getCookie("_fbp") || "";
+        const { origin, pathname } = window.location;
 
-    <div style="display: flex; align-items: center">
-      <img
-        src="files/device.png"
-        alt=""
-        style="height: 1rem; margin-left: 1rem"
-      />
-      متاح على جميع أجهزتك
-    </div>
-
-    <!-- <div style="margin-top: 3rem; overflow: hidden; height: 206px">
-      <div class="slider">
-        <img
-          src="files/image1.jpg"
-          alt=""
-          style="padding-left: 1rem; height: 206px; width: 116px"
-        />
-        <img
-          src="files/image2.jpg"
-          alt=""
-          style="padding-left: 1rem; height: 206px; width: 116px"
-        />
-        <img
-          src="files/image3.jpg"
-          alt=""
-          style="padding-left: 1rem; height: 206px; width: 116px"
-        />
-        <img
-          src="files/image4.jpg"
-          alt=""
-          style="padding-left: 1rem; height: 206px; width: 116px"
-        />
-      </div>
-    </div> -->
-
-    <div>
-      <h3>الوظيفة الجديدة</h3>
-      <p>إصلاحات الأخطاء والتحسينات</p>
-    </div>
-
-    <div>
-      <h3>أمان البيانات</h3>
-      <p>
-        يبدأ الأمان بفهم كيفية جمع المطورين للبيانات ومشاركتها. قد تختلف حماية
-        الخصوصية وقياسات الأمان حسب الاستخدام والموقع والعمر. يتم تقديم هذه
-        المعلومات من قبل المطور وقد يتم تحديثها مع مرور الوقت.
-      </p>
-    </div>
-
-    <div style="border: 1px solid #979595; border-radius: 20px; padding: 1rem">
-      <div style="display: flex" class="box-item">
-        <div style="width: 10%; padding-right: 1rem">
-          <img src="files/k1.png" alt="" style="height: 1.2rem" />
-        </div>
-        <div style="width: 90%; float: left">
-          <p style="padding: 0; margin: 0">
-            لا تتم مشاركة البيانات مع أطراف ثالثة <br />
-            <span style="text-decoration: underline">تعلم المزيد عن</span> كيفية
-            إعلان المطورين عن مشاركة البيانات
-          </p>
-        </div>
-      </div>
-
-      <div style="display: flex" class="box-item">
-        <div style="width: 10%; padding-right: 1rem">
-          <img src="files/k2.png" alt="" style="height: 1.2rem" />
-        </div>
-        <div style="width: 90%; float: left">
-          قد تجمع هذه التطبيق أنواع البيانات التالية: معلومات الموقع، معلومات
-          شخصية، وأربع أنواع أخرى من البيانات
-        </div>
-      </div>
-
-      <div style="display: flex" class="box-item">
-        <div style="width: 10%; padding-right: 1rem">
-          <img src="files/k3.png" alt="" style="height: 1.2rem" />
-        </div>
-        <div style="width: 90%; float: left">البيانات لن تكون مشفرة</div>
-      </div>
-
-      <div style="display: flex" class="box-item">
-        <div style="width: 10%; padding-right: 1rem">
-          <img src="files/k4.png" alt="" style="height: 1.2rem" />
-        </div>
-        <div style="width: 90%; float: left">
-          يمكنك طلب من المطور حذف البيانات
-        </div>
-      </div>
-
-      <div style="color: #01875f; font-weight: bold; margin-left: 1rem">
-        تفقد التفاصيل
-      </div>
-    </div>
-
-    <div style="margin-top: 2rem">
-      <h3 style="padding-bottom: 0.5rem; margin: 0">قيم هذه اللعبة</h3>
-      <p style="padding-bottom: 2rem; margin: 0">شارك أفكارك</p>
-      <div>
-        <img
-          src="files/phone.png"
-          alt=""
-          style="height: 2rem; margin-top: 2rem"
-        />
-      </div>
-      <div style="margin: 1rem 0">
-        <img
-          src="files/wstar.png"
-          alt=""
-          style="height: 2rem; padding-right: 0.6rem"
-        />
-        <img
-          src="files/wstar.png"
-          alt=""
-          style="height: 2rem; padding-right: 0.6rem"
-        />
-        <img
-          src="files/wstar.png"
-          alt=""
-          style="height: 2rem; padding-right: 0.6rem"
-        />
-        <img
-          src="files/wstar.png"
-          alt=""
-          style="height: 2rem; padding-right: 0.6rem"
-        />
-        <img src="files/wstar.png" alt="" style="height: 2rem" />
-      </div>
-
-      <div>
-        <img src="files/review.png" alt="" srcset="" style="height: 2rem" />
-      </div>
-    </div>
-
-    <div style="direction: rtl; text-align: right">
-      <h3>التقييمات والمراجعات</h3>
-      <p style="font-size: 0.8rem">
-        تم التحقق من التقييمات والمراجعات
-        <img src="files/i.png" alt="" style="height: 0.8rem" />
-      </p>
-
-      <div
-        style="display: flex; margin-top: 2rem; justify-content: space-between"
-      >
-        <div style="width: 40%; padding-right: 1rem">
-          <div style="font-size: 4rem">4.9</div>
-          <img src="files/bfs.png" alt="" style="height: 1.5rem" />
-          <div>1.83 مليون مراجعة</div>
-        </div>
-        <div style="width: 60%">
-          <div>5 <img src="files/p5.png" alt="" style="width: 80%" /></div>
-          <div>4 <img src="files/p4.png" alt="" style="width: 80%" /></div>
-          <div>3 <img src="files/p3.png" alt="" style="width: 80%" /></div>
-          <div>2 <img src="files/p3.png" alt="" style="width: 80%" /></div>
-          <div>1 <img src="files/p1.png" alt="" style="width: 80%" /></div>
-        </div>
-      </div>
-
-      <!-- <div class="review">
-        <div class="review-head">
-          <div class="review-head-inner">
-            <img src="files/h1.png" alt="" style="height: 2rem" />
-            <span>bakdoe tenzin</span>
-          </div>
-          <div class="review-point">
-            <img src="files/point.png" alt="" />
-          </div>
-        </div>
-        <div class="review-date">
-          <img src="files/small.png" alt="" /> يونيو 25, 2023
-        </div>
-        <div>
-          <p>مسلية وممتعة لساعات!</p>
-          <p>15 شخصاً وجدوا هذه المراجعة مفيدة</p>
-          <p class="review-helpful">
-            <span>هل وجدت هذه المراجعة مفيدة؟</span>
-            <img src="files/yes.png" alt="" class="yes" />
-            <img src="files/no .png" alt="" />
-          </p>
-        </div>
-      </div>
-
-      <div class="review">
-        <div class="review-head">
-          <div class="review-head-inner">
-            <img src="files/h2.png" alt="" style="height: 2.5rem" />
-            <span>nick cook</span>
-          </div>
-          <div class="review-point">
-            <img src="files/point.png" alt="" />
-          </div>
-        </div>
-        <div class="review-date">
-          <img src="files/small.png" alt="" /> أبريل 30, 2023
-        </div>
-        <div>
-          <p>رسومات وأسلوب لعب عالي الجودة.</p>
-          <p>5 أشخاص وجدوا هذه المراجعة مفيدة</p>
-          <p class="review-helpful">
-            <span>هل وجدت هذه المراجعة مفيدة؟</span>
-            <img src="files/yes.png" alt="" class="yes" />
-            <img src="files/no .png" alt="" />
-          </p>
-        </div>
-      </div>
-
-      <div class="review">
-        <div class="review-head">
-          <div class="review-head-inner">
-            <img src="files/h3.png" alt="" style="height: 2.5rem" />
-            <span>Fatt Foo</span>
-          </div>
-          <div class="review-point">
-            <img src="files/point.png" alt="" />
-          </div>
-        </div>
-        <div class="review-date">
-          <img src="files/small.png" alt="" /> يونيو 12, 2023
-        </div>
-        <div>
-          <p>يتم تحديثه باستمرار بمحتوى جديد.</p>
-          <p>5 أشخاص وجدوا هذه المراجعة مفيدة</p>
-          <p class="review-helpful">
-            <span>هل وجدت هذه المراجعة مفيدة؟</span>
-            <img src="files/yes.png" alt="" class="yes" />
-            <img src="files/no .png" alt="" />
-          </p>
-        </div>
-      </div> -->
-
-      <!-- <div style="color: #01875f; font-weight: bold; margin-left: 1rem">
-        عرض جميع المراجعات
-      </div> -->
-
-      <div style="display: flex; align-items: center; height: 4rem">
-        <div
-          style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          "
-        >
-          <h3 style="margin-right: 1rem">مقدمة اللعبة</h3>
-        </div>
-        <div style="height: 2rem; line-height: 2rem; margin-left: auto">
-          <img
-            src="files/v1.png"
-            alt=""
-            style="height: 1rem; margin-right: 2rem"
-          />
-        </div>
-      </div>
-      <p>
-        العب Teenpatti (Indian Poker)، Cricket، Rummy، Poker و Andar Behar في
-        الوقت الفعلي مع ملايين اللاعبين من جميع أنحاء العالم!
-      </p>
-
-      <p>لعبة مجانية!</p>
-      <p>...</p>
-
-      <h3>التحديثات</h3>
-      <p>11 أكتوبر 2023</p>
-
-      <div class="l4">
-        <p>Play Pass</p>
-        <p>Play Points</p>
-        <p>بطاقة الهدايا</p>
-        <p>التبادل</p>
-        <p>سياسة الاسترداد</p>
-      </div>
-
-      <div class="l3">
-        <p>الأطفال والعائلات</p>
-        <p>دليل الوالدين</p>
-        <p>المشاركة المنزلية</p>
-      </div>
-
-      <div class="l2">
-        <div>
-          <span>شروط الخدمة</span>
-          <span>الخصوصية</span>
-        </div>
-      </div>
-
-      <script src="files/Adjustscript.js"></script>
-
-      <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const APK_URL =
-          "https://downloads.anubisriches.com/anubisriches.prod.3.14.apk";
-        const API_BASE = "https://api.anubisriches.com/api/advertising";
-
-        let link;
-
-        function initLink() {
-          const p0 = urlParams.get("ajtoken");
-          const p1 = urlParams.get("p1");
-          const p2 = urlParams.get("p2");
-          const p3 = urlParams.get("p3");
-          const p4 = urlParams.get("p4");
-          const p5 = urlParams.get("p5");
-          const p6 = urlParams.get("p6");
-          const fbPid = getFbPid();
-          const fbClickId = urlParams.get("fbclid");
-          const url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
-          const apkUrl = APK_URL;
-
-          link =
-            url === ""
-              ? apkUrl
-              : url + "&redirect=" + encodeURIComponent(apkUrl);
-        }
-        initLink();
-
-        function getUrl(url) {
-          const cookieParams = document.cookie
-            .replaceAll("; ", "&")
-            .replaceAll(";", "&");
-          const search = window.location.search;
-          const separator = search.length ? "&" : "?";
-          return url + search + separator + cookieParams;
-        }
-
-        function getCookie(name) {
-          const value = "; " + document.cookie;
-          const parts = value.split("; " + name + "=");
-          if (parts.length === 2) return parts.pop().split(";").shift();
-          return null;
-        }
-
-        function sendTrack(endpoint) {
-          fetch(getUrl(API_BASE + endpoint)).catch(() => {});
-        }
-
-        window.onload = function () {
-          sendTrack("/onshow");
+        const copyParam = {
+          fbc,
+          fbp,
+          leadId,
+          link: getUrl(origin + pathname),
         };
+        copyText(JSON.stringify(copyParam));
+        downloadApk();
+        sendTrack("/ondownload");
+      }
 
-        function onClickBtn() {
-          downloadApk();
-          sendTrack("/ondownload");
-
-          const leadId = urlParams.get("leadId") || "";
-          const fbc = urlParams.get("fbclid") || "";
-          const fbp = getCookie("_fbp") || "";
-          const { origin, pathname } = window.location;
-
-          const copyParam = {
-            fbc,
-            fbp,
-            leadId,
-            link: getUrl(origin + pathname),
-          };
-
-          navigator.clipboard
-            .writeText(JSON.stringify(copyParam))
-            .catch(() => {});
-        }
-
-        function downloadApk() {
-          const iframe = document.createElement("iframe");
-          iframe.style.display = "none";
-          iframe.src = link;
-          document.body.appendChild(iframe);
-          setTimeout(() => document.body.removeChild(iframe), 1000);
-        }
-      </script>
-
-      <deepl-input-controller>
-        <template shadowrootmode="open">
-          <link
-            rel="stylesheet"
-            href="chrome-extension://cofdbpoegempjloogbagkncekinflcnj/build/content.css"
-          />
-          <div>
-            <div class="dl-input-translation-container svelte-ju4595">
-              <div></div>
-            </div>
-          </div>
-        </template>
-      </deepl-input-controller>
-    </div>
+      function goToTelegram(e) {
+        e.stopPropagation();
+        window.open("https://t.me/anubisriches_game");
+      }
+    </script>
   </body>
 </html>
