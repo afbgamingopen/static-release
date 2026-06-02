@@ -1,0 +1,1 @@
+const i=i=>null==i?"0":Number(i).toLocaleString(),t=i=>null==i?"0.00":Number(i).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}),a=i=>2===i?"#2e7d32":0===i?"#999":"";export{t as a,i as f,a as s};
