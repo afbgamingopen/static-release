@@ -1,622 +1,665 @@
 <!doctype html>
 <html lang="ar" dir="rtl" style="cursor: pointer">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <title>Goldnile</title>
-    <style>
-      :root {
-        --green: #01875f;
-        --ink: rgba(0, 0, 0, 0.87);
-        --muted: #5f6368;
-        --line: #e3e3e3;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: "Roboto", "Arial", sans-serif;
-      }
-      body {
-        -webkit-font-smoothing: antialiased;
-        color: var(--ink);
-        padding: 16px;
-        max-width: 500px;
-        margin: auto;
-        direction: rtl;
-        text-align: right;
-        background: #fff;
-      }
-      img {
-        margin: 0;
-        padding: 0;
-      }
-      h3 {
-        font-size: 1.15rem;
-        margin: 0 0 0.5rem;
-      }
-      p {
-        line-height: 1.5;
-        color: var(--muted);
-        font-size: 0.88rem;
-      }
 
-      /* App header */
-      .app-info {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-      }
-      .app-info img {
-        height: 64px;
-        width: 64px;
-        border-radius: 14px;
-      }
-      .app-info-body h5 {
-        margin: 0;
-        font-size: 1.4rem;
-        font-weight: 700;
-      }
-      .app-info-body h4 {
-        margin: 2px 0 4px;
-        color: var(--green);
-        font-size: 0.95rem;
-        font-weight: 600;
-      }
-      .app-info-meta {
-        font-size: 0.8rem;
-        color: var(--muted);
-      }
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <title>Goldnile</title>
+  <style>
+    :root {
+      --green: #01875f;
+      --ink: rgba(0, 0, 0, 0.87);
+      --muted: #5f6368;
+      --line: #e3e3e3;
+    }
 
-      /* Stats row */
-      .stats {
-        display: flex;
-        margin: 1.5rem 0;
-      }
-      .stat {
-        flex: 1;
-        text-align: center;
-        position: relative;
-        padding: 0 6px;
-      }
-      .stat + .stat::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 15%;
-        height: 70%;
-        width: 1px;
-        background: var(--line);
-      }
-      .stat-value {
-        font-weight: 700;
-        font-size: 0.95rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-        height: 22px;
-      }
-      .stat-value img {
-        height: 0.85rem;
-      }
-      .stat-value img.badge {
-        height: 1.15rem;
-      }
-      .stat-label {
-        font-size: 0.72rem;
-        color: var(--muted);
-        margin-top: 4px;
-      }
-      .stat svg {
-        width: 16px;
-        height: 16px;
-        fill: var(--muted);
-      }
+    * {
+      box-sizing: border-box;
+    }
 
-      .tagline {
-        text-align: center;
-        font-weight: 700;
-        font-size: 0.95rem;
-        margin: 0.5rem 0 1.25rem;
-      }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto", "Arial", sans-serif;
+    }
 
-      /* Install button */
-      .install-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-        background: var(--green);
-        color: #fff;
-        font-size: 1.05rem;
-        font-weight: 600;
-        border: none;
-        border-radius: 10px;
-        padding: 14px 0;
-        cursor: pointer;
-      }
-      .install-btn svg {
-        width: 20px;
-        height: 20px;
-        fill: #fff;
-      }
+    body {
+      -webkit-font-smoothing: antialiased;
+      color: var(--ink);
+      padding: 16px;
+      max-width: 500px;
+      margin: auto;
+      direction: rtl;
+      text-align: right;
+      background: #fff;
+    }
 
-      .trust {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 6px 16px;
-        margin: 0.9rem 0 0;
-        font-size: 0.78rem;
-        color: var(--muted);
-      }
-      .trust span {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-      }
-      .dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--green);
-        display: inline-block;
-      }
+    img {
+      margin: 0;
+      padding: 0;
+    }
 
-      section {
-        margin-top: 1.75rem;
-      }
+    h3 {
+      font-size: 1.15rem;
+      margin: 0 0 0.5rem;
+    }
 
-      /* Chips */
-      .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 1rem;
-      }
-      .chip {
-        border: 1px solid var(--green);
-        color: var(--green);
-        font-size: 0.78rem;
-        padding: 5px 14px;
-        border-radius: 999px;
-      }
+    p {
+      line-height: 1.5;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
 
-      /* Ratings */
-      .section-head {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-      }
-      .section-head a {
-        color: var(--green);
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-decoration: none;
-      }
-      .ratings-summary {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 1rem;
-        gap: 0.75rem;
-        align-items: flex-start;
-      }
-      .ratings-score {
-        text-align: center;
-        flex: 0 0 30%;
-        min-width: 0;
-      }
-      .ratings-score-num {
-        font-size: 3rem;
-        font-weight: 300;
-        line-height: 1;
-      }
-      .ratings-score img {
-        height: 0.85rem;
-        margin: 6px 0;
-      }
-      .ratings-score div:last-child {
-        font-size: 0.68rem;
-        color: var(--muted);
-      }
-      .ratings-bars {
-        flex: 1;
-        min-width: 0;
-      }
-      .ratings-bars div {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.72rem;
-        color: var(--muted);
-        margin: 2px 0;
-      }
-      .ratings-bars img {
-        flex: 1;
-        min-width: 0;
-        width: auto;
-      }
+    /* App header */
+    .app-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
 
-      .reviews {
-        flex: 0 0 100%;
-        display: flex;
-        gap: 8px;
-        margin-top: 1rem;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .reviews::-webkit-scrollbar {
-        display: none;
-      }
-      .review {
-        flex: 0 0 64%;
-        min-width: 0;
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        padding: 10px;
-      }
-      .review-user {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-      .review .avatar {
-        height: 1.2rem;
-        width: 1.2rem;
-        border-radius: 50%;
-        object-fit: cover;
-        flex: 0 0 auto;
-      }
-      .review .name {
-        font-size: 0.72rem;
-        font-weight: 600;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        min-width: 0;
-      }
-      .review-stars {
-        margin: 6px 0 5px;
-      }
-      .review-stars img {
-        height: 0.55rem;
-      }
-      .review p {
-        margin: 0;
-        font-size: 0.66rem;
-        line-height: 1.35;
-        overflow-wrap: anywhere;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        overflow: hidden;
-      }
-      .review-dots {
-        display: flex;
-        justify-content: center;
-        gap: 6px;
-        margin-top: 1rem;
-      }
-      .review-dots i {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #d0d0d0;
-        display: inline-block;
-      }
-      .review-dots i.active {
-        background: var(--green);
-      }
+    .app-info img {
+      height: 64px;
+      width: 64px;
+      border-radius: 14px;
+    }
 
-      /* Data safety */
-      .data-card {
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        padding: 16px;
-        margin-top: 1.25rem;
-      }
-      .data-safety {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-      .ds-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 0.82rem;
-        color: var(--muted);
-        line-height: 1.35;
-        word-break: normal;
-        overflow-wrap: break-word;
-      }
-      .ds-item img {
-        height: 1.1rem;
-        flex: 0 0 auto;
-        margin-top: 1px;
-      }
-      .green-link {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--green);
-        font-weight: 600;
-        font-size: 0.9rem;
-        margin-top: 1.1rem;
-      }
+    .app-info-body h5 {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
 
-      .update {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-        margin-top: 1rem;
-      }
-      .update svg {
-        width: 26px;
-        height: 26px;
-        flex: 0 0 auto;
-      }
-      .update p {
-        margin: 0;
-      }
-      .update-date {
-        font-size: 0.78rem;
-        color: var(--muted);
-        margin-top: 4px;
-      }
-    </style>
+    .app-info-body h4 {
+      margin: 2px 0 4px;
+      color: var(--green);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
 
-    <!-- Meta Pixel Code -->
-    <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js",
-      );
-      fbq("init", "1482791893644643");
-      fbq("track", "PageView");
-    </script>
-    <noscript>
-      <img
-        height="1"
-        width="1"
-        style="display: none"
-        src="https://www.facebook.com/tr?id=1482791893644643&ev=PageView&noscript=1"
-      />
-    </noscript>
-    <!-- End Meta Pixel Code -->
-  </head>
+    .app-info-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
 
-  <body onclick="onClickBtn()">
-    <div class="app-info">
-      <img src="files/appicon1.png" alt="" />
-      <div class="app-info-body">
-        <h5>Goldnile</h5>
-        <h4>Goldnile</h4>
-        <div class="app-info-meta">فيه إعلانات &bull; مشتريات داخل التطبيق</div>
-      </div>
+    /* Stats row */
+    .stats {
+      display: flex;
+      margin: 1.5rem 0;
+    }
+
+    .stat {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      padding: 0 6px;
+    }
+
+    .stat+.stat::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .stat-value {
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      height: 22px;
+    }
+
+    .stat-value img {
+      height: 0.85rem;
+    }
+
+    .stat-value img.badge {
+      height: 1.15rem;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .stat svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--muted);
+    }
+
+    .tagline {
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin: 0.5rem 0 1.25rem;
+    }
+
+    /* Install button */
+    .install-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: var(--green);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 0;
+      cursor: pointer;
+    }
+
+    .install-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+    }
+
+    .trust {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 16px;
+      margin: 0.9rem 0 0;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .trust span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      display: inline-block;
+    }
+
+    section {
+      margin-top: 1.75rem;
+    }
+
+    /* Chips */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      border: 1px solid var(--green);
+      color: var(--green);
+      font-size: 0.78rem;
+      padding: 5px 14px;
+      border-radius: 999px;
+    }
+
+    /* Ratings */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .section-head a {
+      color: var(--green);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .ratings-summary {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .ratings-score {
+      text-align: center;
+      flex: 0 0 30%;
+      min-width: 0;
+    }
+
+    .ratings-score-num {
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    .ratings-score img {
+      height: 0.85rem;
+      margin: 6px 0;
+    }
+
+    .ratings-score div:last-child {
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
+
+    .ratings-bars {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ratings-bars div {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin: 2px 0;
+    }
+
+    .ratings-bars img {
+      flex: 1;
+      min-width: 0;
+      width: auto;
+    }
+
+    .reviews {
+      flex: 0 0 100%;
+      display: flex;
+      gap: 8px;
+      margin-top: 1rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .reviews::-webkit-scrollbar {
+      display: none;
+    }
+
+    .review {
+      flex: 0 0 64%;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .review-user {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .review .avatar {
+      height: 1.2rem;
+      width: 1.2rem;
+      border-radius: 50%;
+      object-fit: cover;
+      flex: 0 0 auto;
+    }
+
+    .review .name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+
+    .review-stars {
+      margin: 6px 0 5px;
+    }
+
+    .review-stars img {
+      height: 0.55rem;
+    }
+
+    .review p {
+      margin: 0;
+      font-size: 0.66rem;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      overflow: hidden;
+    }
+
+    .review-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 1rem;
+    }
+
+    .review-dots i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #d0d0d0;
+      display: inline-block;
+    }
+
+    .review-dots i.active {
+      background: var(--green);
+    }
+
+    /* Data safety */
+    .data-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 1.25rem;
+    }
+
+    .data-safety {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ds-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.35;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+
+    .ds-item img {
+      height: 1.1rem;
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+
+    .green-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 1.1rem;
+    }
+
+    .update {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-top: 1rem;
+    }
+
+    .update svg {
+      width: 26px;
+      height: 26px;
+      flex: 0 0 auto;
+    }
+
+    .update p {
+      margin: 0;
+    }
+
+    .update-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(
+      window,
+      document,
+      "script",
+      "https://connect.facebook.net/en_US/fbevents.js",
+    );
+    fbq("init", "1482791893644643");
+    fbq("track", "PageView");
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display: none"
+      src="https://www.facebook.com/tr?id=1482791893644643&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+
+<body onclick="onClickBtn()">
+  <div class="app-info">
+    <img src="files/appicon1.png" alt="" />
+    <div class="app-info-body">
+      <h5>Goldnile</h5>
+      <h4>Goldnile</h4>
+      <div class="app-info-meta">فيه إعلانات &bull; مشتريات داخل التطبيق</div>
     </div>
+  </div>
 
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-value">4,8 <img src="files/bstart.png" alt="" /></div>
-        <div class="stat-label">12 ألف تقييم</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">
-          <svg viewBox="0 0 24 24">
-            <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
-          </svg>
-        </div>
-        <div class="stat-label">+158 ألف تحميل</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"
-            />
-          </svg>
-        </div>
-        <div class="stat-label">آمن وموثوق</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">
-          <img class="badge" src="files/18+.png" alt="" />
-        </div>
-        <div class="stat-label">مناسب لسن 18+ سنة فأكتر</div>
-      </div>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value">4,8 <img src="files/bstart.png" alt="" /></div>
+      <div class="stat-label">12 ألف تقييم</div>
     </div>
-
-    <div class="tagline">
-      العب بوكر، رمي، تين باتي وألعاب الكوتشينة المشهورة ببلاش
+    <div class="stat">
+      <div class="stat-value">
+        <svg viewBox="0 0 24 24">
+          <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
+        </svg>
+      </div>
+      <div class="stat-label">+158 ألف تحميل</div>
     </div>
-
-    <button type="button" class="install-btn">
-      <svg viewBox="0 0 24 24">
-        <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
-      </svg>
-      نزّل دلوقتي
-    </button>
-
-    <div class="trust">
-      <span><i class="dot"></i> آمن للتحميل</span>
-      <span><i class="dot"></i> خفيف</span>
-      <span><i class="dot"></i> مناسب لأجهزة أندرويد</span>
-    </div>
-
-    <section>
-      <h3>عن اللعبة دي</h3>
-      <p>
-        Goldnile بتقدملك أحسن تجربة لعب كوتشينة! استمتع بتين باتي، رمي، بوكر،
-        أندر بهار، كريكيت، وكتير من ألعاب الكوتشينة المشهورة. العب ببلاش في أي
-        وقت، استلم جوايزك اليومية، واكسب!
-      </p>
-      <div class="chips">
-        <span class="chip">Teen Patti</span>
-        <span class="chip">Rummy</span>
-        <span class="chip">Poker</span>
-        <span class="chip">Andar Bahar</span>
-        <span class="chip">Cricket</span>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-head">
-        <h3>التقييمات والمراجعات</h3>
-        <a href="javascript:void(0)">شوف الكل &lsaquo;</a>
-      </div>
-
-      <div class="ratings-summary">
-        <div class="ratings-score">
-          <div class="ratings-score-num">4,8</div>
-          <img src="files/bfs.png" alt="" />
-          <div>12 ألف تقييم</div>
-        </div>
-        <div class="ratings-bars">
-          <div>5 <img src="files/p5.png" alt="" /></div>
-          <div>4 <img src="files/p4.png" alt="" /></div>
-          <div>3 <img src="files/p3.png" alt="" /></div>
-          <div>2 <img src="files/p3.png" alt="" /></div>
-          <div>1 <img src="files/p1.png" alt="" /></div>
-        </div>
-
-        <div class="reviews">
-          <div class="review">
-            <div class="review-user">
-              <img class="avatar" src="files/h1.png" alt="" />
-              <span class="name">أحمد سمير</span>
-            </div>
-            <div class="review-stars"><img src="files/bfs.png" alt="" /></div>
-            <p>اللعبة ممتعة جدًا! الجوايز اليومية رهيبة، أنصح بيها بشدة!</p>
-          </div>
-
-          <div class="review">
-            <div class="review-user">
-              <img class="avatar" src="files/h2.png" alt="" />
-              <span class="name">منى علي</span>
-            </div>
-            <div class="review-stars"><img src="files/bfs.png" alt="" /></div>
-            <p>اختيارات كتير من ألعاب الكوتشينة وكلها ببلاش. تحفة!</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-dots">
-        <i class="active"></i>
-        <i></i>
-        <i></i>
-        <i></i>
-      </div>
-    </section>
-
-    <section>
-      <h3>أمان البيانات</h3>
-      <div class="data-card">
-        <div class="data-safety">
-          <div class="ds-item">
-            <img src="files/k1.png" alt="" />
-            <span>البيانات مش بتتشارك مع أطراف تانية</span>
-          </div>
-          <div class="ds-item">
-            <img src="files/k2.png" alt="" />
-            <span>التطبيق ده ممكن يجمع بيانات</span>
-          </div>
-          <div class="ds-item">
-            <img src="files/k3.png" alt="" />
-            <span>البيانات مش هتتشفّر</span>
-          </div>
-          <div class="ds-item">
-            <img src="files/k4.png" alt="" />
-            <span>تقدر تطلب حذف بياناتك</span>
-          </div>
-        </div>
-        <div class="green-link">شوف التفاصيل &larr;</div>
-      </div>
-    </section>
-
-    <section>
-      <h3>التحديثات</h3>
-      <div class="update">
+    <div class="stat">
+      <div class="stat-value">
         <svg viewBox="0 0 24 24">
           <path
-            fill="#01875f"
-            d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z"
-          />
+            d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
         </svg>
-        <div>
-          <p>إصلاح الأخطاء، تحسين الأداء، وتجربة لعب أكتر استقرارًا.</p>
-          <div class="update-date">27 مايو 2026</div>
+      </div>
+      <div class="stat-label">آمن وموثوق</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">
+        <img class="badge" src="files/18+.png" alt="" />
+      </div>
+      <div class="stat-label">مناسب لسن 18+ سنة فأكتر</div>
+    </div>
+  </div>
+
+  <div class="tagline">
+    العب بوكر، رمي، تين باتي وألعاب الكوتشينة المشهورة ببلاش
+  </div>
+
+  <button type="button" class="install-btn">
+    <svg viewBox="0 0 24 24">
+      <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
+    </svg>
+    نزّل دلوقتي
+  </button>
+
+  <div class="trust">
+    <span><i class="dot"></i> آمن للتحميل</span>
+    <span><i class="dot"></i> خفيف</span>
+    <span><i class="dot"></i> مناسب لأجهزة أندرويد</span>
+  </div>
+
+  <section>
+    <h3>عن اللعبة دي</h3>
+    <p>
+      Goldnile بتقدملك أحسن تجربة لعب كوتشينة! استمتع بتين باتي، رمي، بوكر،
+      أندر بهار، كريكيت، وكتير من ألعاب الكوتشينة المشهورة. العب ببلاش في أي
+      وقت، استلم جوايزك اليومية، واكسب!
+    </p>
+    <div class="chips">
+      <span class="chip">Teen Patti</span>
+      <span class="chip">Rummy</span>
+      <span class="chip">Poker</span>
+      <span class="chip">Andar Bahar</span>
+      <span class="chip">Cricket</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h3>التقييمات والمراجعات</h3>
+      <a href="javascript:void(0)">شوف الكل &lsaquo;</a>
+    </div>
+
+    <div class="ratings-summary">
+      <div class="ratings-score">
+        <div class="ratings-score-num">4,8</div>
+        <img src="files/bfs.png" alt="" />
+        <div>12 ألف تقييم</div>
+      </div>
+      <div class="ratings-bars">
+        <div>5 <img src="files/p5.png" alt="" /></div>
+        <div>4 <img src="files/p4.png" alt="" /></div>
+        <div>3 <img src="files/p3.png" alt="" /></div>
+        <div>2 <img src="files/p3.png" alt="" /></div>
+        <div>1 <img src="files/p1.png" alt="" /></div>
+      </div>
+
+      <div class="reviews">
+        <div class="review">
+          <div class="review-user">
+            <img class="avatar" src="files/h1.png" alt="" />
+            <span class="name">أحمد سمير</span>
+          </div>
+          <div class="review-stars"><img src="files/bfs.png" alt="" /></div>
+          <p>اللعبة ممتعة جدًا! الجوايز اليومية رهيبة، أنصح بيها بشدة!</p>
+        </div>
+
+        <div class="review">
+          <div class="review-user">
+            <img class="avatar" src="files/h2.png" alt="" />
+            <span class="name">منى علي</span>
+          </div>
+          <div class="review-stars"><img src="files/bfs.png" alt="" /></div>
+          <p>اختيارات كتير من ألعاب الكوتشينة وكلها ببلاش. تحفة!</p>
         </div>
       </div>
-    </section>
+    </div>
 
-    <script src="files/common.js"></script>
-    <script>
+    <div class="review-dots">
+      <i class="active"></i>
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+  </section>
+
+  <section>
+    <h3>أمان البيانات</h3>
+    <div class="data-card">
+      <div class="data-safety">
+        <div class="ds-item">
+          <img src="files/k1.png" alt="" />
+          <span>البيانات مش بتتشارك مع أطراف تانية</span>
+        </div>
+        <div class="ds-item">
+          <img src="files/k2.png" alt="" />
+          <span>التطبيق ده ممكن يجمع بيانات</span>
+        </div>
+        <div class="ds-item">
+          <img src="files/k3.png" alt="" />
+          <span>البيانات مش هتتشفّر</span>
+        </div>
+        <div class="ds-item">
+          <img src="files/k4.png" alt="" />
+          <span>تقدر تطلب حذف بياناتك</span>
+        </div>
+      </div>
+      <div class="green-link">شوف التفاصيل &larr;</div>
+    </div>
+  </section>
+
+  <section>
+    <h3>التحديثات</h3>
+    <div class="update">
+      <svg viewBox="0 0 24 24">
+        <path fill="#01875f"
+          d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z" />
+      </svg>
+      <div>
+        <p>إصلاح الأخطاء، تحسين الأداء، وتجربة لعب أكتر استقرارًا.</p>
+        <div class="update-date">27 مايو 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <script src="files/common.js"></script>
+  <script>
     const urlParams = new URLSearchParams(window.location.search);
-      const APK_NAME = "417221/ckhzjeha.lnkz.1.2.417221.apk";
-      const APK_BASE = "https://downloads.momospin.com/";
-      const API_BASE = "https://api.anubisriches.com/api/advertising";
+    const APK_NAME = "417221/ckhzjeha.lnkz.1.2.417221.apk";
+    const APK_BASE = "https://downloads.momospin.com/";
+    const API_BASE = "https://api.anubisriches.com/api/advertising";
 
-      function sendTrack(endpoint) {
-        fetch(getUrl(API_BASE + endpoint)).catch(() => {});
-      }
+    function sendTrack(endpoint) {
+      fetch(getUrl(API_BASE + endpoint)).catch(() => { });
+    }
 
-      window.onload = function () {
-        sendTrack("/onshow");
+    window.onload = function () {
+      sendTrack("/onshow");
+    };
+
+    function downloadApk() {
+      const a = document.createElement("a");
+      a.href = APK_BASE + APK_NAME;
+      a.download = "";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => a.remove(), 5000);
+    }
+
+    function onClickBtn() {
+      const leadId = urlParams.get("leadId") || "";
+      const fbc = urlParams.get("fbclid") || "";
+      const fbp = getCookie("_fbp") || "";
+      const { origin, pathname } = window.location;
+
+      const copyParam = {
+        fbc,
+        fbp,
+        leadId,
+        link: getUrl(origin + pathname),
       };
+      copyText(JSON.stringify(copyParam));
+      downloadApk();
+      sendTrack("/ondownload");
+    }
+  </script>
+</body>
 
-      function downloadApk() {
-        const apkUrl = APK_BASE + APK_NAME;
-        const iframe = document.createElement("iframe");
-        iframe.style.display = "none";
-        iframe.src = apkUrl;
-        document.body.appendChild(iframe);
-        setTimeout(() => document.body.removeChild(iframe), 1000);
-      }
-
-      function onClickBtn() {
-        const leadId = urlParams.get("leadId") || "";
-        const fbc = urlParams.get("fbclid") || "";
-        const fbp = getCookie("_fbp") || "";
-        const { origin, pathname } = window.location;
-
-        const copyParam = {
-          fbc,
-          fbp,
-          leadId,
-          link: getUrl(origin + pathname),
-        };
-        copyText(JSON.stringify(copyParam));
-        downloadApk();
-        sendTrack("/ondownload");
-      }
-    </script>
-  </body>
 </html>
