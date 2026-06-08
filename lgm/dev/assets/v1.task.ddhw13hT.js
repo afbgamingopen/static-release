@@ -1,0 +1,1 @@
+import{s as a}from"./v1.index.Cp0jktKM.js";const t=t=>a({url:"/game/task/account-detail",method:"post",data:t}),s=()=>a({url:"/game/task/config-list",method:"get"}),e=t=>a({url:"/game/task/send-card",method:"post",data:t});export{s as a,t as g,e as t};
