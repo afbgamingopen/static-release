@@ -1,1 +1,0 @@
-System.register(["./v1.index-legacy.Cqq_k5Wi.js"],function(t,e){"use strict";var n;return{setters:[function(t){n=t.s}],execute:function(){t("g",function(t){return n({url:"/game/task/account-detail",method:"post",data:t})}),t("a",function(){return n({url:"/game/task/config-list",method:"get"})}),t("t",function(t){return n({url:"/game/task/send-card",method:"post",data:t})})}}});
