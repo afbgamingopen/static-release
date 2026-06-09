@@ -1,1 +1,0 @@
-import{s as t}from"./v1.index.CuR3pdW6.js";const a=a=>t({url:"/game/activity/wealthSafetyNet/events",method:"post",data:a}),e=a=>t({url:"/game/activity/wealthSafetyNet/statDay",method:"post",data:a});export{e as a,a as g};
