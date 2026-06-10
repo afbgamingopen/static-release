@@ -1,0 +1,1 @@
+System.register(["./v1.vue-vendor-legacy.DLvCcE3l.js","./v1.vendor-legacy.DxXG8qzE.js"],function(e,n){"use strict";var t,r,u;return{setters:[function(e){t=e.aK,r=e.L,u=e.M},null],execute:function(){e("default",Object.assign({name:"Reload"},{__name:"reload",setup:function(e){return t().go(-1),function(e,n){return r(),u("div")}}}))}}});
