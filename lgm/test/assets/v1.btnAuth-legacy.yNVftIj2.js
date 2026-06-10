@@ -1,1 +1,0 @@
-System.register(["./v1.vue-vendor-legacy.DLvCcE3l.js"],function(e,t){"use strict";var n,r;return{setters:[function(e){n=e.aD,r=e.p}],execute:function(){e("u",function(){return n().meta.btns||r({})})}}});
