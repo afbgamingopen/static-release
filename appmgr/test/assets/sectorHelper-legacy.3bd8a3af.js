@@ -1,0 +1,1 @@
+System.register(["./installCanvasRenderer-legacy.fc151a16.js"],function(r,e){"use strict";var n,t,u;return{setters:[function(r){n=r.a3,t=r.v,u=r.bi}],execute:function(){r("g",function(r,e,i){var a=r.get("borderRadius");if(null==a)return i?{cornerRadius:0}:null;n(a)||(a=[a,a,a,a]);var s=Math.abs(e.r||0-e.r0||0);return{cornerRadius:t(a,function(r){return u(r,s)})}})}}});
