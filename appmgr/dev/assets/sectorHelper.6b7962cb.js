@@ -1,1 +1,0 @@
-import{a3 as r,v as a,bi as n}from"./installCanvasRenderer.fc269815.js";function e(e,s,i){var t=e.get("borderRadius");if(null==t)return i?{cornerRadius:0}:null;r(t)||(t=[t,t,t,t]);var u=Math.abs(s.r||0-s.r0||0);return{cornerRadius:a(t,function(r){return n(r,u)})}}export{e as g};
