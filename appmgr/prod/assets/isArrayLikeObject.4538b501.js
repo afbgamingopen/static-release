@@ -1,0 +1,1 @@
+import{s as a,o as s,i as r}from"./_flatRest.edaa6348.js";import{ba as t,a$ as o}from"./index.07d0aceb.js";function i(t,o){return a(s(t,o,r),t+"")}function n(a){return t(a)&&o(a)}export{i as b,n as i};
