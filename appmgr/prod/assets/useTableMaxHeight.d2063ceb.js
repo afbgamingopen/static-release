@@ -1,1 +1,0 @@
-import{u as t,a as o}from"./index.cb9632bd.js";import{B as a}from"./index.e00e92f5.js";function e(e,i={}){const{offsetBottom:m=72,minHeight:n=500}=i,{height:r}=t(),{top:s}=o(e,{windowScroll:!1});return{maxHeight:a(()=>Math.max(r.value-s.value-m,n))}}export{e as u};
