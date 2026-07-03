@@ -1,1 +1,0 @@
-import{W as s,Y as t,d as a,a7 as e,o,l as d,bq as l,am as r}from"./index.435a1873.js";const p=s({to:{type:t([String,Object]),required:!0},disabled:Boolean});const i=r(a({__name:"teleport",props:p,setup:s=>(s,t)=>s.disabled?e(s.$slots,"default",{key:0}):(o(),d(l,{key:1,to:s.to},[e(s.$slots,"default")],8,["to"]))}));export{i as E,p as t};
