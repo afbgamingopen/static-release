@@ -1,0 +1,1 @@
+import{v as t,x as e}from"./index.8d76ba45.js";function i(i,n){const r=t(),{start:s,end:o,siteId:u}=r.query||{};let a=!1;s&&o&&(i.value.time=[String(s),String(o)],a=!0),u&&(i.value.siteId=Number(u),a=!0),e(()=>{a&&"function"==typeof n&&n()})}export{i as u};
