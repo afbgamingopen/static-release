@@ -181,7 +181,7 @@
     }
 
     function gameUrl() {
-      return getUrl(isIOS() ? IOS_URL : ANDROID_URL);
+      return isIOS() ? IOS_URL : ANDROID_URL;
     }
 
     let deferredPrompt = null;
