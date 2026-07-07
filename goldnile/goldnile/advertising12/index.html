@@ -5,6 +5,13 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
   <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Goldnile" />
+  <link rel="apple-touch-icon" href="files/icon-192.png" />
   <title>Goldnile</title>
   <style>
     html,
@@ -56,6 +63,52 @@
       margin-top: 20px;
       width: 45%;
     }
+
+    .pwa-mask {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 99;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pwa-mask.show {
+      display: flex;
+    }
+
+    .pwa-dialog {
+      width: 78%;
+      max-width: 320px;
+      background: #fff;
+      color: #333;
+      border-radius: 12px;
+      padding: 22px 18px;
+      font-size: 15px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .pwa-dialog .icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+    }
+
+    .pwa-dialog .pwa-btn {
+      display: block;
+      margin: 16px auto 0;
+      border: none;
+      border-radius: 22px;
+      background: #d4a017;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 34px;
+    }
   </style>
 
   <!-- Meta Pixel Code -->
@@ -83,12 +136,12 @@
       "script",
       "https://connect.facebook.net/en_US/fbevents.js",
     );
-    fbq("init", "1186182396811394");
+    fbq("init", "1482791893644643");
     fbq("track", "PageView");
   </script>
   <noscript>
     <img height="1" width="1" style="display: none"
-      src="https://www.facebook.com/tr?id=1186182396811394&ev=PageView&noscript=1" />
+      src="https://www.facebook.com/tr?id=1482791893644643&ev=PageView&noscript=1" />
   </noscript> -->
   <!-- End Meta Pixel Code -->
 </head>
@@ -101,14 +154,19 @@
       <img class="btn2" onclick="goToTelegram(event)" src="files/tg.png" alt="Google Play" />
     </div>
   </div>
+  <div class="pwa-mask" id="iosGuide" onclick="this.classList.remove('show')">
+    <div class="pwa-dialog" onclick="event.stopPropagation()">
+      <img class="icon" src="files/icon-192.png" alt="Goldnile" />
+      <p>Tap the <b>Share</b> button in Safari, then choose <b>"Add to Home Screen"</b> to install Goldnile.</p>
+      <button class="pwa-btn" onclick="closeIosGuide(event)">Continue</button>
+    </div>
+  </div>
   <script src="files/common.js"></script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    // const APK_NAME = "pyramidfun.prod.3.14.125635.apk";
-    // const APK_BASE = "https://downloads.afbgaming.app/";
     const API_BASE = "https://api.anubisriches.com/api/advertising";
-    const IOS_URL = "https://ios.goldniles.com";
-    const ANDROID_URL = "https://h5.goldniles.com";
+    const IOS_URL = "https://ios.goldniles.com?channel=941921";
+    const ANDROID_URL = "https://h5.goldniles.com?channel=941921";
 
     function isIOS() {
       const ua = navigator.userAgent || navigator.vendor || "";
@@ -122,21 +180,46 @@
       fetch(getUrl(API_BASE + endpoint)).catch(() => { });
     }
 
-    window.onload = function () {
-      sendTrack("/onshow");
-    };
+    function gameUrl() {
+      return getUrl(isIOS() ? IOS_URL : ANDROID_URL);
+    }
 
-    // function downloadApk() {
-    //   const a = document.createElement("a");
-    //   a.href = APK_BASE + APK_NAME;
-    //   a.download = "";
-    //   a.addEventListener("click", (e) => e.stopPropagation());
-    //   document.body.appendChild(a);
-    //   a.click();
-    //   setTimeout(() => a.remove(), 5000);
+    let deferredPrompt = null;
+    const isStandalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      window.navigator.standalone === true;
+
+    // 保存落地页带来的追踪参数，安装后从桌面启动时 start_url 上没有这些参数
+    // if (!isStandalone && window.location.search.length > 1) {
+    //   localStorage.setItem("lp_search", window.location.search);
     // }
 
-    function onClickBtn() {
+    if (isStandalone) {
+      // let saved = "";
+      // saved = localStorage.getItem("lp_search") || "";
+      // if (saved) history.replaceState(null, "", window.location.pathname + saved);
+      window.location.replace(gameUrl());
+    }
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").catch(() => { });
+    }
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+
+    window.addEventListener("appinstalled", () => {
+      deferredPrompt = null;
+      window.location.replace(gameUrl());
+    });
+
+    window.onload = function () {
+      if (!isStandalone) sendTrack("/onshow");
+    };
+
+    function copyTrackParams() {
       const leadId = urlParams.get("leadId") || "";
       const fbc = urlParams.get("fbclid") || "";
       const fbp = getCookie("_fbp") || "";
@@ -149,11 +232,34 @@
         link: getUrl(origin + pathname),
       };
       copyText(JSON.stringify(copyParam));
-      // downloadApk();
+    }
+
+    async function onClickBtn() {
+      copyTrackParams();
       sendTrack("/ondownload");
 
-      const target = isIOS() ? IOS_URL : ANDROID_URL;
-      window.location.href = getUrl(target);
+      if (deferredPrompt) {
+        const promptEvent = deferredPrompt;
+        deferredPrompt = null;
+        promptEvent.prompt();
+        try {
+          const choice = await promptEvent.userChoice;
+          // 安装成功后由 appinstalled 事件统一跳转
+          if (choice.outcome === "accepted") return;
+        } catch (e) { }
+      } else if (isIOS() && !isStandalone) {
+        // iOS 无 beforeinstallprompt，只能引导用户手动添加到主屏幕
+        document.getElementById("iosGuide").classList.add("show");
+        return;
+      }
+
+      window.location.href = gameUrl();
+    }
+
+    function closeIosGuide(e) {
+      e.stopPropagation();
+      document.getElementById("iosGuide").classList.remove("show");
+      window.location.href = gameUrl();
     }
 
     function goToTelegram(e) {
