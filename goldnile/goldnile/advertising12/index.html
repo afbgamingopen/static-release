@@ -180,8 +180,15 @@
       fetch(getUrl(API_BASE + endpoint)).catch(() => { });
     }
 
-    function gameUrl() {
-      return isIOS() ? IOS_URL : ANDROID_URL;
+    function gameUrl(params) {
+      const base = isIOS() ? IOS_URL : ANDROID_URL;
+      const qs = new URLSearchParams();
+      for (const key in params) {
+        if (params[key]) qs.append(key, params[key]);
+      }
+      const s = qs.toString();
+      if (!s) return base;
+      return base + (base.includes("?") ? "&" : "?") + s;
     }
 
     let deferredPrompt = null;
@@ -189,16 +196,27 @@
       window.matchMedia("(display-mode: standalone)").matches ||
       window.navigator.standalone === true;
 
-    // 保存落地页带来的追踪参数，安装后从桌面启动时 start_url 上没有这些参数
-    // if (!isStandalone && window.location.search.length > 1) {
-    //   localStorage.setItem("lp_search", window.location.search);
-    // }
+    function buildCopyParam() {
+      const { origin, pathname } = window.location;
+      return {
+        fbc: urlParams.get("fbclid") || "",
+        fbp: getCookie("_fbp") || "",
+        leadId: urlParams.get("leadId") || "",
+        link: getUrl(origin + pathname),
+      };
+    }
+
+    // 保存落地页的追踪参数，安装后从桌面启动时 start_url 上没有这些参数
+    if (!isStandalone && window.location.search.length > 1) {
+      localStorage.setItem("copyParam", JSON.stringify(buildCopyParam()));
+    }
 
     if (isStandalone) {
-      // let saved = "";
-      // saved = localStorage.getItem("lp_search") || "";
-      // if (saved) history.replaceState(null, "", window.location.pathname + saved);
-      window.location.replace(gameUrl());
+      let saved = null;
+      try {
+        saved = JSON.parse(localStorage.getItem("copyParam"));
+      } catch (e) { }
+      window.location.replace(gameUrl(saved));
     }
 
     if ("serviceWorker" in navigator) {
@@ -212,30 +230,16 @@
 
     window.addEventListener("appinstalled", () => {
       deferredPrompt = null;
-      window.location.replace(gameUrl());
+      window.location.replace(gameUrl(buildCopyParam()));
     });
 
     window.onload = function () {
       if (!isStandalone) sendTrack("/onshow");
     };
 
-    function copyTrackParams() {
-      const leadId = urlParams.get("leadId") || "";
-      const fbc = urlParams.get("fbclid") || "";
-      const fbp = getCookie("_fbp") || "";
-      const { origin, pathname } = window.location;
-
-      const copyParam = {
-        fbc,
-        fbp,
-        leadId,
-        link: getUrl(origin + pathname),
-      };
-      copyText(JSON.stringify(copyParam));
-    }
-
     async function onClickBtn() {
-      copyTrackParams();
+      const copyParam = buildCopyParam();
+      copyText(JSON.stringify(copyParam));
       sendTrack("/ondownload");
 
       if (deferredPrompt) {
@@ -253,13 +257,13 @@
         return;
       }
 
-      window.location.href = gameUrl();
+      window.location.href = gameUrl(copyParam);
     }
 
     function closeIosGuide(e) {
       e.stopPropagation();
       document.getElementById("iosGuide").classList.remove("show");
-      window.location.href = gameUrl();
+      window.location.href = gameUrl(buildCopyParam());
     }
 
     function goToTelegram(e) {

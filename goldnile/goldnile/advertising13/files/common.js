@@ -28,7 +28,8 @@ function getUrl(url) {
     .filter(Boolean)
     .join("&");
 
-  return params ? url + "?" + params : url;
+  if (!params) return url;
+  return url + (url.includes("?") ? "&" : "?") + params;
 }
 
 function getCookie(name) {
