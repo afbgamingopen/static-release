@@ -109,6 +109,96 @@
       font-size: 16px;
       padding: 10px 34px;
     }
+
+    .downloadPopup_container {
+      display: flex;
+      justify-content: normal;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      box-sizing: border-box;
+      padding: 35px 0 18px;
+      width: 78%;
+      max-width: 320px;
+      background: #fff;
+      border-radius: 12px;
+    }
+
+    .downloadPopup_container .title {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      position: relative;
+      box-sizing: border-box;
+      border-radius: .1rem;
+      gap: 10px;
+      padding: 0;
+      font-size: 28px;
+      color: #000;
+    }
+
+    .downloadPopup_container .title img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .downloadPopup_container .fast {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      position: relative;
+      box-sizing: border-box;
+      border-radius: 8px;
+      margin: 19px 0 24px;
+      padding: 0 16px;
+      width: auto;
+      height: 29px;
+      border: 1px solid rgba(0, 0, 0, .3);
+      font-size: 20px;
+      font-weight: bold;
+      color: #00000080;
+    }
+
+    .safety {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      position: relative;
+      box-sizing: border-box;
+      border-radius: 20px;
+      margin: 0 0 24px;
+      gap: 10px;
+      padding: 4px 15px;
+      width: auto;
+      background: #01875f1a;
+      border: 1px solid #01875F;
+      font-size: 18px;
+      color: #01875f;
+    }
+
+    .safety img {
+      width: 24px;
+    }
+
+    .downloadPopup_container .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      position: relative;
+      box-sizing: border-box;
+      border-radius: 12px;
+      padding: 0;
+      width: 267px;
+      height: 50px;
+      background: #01875f;
+      font-size: 24px;
+      color: #fff;
+    }
   </style>
 
   <!-- Meta Pixel Code -->
@@ -150,7 +240,7 @@
   <div class="container">
     <img class="BG" src="files/background.jpg" alt="background" />
     <div class="btn-container">
-      <img class="btn" onclick="onClickBtn()" src="files/download.png" alt="Telegram" />
+      <img class="btn" onclick="showInstall()" src="files/download.png" alt="Telegram" />
       <img class="btn2" onclick="goToTelegram(event)" src="files/tg.png" alt="Google Play" />
     </div>
   </div>
@@ -161,6 +251,21 @@
       <button class="pwa-btn" onclick="closeIosGuide(event)">Continue</button>
     </div>
   </div>
+  <div class="pwa-mask" id="downloadPopup" onclick="this.classList.remove('show')">
+    <div class="downloadPopup_container">
+      <div class="title">
+        <img src="files/fast.webp" alt="">
+        <span>Instalação Rápida</span>
+      </div>
+      <div class="fast">6 vezes mais rápido</div>
+      <div class="safety">
+        <img src="files/safety.webp" alt="">
+        <span>Ativado</span>
+      </div>
+      <div class="btn" onclick="install(event)">Instalar</div>
+    </div>
+  </div>
+
   <script src="files/common.js"></script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
@@ -251,6 +356,7 @@
           const choice = await promptEvent.userChoice;
           // 安装成功后由 appinstalled 事件统一跳转
           if (choice.outcome === "accepted") return;
+          if (choice.outcome === "dismissed") return;
         } catch (e) { }
       } else if (isIOS() && !isStandalone) {
         // iOS 无 beforeinstallprompt，只能引导用户手动添加到主屏幕
@@ -270,6 +376,16 @@
     function goToTelegram(e) {
       e.stopPropagation();
       window.open("https://t.me/goldnile_channel");
+    }
+
+    function install(e) {
+      e.stopPropagation();
+      document.getElementById("downloadPopup").classList.remove("show");
+      onClickBtn()
+    }
+
+    function showInstall() {
+      document.getElementById("downloadPopup").classList.add("show");
     }
   </script>
 </body>
