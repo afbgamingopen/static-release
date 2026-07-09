@@ -62,7 +62,7 @@
       right: -30px;
       top: -60px;
       height: 230px;
-      background: url("files/background.jpg") center 20% / cover no-repeat;
+      background: url("files/shot1.jpg") center 20% / cover no-repeat;
       filter: blur(26px) saturate(1.3);
       opacity: .55;
       z-index: 0;
@@ -747,13 +747,13 @@
   </div>
 
   <!-- iOS 安装引导弹窗 -->
-  <div class="pwa-mask" id="iosGuide" onclick="this.classList.remove('show')">
+  <!-- <div class="pwa-mask" id="iosGuide" onclick="this.classList.remove('show')">
     <div class="pwa-dialog" onclick="event.stopPropagation()">
       <img class="icon" src="files/icon-192.png" alt="Goldnile" />
       <p>Tap the <b>Share</b> button in Safari, then choose <b>"Add to Home Screen"</b> to install Goldnile.</p>
       <button class="pwa-btn" onclick="closeIosGuide(event)">Continue</button>
     </div>
-  </div>
+  </div> -->
 
   <!-- 快速安装弹窗 -->
   <div class="pwa-mask" id="downloadPopup" onclick="this.classList.remove('show')">
@@ -775,7 +775,7 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const API_BASE = "https://api.anubisriches.com/api/advertising";
-    const IOS_URL = "https://ios.goldniles.com?channel=941921";
+    const IOS_URL = "https://iosdownloads.goldniles.com";
     const ANDROID_URL = "https://h5.goldniles.com/index.html?channel=866698";
 
     function sendTrack(endpoint) {
@@ -783,7 +783,6 @@
     }
 
     function gameUrl(params) {
-      // const base = isIOS() ? IOS_URL : ANDROID_URL;
       const base = ANDROID_URL;
       const qs = new URLSearchParams();
       for (const key in params) {
@@ -855,20 +854,21 @@
           if (choice.outcome === "accepted") return;
           if (choice.outcome === "dismissed") return;
         } catch (e) { }
-      } else if (isIOS() && !isStandalone) {
-        // iOS 无 beforeinstallprompt，只能引导用户手动添加到主屏幕
-        document.getElementById("iosGuide").classList.add("show");
-        return;
       }
+      //  else if (isIOS() && !isStandalone) {
+      //   // iOS 无 beforeinstallprompt，只能引导用户手动添加到主屏幕
+      //   document.getElementById("iosGuide").classList.add("show");
+      //   return;
+      // }
 
       window.location.href = gameUrl(copyParam);
     }
 
-    function closeIosGuide(e) {
-      e.stopPropagation();
-      document.getElementById("iosGuide").classList.remove("show");
-      window.location.href = gameUrl(buildCopyParam());
-    }
+    // function closeIosGuide(e) {
+    //   e.stopPropagation();
+    //   document.getElementById("iosGuide").classList.remove("show");
+    //   window.location.href = gameUrl(buildCopyParam());
+    // }
 
     function install(e) {
       e.stopPropagation();
@@ -877,7 +877,11 @@
     }
 
     function showInstall() {
-      document.getElementById("downloadPopup").classList.add("show");
+      if (isIOS()) {
+        window.location.href = IOS_URL;
+      } else {
+        document.getElementById("downloadPopup").classList.add("show");
+      }
     }
   </script>
 </body>
