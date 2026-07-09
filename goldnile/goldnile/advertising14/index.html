@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en" style="cursor: pointer">
+<html lang="pt">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#ffffff" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -18,12 +18,12 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: "Arial", sans-serif;
+      font-family: "Roboto", "Arial", sans-serif;
     }
 
     body {
       -webkit-font-smoothing: antialiased;
-      background-color: black;
+      background-color: #000;
       display: flex;
       justify-content: center;
     }
@@ -31,39 +31,405 @@
     img {
       margin: 0;
       padding: 0;
+      display: block;
     }
 
     .container {
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
       position: relative;
       max-width: 550px;
+      background: #f1f3f4;
+      overflow-x: hidden;
     }
 
-    .container .BG {
-      width: 100%;
-      object-fit: cover;
+    .white-top {
+      background: #fff;
     }
 
-    .container .btn-container {
+    /* ===== 顶部 hero ===== */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 64px 16px 24px;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
       position: absolute;
-      left: 0%;
-      top: 20%;
+      left: -30px;
+      right: -30px;
+      top: -60px;
+      height: 230px;
+      background: url("files/background.jpg") center 20% / cover no-repeat;
+      filter: blur(26px) saturate(1.3);
+      opacity: .55;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 240px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .55) 55%, #fff 92%);
+      z-index: 1;
+    }
+
+    .hero .inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero .app-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      margin: 0 auto;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .18);
+      background: #fff;
+    }
+
+    .hero .app-name {
+      margin: 18px 0 0;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      color: #202124;
+    }
+
+    .hero .verified {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #5f6368;
+    }
+
+    /* ===== 数据栏 ===== */
+    .stats {
+      display: flex;
+      align-items: stretch;
+      padding: 18px 8px 22px;
+    }
+
+    .stats .item {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .stats .item+.item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 15%;
+      bottom: 15%;
+      width: 1px;
+      background: #e0e0e0;
+    }
+
+    .stats .num {
+      font-size: 20px;
+      font-weight: 700;
+      color: #01875f;
       display: flex;
       align-items: center;
-      flex-direction: column;
-      width: 100%;
+      justify-content: center;
+      gap: 3px;
     }
 
-    .container .btn {
-      width: 52%;
+    .stats .num svg {
+      width: 14px;
+      height: 14px;
+      fill: #01875f;
     }
 
-    .container .btn2 {
-      margin-top: 20px;
-      width: 45%;
+    .stats .label {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #5f6368;
     }
 
+    /* ===== 安装横幅 ===== */
+    .install-section {
+      padding: 26px 20px 28px;
+    }
+
+    .install-banner {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: linear-gradient(100deg, #ffa14e 0%, #f97b16 55%, #f26a0d 100%);
+      box-shadow: 0 4px 12px rgba(249, 123, 22, .35);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .install-banner::before {
+      content: "";
+      position: absolute;
+      left: -140px;
+      top: -30%;
+      width: 110px;
+      height: 160%;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .28) 50%, rgba(255, 255, 255, 0) 100%);
+      transform: skewX(-25deg);
+      pointer-events: none;
+      animation: shine 2.8s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        left: -140px;
+      }
+
+      60%,
+      100% {
+        left: calc(100% + 60px);
+      }
+    }
+
+    .install-banner:active {
+      transform: scale(.98);
+    }
+
+    .install-banner .rocket {
+      width: 44px;
+      height: 44px;
+      flex: none;
+    }
+
+    .install-banner .txt .t1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffe14d;
+      letter-spacing: 1px;
+    }
+
+    .install-banner .txt .t2 {
+      margin-top: 4px;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    /* ===== 截图轮播 ===== */
+    .screens {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      margin: 0 20px;
+      padding: 0 0 10px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .screens::-webkit-scrollbar {
+      display: none;
+    }
+
+    .screens img {
+      height: 290px;
+      flex: none;
+    }
+
+    /* ===== 白色圆角卡片区块 ===== */
+    .section {
+      background: #fff;
+      border-radius: 16px;
+      margin: 14px 20px;
+      padding: 24px 18px;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+      color: #202124;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section p {
+      margin: 12px 0 0;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: #5f6368;
+    }
+
+    .chips {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .divider {
+      height: 1px;
+      background: #ececec;
+      margin: 22px 0 18px;
+    }
+
+    .updated .u-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #202124;
+    }
+
+    .updated .u-date {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #5f6368;
+    }
+
+    .chip {
+      padding: 6px 14px;
+      border: 1px solid #dadce0;
+      border-radius: 16px;
+      font-size: 13px;
+      color: #3c4043;
+    }
+
+    /* ===== 评分区 ===== */
+    .rating-summary {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .rating-summary .big {
+      background: #f4f4f6;
+      border-radius: 12px;
+      padding: 16px 18px;
+      flex: none;
+      box-sizing: border-box;
+    }
+
+    .rating-summary .big .score {
+      font-size: 44px;
+      font-weight: 800;
+      color: #5e5ce6;
+      line-height: 1;
+    }
+
+    .rating-summary .big .stars {
+      margin: 10px 0 12px;
+      display: flex;
+      gap: 3px;
+    }
+
+    .rating-summary .big .stars img {
+      width: 19px;
+      height: 19px;
+    }
+
+    .rating-summary .big .count {
+      font-size: 15px;
+      color: #202124;
+      white-space: nowrap;
+    }
+
+    .rating-bars {
+      flex: 1;
+    }
+
+    .rating-bars .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 7px 0;
+    }
+
+    .rating-bars .row .n {
+      font-size: 12px;
+      color: #5f6368;
+      width: 8px;
+      text-align: right;
+    }
+
+    .rating-bars .row .bar {
+      flex: 1;
+      height: 8px;
+      border-radius: 4px;
+      background: #e5e5e9;
+      overflow: hidden;
+    }
+
+    .rating-bars .row .bar i {
+      display: block;
+      height: 100%;
+      border-radius: 4px;
+      background: #5e5ce6;
+    }
+
+    /* ===== 评论卡片 ===== */
+    .review {
+      margin-top: 24px;
+    }
+
+    .review .head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .review .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 19px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+    }
+
+    .review .who {
+      flex: 1;
+    }
+
+    .review .name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #202124;
+    }
+
+    .review .who .stars {
+      display: flex;
+      gap: 2px;
+      margin-top: 6px;
+    }
+
+    .review .who .stars img {
+      width: 15px;
+      height: 15px;
+    }
+
+    .review .date {
+      font-size: 13px;
+      color: #9aa0a6;
+      flex: none;
+      margin-top: 4px;
+    }
+
+    .review p {
+      margin: 12px 0 0;
+      font-size: 15px;
+      font-weight: 500;
+      color: #3c4043;
+      line-height: 1.6;
+    }
+
+    /* ===== 弹窗（保持原有） ===== */
     .pwa-mask {
       position: fixed;
       top: 0;
@@ -97,6 +463,7 @@
       width: 64px;
       height: 64px;
       border-radius: 14px;
+      margin: 0 auto;
     }
 
     .pwa-dialog .pwa-btn {
@@ -238,12 +605,148 @@
 
 <body>
   <div class="container">
-    <img class="BG" src="files/background.jpg" alt="background" />
-    <div class="btn-container">
-      <img class="btn" onclick="showInstall()" src="files/download.png" alt="Telegram" />
-      <img class="btn2" onclick="goToTelegram(event)" src="files/tg.png" alt="Google Play" />
+    <div class="white-top">
+      <!-- 顶部：图标 / 名称 / 认证 -->
+      <div class="hero">
+        <div class="inner">
+          <img class="app-icon" src="files/icon-192.png" alt="Goldnile" />
+          <div class="app-name">GOLDNILE</div>
+          <div class="verified">Verificado pelo aplicativo</div>
+        </div>
+      </div>
+
+      <!-- 评分 / 下载量 / 年龄 -->
+      <div class="stats">
+        <div class="item">
+          <div class="num">5</div>
+          <div class="label">23.123 avaliações</div>
+        </div>
+        <div class="item">
+          <div class="num">100K+</div>
+          <div class="label">Downloads</div>
+        </div>
+        <div class="item">
+          <div class="num">18+</div>
+          <div class="label">Idade</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 安装横幅 -->
+    <div class="install-section">
+      <div class="install-banner" onclick="showInstall()">
+        <img class="rocket" src="files/huojian.webp" alt="" />
+        <div class="txt">
+          <div class="t1">Instalação Rápida</div>
+          <div class="t2">Baixe dentro de 15 segundos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 截图轮播 -->
+    <div class="screens">
+      <img src="files/shot1.jpg" alt="screenshot" onclick="showInstall()" />
+      <img src="files/shot2.jpg" alt="screenshot" onclick="showInstall()" />
+      <img src="files/shot3.jpg" alt="screenshot" onclick="showInstall()" />
+    </div>
+
+    <!-- 关于 -->
+    <div class="section">
+      <h2>Sobre este jogo</h2>
+      <p>
+        GOLDNILE reúne os caça-níqueis mais populares em um só aplicativo: Fortune, Olympus, Mahjong Ways e
+        centenas de outros jogos. Instale em segundos, receba bônus diários e faça saques rápidos a qualquer
+        hora.
+      </p>
+      <p>
+        &#127873; Bônus de boas-vindas para novos jogadores<br />
+        &#9889; Instalação leve, não ocupa espaço no celular<br />
+        &#128176; Saques rápidos e seguros, 24 horas por dia
+      </p>
+      <div class="chips">
+        <span class="chip">Cassino</span>
+        <span class="chip">Slots</span>
+        <span class="chip">Popular</span>
+      </div>
+      <div class="divider"></div>
+      <div class="updated">
+        <div class="u-title">Atualizado em</div>
+        <div class="u-date">1 de julho de 2026</div>
+      </div>
+    </div>
+
+    <!-- 评分与评论 -->
+    <div class="section">
+      <div class="rating-summary">
+        <div class="big">
+          <div class="score">5</div>
+          <div class="stars">
+            <img src="files/star.svg" alt="" />
+            <img src="files/star.svg" alt="" />
+            <img src="files/star.svg" alt="" />
+            <img src="files/star.svg" alt="" />
+            <img src="files/star.svg" alt="" />
+          </div>
+          <div class="count">13514 avaliações</div>
+        </div>
+        <div class="rating-bars">
+          <div class="row"><span class="n">5</span>
+            <div class="bar"><i style="width: 70%"></i></div>
+          </div>
+          <div class="row"><span class="n">4</span>
+            <div class="bar"><i style="width: 12%"></i></div>
+          </div>
+          <div class="row"><span class="n">3</span>
+            <div class="bar"><i style="width: 8%"></i></div>
+          </div>
+          <div class="row"><span class="n">2</span>
+            <div class="bar"><i style="width: 0%"></i></div>
+          </div>
+          <div class="row"><span class="n">1</span>
+            <div class="bar"><i style="width: 0%"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review">
+        <div class="head">
+          <div class="avatar" style="background: #f0a04b">M</div>
+          <div class="who">
+            <div class="name">Miguel</div>
+            <div class="stars">
+              <img src="files/star.svg" alt="" />
+              <img src="files/star.svg" alt="" />
+              <img src="files/star.svg" alt="" />
+              <img src="files/star.svg" alt="" />
+              <img src="files/star.svg" alt="" />
+            </div>
+          </div>
+          <span class="date">7 de março de 2024</span>
+        </div>
+        <p>Jogo divertido com bônus enormes</p>
+      </div>
+
+      <div class="review">
+        <div class="head">
+          <div class="avatar" style="background: #5e8bd1">J</div>
+          <div class="who">
+            <div class="name">Jose</div>
+            <div class="stars">
+              <img src="files/star.svg" alt="" />
+              <img src="files/star.svg" alt="" />
+              <img src="files/star.svg" alt="" />
+              <img src="files/star.svg" alt="" />
+              <img src="files/star.svg" alt="" />
+            </div>
+          </div>
+          <span class="date">5 de janeiro de 2024</span>
+        </div>
+        <p>Jogo casual muito divertido, você também pode ganhar dinheiro</p>
+      </div>
     </div>
   </div>
+
+  <!-- iOS 安装引导弹窗 -->
   <div class="pwa-mask" id="iosGuide" onclick="this.classList.remove('show')">
     <div class="pwa-dialog" onclick="event.stopPropagation()">
       <img class="icon" src="files/icon-192.png" alt="Goldnile" />
@@ -251,6 +754,8 @@
       <button class="pwa-btn" onclick="closeIosGuide(event)">Continue</button>
     </div>
   </div>
+
+  <!-- 快速安装弹窗 -->
   <div class="pwa-mask" id="downloadPopup" onclick="this.classList.remove('show')">
     <div class="downloadPopup_container">
       <div class="title">
@@ -272,14 +777,6 @@
     const API_BASE = "https://api.anubisriches.com/api/advertising";
     const IOS_URL = "https://ios.goldniles.com?channel=941921";
     const ANDROID_URL = "https://h5.goldniles.com/index.html?channel=866698";
-
-    function isIOS() {
-      const ua = navigator.userAgent || navigator.vendor || "";
-      return (
-        /iPad|iPhone|iPod/.test(ua) ||
-        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
-      );
-    }
 
     function sendTrack(endpoint) {
       fetch(getUrl(API_BASE + endpoint)).catch(() => { });
@@ -371,11 +868,6 @@
       e.stopPropagation();
       document.getElementById("iosGuide").classList.remove("show");
       window.location.href = gameUrl(buildCopyParam());
-    }
-
-    function goToTelegram(e) {
-      e.stopPropagation();
-      window.open("https://t.me/goldnile_channel");
     }
 
     function install(e) {
