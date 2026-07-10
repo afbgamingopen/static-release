@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Goldnile IOS download guide</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family:
+        "Prompt",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      font-family: -apple-system, system-ui, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding-bottom: 120px;
+      position: relative;
+    }
+
+    .container::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 500px;
+      height: 100%;
+      background: url("files/bg.png") no-repeat center top;
+      background-size: 100% auto;
+      z-index: -1;
+    }
+
+    .app-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .app-icon {
+      height: 80px;
+    }
+
+    .install-text {
+      font-size: 22px;
+      font-weight: 800;
+      color: #f7ca7d;
+      margin-top: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .install-card {
+      background-color: #2e0052;
+      margin: 0 15px;
+      border-radius: 15px;
+      padding: 20px 15px;
+      border: 1px solid #520092;
+    }
+
+    .card-title {
+      text-align: center;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .step-item {
+      margin-bottom: 25px;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .step-number {
+      background: #a125d7;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-right: 10px;
+      margin-top: 2px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      line-height: 1.4;
+      color: #eee;
+    }
+
+    .step-desc span {
+      color: #efe739;
+      font-weight: bold;
+    }
+
+    .step-img-box {
+      width: 90%;
+      background: #3b1b5f;
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 16px;
+      margin-left: 30px;
+      margin-right: 20px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .step-img-box img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 500px;
+      background: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .play-btn {
+      border: none;
+      height: 40px;
+      padding: 0 26px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #a02fe6 0%, #6d1bd0 55%, #5715c2 100%);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .play-btn:active {
+      transform: scale(0.96);
+    }
+
+    .bottom-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bottom-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    .bottom-name {
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .app-title-img {
+      width: 60%;
+      max-width: 300px;
+      display: block;
+      margin: 20px auto;
+      filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="app-header">
+      <img src="files/logo.png" class="app-icon" alt="Goldnile Logo" />
+      <img src="files/title.png" class="app-title-img" alt="Install Goldnile APP" />
+    </div>
+
+    <div class="install-card" id="guide-en" style="display: none">
+      <h2 class="card-title">Installation Step</h2>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">1</span>
+          <p class="step-desc">Click "<span>Settings</span>" on your phone</p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/en/1.png" alt="Step 1" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">2</span>
+          <p class="step-desc">Click "<span>General</span>" in settings</p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/en/2.png" alt="Step 2" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">3</span>
+          <p class="step-desc">
+            Click "<span>VPN & Device Management</span>" in general
+          </p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/en/3.png" alt="Step 3" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">4</span>
+          <p class="step-desc">
+            In device management, select the file starting with
+            "<span>Goldnile</span>"
+          </p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/en/4.png" alt="Step 4" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">5</span>
+          <p class="step-desc">
+            Click "<span>Install</span>" in the upper right corner
+          </p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/en/5.png" alt="Step 5" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">6</span>
+          <p class="step-desc">Click "<span>Install</span>" at the bottom</p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/en/6.png" alt="Step 6" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">7</span>
+          <p class="step-desc">
+            After the installation is complete, open the application
+          </p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/en/7.png" alt="Step 7" />
+        </div>
+      </div>
+    </div>
+
+    <div class="install-card" id="guide-ar">
+      <h2 class="card-title" dir="auto">خطوات التثبيت</h2>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">1</span>
+          <p class="step-desc" dir="auto">بعد فتح لعبة H5، اضغط على متصفح آبل "<span>Safari</span>" لفتح اللعبة</p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/ar/1.png" alt="Step 1" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">2</span>
+          <p class="step-desc" dir="auto">بعد الانتقال إلى متصفح Safari، اضغط على زر المزيد "<span>...</span>"</p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/ar/2.png" alt="Step 2" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">3</span>
+          <p class="step-desc" dir="auto">اختر "<span>مشاركة</span>"</p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/ar/3.png" alt="Step 3" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">4</span>
+          <p class="step-desc" dir="auto">اختر "<span>إضافة إلى الشاشة الرئيسية</span>"</p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/ar/4.png" alt="Step 4" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">5</span>
+          <p class="step-desc" dir="auto">اضغط على "<span>إضافة</span>"</p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/ar/5.png" alt="Step 5" />
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header">
+          <span class="step-number">6</span>
+          <p class="step-desc" dir="auto">تم الإنشاء بنجاح</p>
+        </div>
+        <div class="step-img-box">
+          <img src="files/ar/6.png" alt="Step 6" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="bottom-info">
+      <img src="files/icon.png" class="bottom-icon" alt="Goldnile Logo" />
+      <span class="bottom-name">Goldnile</span>
+    </div>
+    <button class="play-btn" id="downloadBtn" onclick="onClickBtn()">Play Now</button>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // 根据来源显示语言：source=2 为英文，其余默认阿拉伯语（埃及）
+    const source = urlParams.get("source")
+    const isEnglish = source == 2;
+    document.getElementById("guide-en").style.display = isEnglish ? "block" : "none";
+    document.getElementById("guide-ar").style.display = isEnglish ? "none" : "block";
+    document.getElementById("downloadBtn").textContent = isEnglish ? "Play Now" : "العب الآن";
+    document.documentElement.lang = isEnglish ? "en" : "ar";
+
+    function onClickBtn() {
+      const link = urlParams.get("link")
+      console.log(link);
+      if (source == 2 && link) {
+        window.location.href = link;
+        return;
+      }
+      history.back();
+    }
+  </script>
+</body>
+
+</html>
