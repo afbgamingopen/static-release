@@ -766,9 +766,7 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const API_BASE = "https://api.anubisriches.com/api/advertising";
-    const IOS_URL = "https://pwadownloads.goldniles.com";
     const ANDROID_URL = "https://h5.goldniles.com/index.html?channel=866698";
-    const CONFIG_URL = "https://downloads.afbgaming.app/webclips/goldnile.prod.941921.iosgoldnilescom.signed.mobileconfig"
 
     function sendTrack(endpoint) {
       fetch(getUrl(API_BASE + endpoint)).catch(() => { });
@@ -859,26 +857,10 @@
 
     function showInstall() {
       if (isIOS()) {
-        downloadApk(CONFIG_URL)
-        const copyParam = buildCopyParam();
-        const link = encodeURIComponent(gameUrl(copyParam));
-        // 必须延迟跳转：同步赋值 location.href 会取消上面刚发起的下载导航
-        setTimeout(() => {
-          window.location.href = getUrl(`${IOS_URL}?source=2&gameLink=${link}`);
-        }, 1000);
+        onClickBtn()
       } else {
         document.getElementById("downloadPopup").classList.add("show");
       }
-    }
-
-    function downloadApk(href) {
-      const a = document.createElement("a");
-      a.href = href;
-      a.download = "";
-      a.addEventListener("click", (e) => e.stopPropagation());
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(() => a.remove(), 5000);
     }
   </script>
 </body>

@@ -215,89 +215,6 @@
       <img src="files/title.png" class="app-title-img" alt="Install Goldnile APP" />
     </div>
 
-    <div class="install-card" id="guide-en" style="display: none">
-      <h2 class="card-title">Installation Step</h2>
-
-      <div class="step-item">
-        <div class="step-header">
-          <span class="step-number">1</span>
-          <p class="step-desc">Click "<span>Settings</span>" on your phone</p>
-        </div>
-        <div class="step-img-box">
-          <img src="files/en/1.png" alt="Step 1" />
-        </div>
-      </div>
-
-      <div class="step-item">
-        <div class="step-header">
-          <span class="step-number">2</span>
-          <p class="step-desc">Click "<span>General</span>" in settings</p>
-        </div>
-        <div class="step-img-box">
-          <img src="files/en/2.png" alt="Step 2" />
-        </div>
-      </div>
-
-      <div class="step-item">
-        <div class="step-header">
-          <span class="step-number">3</span>
-          <p class="step-desc">
-            Click "<span>VPN & Device Management</span>" in general
-          </p>
-        </div>
-        <div class="step-img-box">
-          <img src="files/en/3.png" alt="Step 3" />
-        </div>
-      </div>
-
-      <div class="step-item">
-        <div class="step-header">
-          <span class="step-number">4</span>
-          <p class="step-desc">
-            In device management, select the file starting with
-            "<span>Goldnile</span>"
-          </p>
-        </div>
-        <div class="step-img-box">
-          <img src="files/en/4.png" alt="Step 4" />
-        </div>
-      </div>
-
-      <div class="step-item">
-        <div class="step-header">
-          <span class="step-number">5</span>
-          <p class="step-desc">
-            Click "<span>Install</span>" in the upper right corner
-          </p>
-        </div>
-        <div class="step-img-box">
-          <img src="files/en/5.png" alt="Step 5" />
-        </div>
-      </div>
-
-      <div class="step-item">
-        <div class="step-header">
-          <span class="step-number">6</span>
-          <p class="step-desc">Click "<span>Install</span>" at the bottom</p>
-        </div>
-        <div class="step-img-box">
-          <img src="files/en/6.png" alt="Step 6" />
-        </div>
-      </div>
-
-      <div class="step-item">
-        <div class="step-header">
-          <span class="step-number">7</span>
-          <p class="step-desc">
-            After the installation is complete, open the application
-          </p>
-        </div>
-        <div class="step-img-box">
-          <img src="files/en/7.png" alt="Step 7" />
-        </div>
-      </div>
-    </div>
-
     <div class="install-card" id="guide-ar">
       <h2 class="card-title" dir="auto">خطوات التثبيت</h2>
 
@@ -368,27 +285,11 @@
       <img src="files/icon.png" class="bottom-icon" alt="Goldnile Logo" />
       <span class="bottom-name">Goldnile</span>
     </div>
-    <button class="play-btn" id="downloadBtn" onclick="onClickBtn()">Play Now</button>
+    <button class="play-btn" id="downloadBtn" onclick="onClickBtn()">العب الآن</button>
   </div>
 
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-
-    // 根据来源显示语言：source=2 为英文，其余默认阿拉伯语（埃及）
-    const source = urlParams.get("source")
-    const isEnglish = source == 2;
-    document.getElementById("guide-en").style.display = isEnglish ? "block" : "none";
-    document.getElementById("guide-ar").style.display = isEnglish ? "none" : "block";
-    document.getElementById("downloadBtn").textContent = isEnglish ? "Play Now" : "العب الآن";
-    document.documentElement.lang = isEnglish ? "en" : "ar";
-
     function onClickBtn() {
-      const gameLink = urlParams.get("gameLink")
-      console.log(gameLink);
-      if (source == 2 && gameLink) {
-        window.location.href = gameLink;
-        return;
-      }
       history.back();
     }
   </script>
