@@ -383,10 +383,10 @@
     document.documentElement.lang = isEnglish ? "en" : "ar";
 
     function onClickBtn() {
-      const link = urlParams.get("link")
-      console.log(link);
-      if (source == 2 && link) {
-        window.location.href = link;
+      const gameLink = urlParams.get("gameLink")
+      console.log(gameLink);
+      if (source == 2 && gameLink) {
+        window.location.href = gameLink;
         return;
       }
       history.back();
