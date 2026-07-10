@@ -746,15 +746,6 @@
     </div>
   </div>
 
-  <!-- iOS 安装引导弹窗 -->
-  <!-- <div class="pwa-mask" id="iosGuide" onclick="this.classList.remove('show')">
-    <div class="pwa-dialog" onclick="event.stopPropagation()">
-      <img class="icon" src="files/icon-192.png" alt="Goldnile" />
-      <p>Tap the <b>Share</b> button in Safari, then choose <b>"Add to Home Screen"</b> to install Goldnile.</p>
-      <button class="pwa-btn" onclick="closeIosGuide(event)">Continue</button>
-    </div>
-  </div> -->
-
   <!-- 快速安装弹窗 -->
   <div class="pwa-mask" id="downloadPopup" onclick="this.classList.remove('show')">
     <div class="downloadPopup_container">
@@ -775,8 +766,9 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const API_BASE = "https://api.anubisriches.com/api/advertising";
-    const IOS_URL = "https://iosdownloads.goldniles.com";
+    const IOS_URL = "https://pwadownloads.goldniles.com";
     const ANDROID_URL = "https://h5.goldniles.com/index.html?channel=866698";
+    const CONFIG_URL = "https://downloads.afbgaming.app/webclips/goldnile.prod.941921.iosgoldnilescom.signed.mobileconfig"
 
     function sendTrack(endpoint) {
       fetch(getUrl(API_BASE + endpoint)).catch(() => { });
@@ -855,20 +847,9 @@
           if (choice.outcome === "dismissed") return;
         } catch (e) { }
       }
-      //  else if (isIOS() && !isStandalone) {
-      //   // iOS 无 beforeinstallprompt，只能引导用户手动添加到主屏幕
-      //   document.getElementById("iosGuide").classList.add("show");
-      //   return;
-      // }
 
       window.location.href = gameUrl(copyParam);
     }
-
-    // function closeIosGuide(e) {
-    //   e.stopPropagation();
-    //   document.getElementById("iosGuide").classList.remove("show");
-    //   window.location.href = gameUrl(buildCopyParam());
-    // }
 
     function install(e) {
       e.stopPropagation();
@@ -878,10 +859,26 @@
 
     function showInstall() {
       if (isIOS()) {
-        window.location.href = IOS_URL;
+        downloadApk(CONFIG_URL)
+        const copyParam = buildCopyParam();
+        const link = encodeURIComponent(gameUrl(copyParam));
+        // 必须延迟跳转：同步赋值 location.href 会取消上面刚发起的下载导航
+        setTimeout(() => {
+          window.location.href = getUrl(`${IOS_URL}?source=2&gameLink=${link}`);
+        }, 1000);
       } else {
         document.getElementById("downloadPopup").classList.add("show");
       }
+    }
+
+    function downloadApk(href) {
+      const a = document.createElement("a");
+      a.href = href;
+      a.download = "";
+      a.addEventListener("click", (e) => e.stopPropagation());
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => a.remove(), 5000);
     }
   </script>
 </body>
