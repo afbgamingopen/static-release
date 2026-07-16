@@ -16,7 +16,7 @@ function fallbackCopy(text) {
   ta.select();
   try {
     document.execCommand("copy");
-  } catch (e) {}
+  } catch (e) { }
   document.body.removeChild(ta);
 }
 
@@ -28,7 +28,8 @@ function getUrl(url) {
     .filter(Boolean)
     .join("&");
 
-  return params ? url + "?" + params : url;
+  if (!params) return url;
+  return url + (url.includes("?") ? "&" : "?") + params;
 }
 
 function getCookie(name) {
@@ -36,4 +37,12 @@ function getCookie(name) {
   const parts = value.split("; " + name + "=");
   if (parts.length === 2) return parts.pop().split(";").shift();
   return null;
+}
+
+function isIOS() {
+  const ua = navigator.userAgent || navigator.vendor || "";
+  return (
+    /iPad|iPhone|iPod/.test(ua) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+  );
 }
