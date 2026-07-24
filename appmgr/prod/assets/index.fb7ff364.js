@@ -1,1 +1,0 @@
-import{A as a,ae as t,b4 as n,h as l}from"./index.10b85013.js";const e=11,u=2;function i(){const e=n(),u=l(0),i=a(()=>({minWidth:"".concat(Math.max(u.value,11),"px")}));return t(e,()=>{var a,t;u.value=null!=(t=null==(a=e.value)?void 0:a.getBoundingClientRect().width)?t:0}),{calculatorRef:e,calculatorWidth:u,inputStyle:i}}export{u as B,e as M,i as u};
