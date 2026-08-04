@@ -92,26 +92,38 @@
 
 <body>
   <div class="container" onclick="onClickBtn()">
-    <img class="BG" src="/files/background.jpg" />
+    <img class="BG" src="files/background.jpg" />
     <div class="btn-container">
-      <img class="btn" onclick="goToTelegram(event)" src="/files/TG.png" />
-      <img class="btn" src="/files/GP.png" />
+      <img class="btn" onclick="goToTelegram(event)" src="files/TG.png" />
+      <img class="btn" src="files/GP.png" />
     </div>
     <div class="footer" onclick="onClickBtn()">
-      <img src="/files/footer.png" />
-      <img class="download" src="/files/download.png" />
+      <img src="files/footer.png" />
+      <img class="download" src="files/download.png" />
     </div>
   </div>
-  <script src="/files/common.js"></script>
+  <script src="files/common.js"></script>
   <script>
     const TG_URL = "https://t.me/GoldNile_game";
     const urlParams = new URLSearchParams(window.location.search);
     const APK_NAME = "goldnile.test.3.2.apk";
     const APK_BASE = "https://downloads.afbgaming.app/";
     const API_BASE = "https://api.anubisriches.com/api/advertising";
+    const H5_URL = "https://testnile.momospin.com/index.html?channel=625892";
+    const isAndroid = /Android/i.test(navigator.userAgent);
 
     function sendTrack(endpoint) {
       fetch(getUrl(API_BASE + endpoint)).catch(() => { });
+    }
+
+    function gameUrl(params) {
+      const qs = new URLSearchParams();
+      for (const key in params) {
+        if (params[key]) qs.append(key, params[key]);
+      }
+      const s = qs.toString();
+      if (!s) return H5_URL;
+      return H5_URL + (H5_URL.includes("?") ? "&" : "?") + s;
     }
 
     window.onload = function () {
@@ -139,9 +151,13 @@
         leadId,
         link: getUrl(origin + pathname),
       };
-      copyText(JSON.stringify(copyParam));
-      downloadApk();
       sendTrack("/ondownload");
+      if (isAndroid) {
+        copyText(JSON.stringify(copyParam));
+        downloadApk();
+      } else {
+        window.location.href = gameUrl(copyParam);
+      }
     }
 
     function goToTelegram(e) {
