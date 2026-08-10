@@ -1,0 +1,1 @@
+import{aI as r}from"./index.2a11843d.js";function n(){if(!arguments.length)return[];var n=arguments[0];return r(n)?n:[n]}export{n as c};
