@@ -1,0 +1,1 @@
+System.register(["./v1.index-legacy.4ZOinsgl.js"],function(t,e){"use strict";var r;return{setters:[function(t){r=t.s}],execute:function(){t("g",function(t){return r({url:"/game/report/game-report",method:"post",data:t,donNotShowLoading:!0})})}}});
