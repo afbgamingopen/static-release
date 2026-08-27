@@ -1,0 +1,1 @@
+System.register(["./v1.vendor-legacy.Bx_YSgGu.js"],function(e,t){"use strict";var n,r,u;return{setters:[function(e){n=e.bw,r=e.V,u=e.W}],execute:function(){e("default",Object.assign({name:"Reload"},{__name:"reload",setup:function(e){return n().go(-1),function(e,t){return r(),u("div")}}}))}}});
