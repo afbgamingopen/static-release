@@ -1,0 +1,1 @@
+import{A as a,af as t,b5 as l,h as n}from"./index.45c9689e.js";function u(){const u=l(),e=n(0),i=a(()=>({minWidth:"".concat(Math.max(e.value,11),"px")}));return t(u,()=>{var a,t;e.value=null!=(t=null==(a=u.value)?void 0:a.getBoundingClientRect().width)?t:0}),{calculatorRef:u,calculatorWidth:e,inputStyle:i}}export{u};
