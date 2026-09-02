@@ -1,0 +1,1 @@
+import{cN as e,c$ as t,c7 as a}from"./index.9ca58a4a.js";const l=({atEndEdge:l,atStartEdge:o,layout:s},n)=>{let d,r=0;const c=e=>e<0&&o.value||e>0&&l.value;return{hasReachedEdge:c,onWheel:l=>{e(d);let{deltaX:o,deltaY:u}=l;l.shiftKey&&0!==u&&(o=u,u=0);const h="horizontal"===s.value?o:u;c(h)||(r+=h,t()||0===h||l.preventDefault(),d=a(()=>{n(r),r=0}))}}};export{l as u};
