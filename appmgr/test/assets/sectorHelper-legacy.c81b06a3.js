@@ -1,1 +1,0 @@
-System.register(["./echart-legacy.e05e283d.js"],function(r,e){"use strict";var t,n,u;return{setters:[function(r){t=r.a3,n=r.v,u=r.bh}],execute:function(){r("g",function(r,e,a){var c=r.get("borderRadius");if(null==c)return a?{cornerRadius:0}:null;t(c)||(c=[c,c,c,c]);var i=Math.abs(e.r||0-e.r0||0);return{cornerRadius:n(c,function(r){return u(r,i)})}})}}});
