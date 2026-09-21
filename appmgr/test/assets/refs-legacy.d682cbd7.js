@@ -1,1 +1,0 @@
-System.register([],function(n,t){"use strict";return{execute:function(){n("c",function(){for(var n=arguments.length,t=new Array(n),e=0;e<n;e++)t[e]=arguments[e];return function(n){t.forEach(function(t){t.value=n})}})}}});
