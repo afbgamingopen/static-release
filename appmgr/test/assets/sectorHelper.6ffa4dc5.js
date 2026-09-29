@@ -1,1 +1,0 @@
-import{a3 as r,v as a,bh as n}from"./echart.7e194e77.js";function u(u,t,e){var s=u.get("borderRadius");if(null==s)return e?{cornerRadius:0}:null;r(s)||(s=[s,s,s,s]);var o=Math.abs(t.r||0-t.r0||0);return{cornerRadius:a(s,function(r){return n(r,o)})}}export{u as g};
