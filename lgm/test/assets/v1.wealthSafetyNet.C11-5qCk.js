@@ -1,0 +1,1 @@
+import{s as t}from"./v1.index.ENu_q5qB.js";const a=a=>t({url:"/game/activity/wealthSafetyNet/events",method:"post",data:a}),e=a=>t({url:"/game/activity/wealthSafetyNet/statDay",method:"post",data:a});export{e as a,a as g};
