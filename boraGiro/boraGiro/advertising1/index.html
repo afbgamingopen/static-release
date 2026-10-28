@@ -128,6 +128,44 @@
         transform: scale(1.025);
       }
     }
+
+    /* ===== 等待安装提示的加载层 ===== */
+    .loading-mask {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 99;
+      background: rgba(0, 0, 0, .6);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .loading-mask.show {
+      display: flex;
+    }
+
+    .loading-mask .spinner {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, .3);
+      border-top-color: #fff;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
   </style>
 
   <!-- Meta Pixel Code -->
@@ -178,6 +216,12 @@
       <!-- 底部安装按钮 -->
       <img class="btn btn-bottom" src="files/btn2.png" alt="Instalar aplicativo" onclick="onClickBtn()" />
     </div>
+  </div>
+
+  <!-- 等待安装提示的加载层 -->
+  <div class="loading-mask" id="loadingMask">
+    <div class="spinner"></div>
+    <div>Preparando instalação...</div>
   </div>
 
   <script src="files/common.js?v=2"></script>
@@ -247,23 +291,59 @@
       if (!isStandalone) sendTrack("/onshow");
     };
 
+    // 浏览器支持 PWA 安装提示：Chrome / Edge / Samsung 等 Chromium 内核，iOS 不支持
+    const canPrompt = !isIOS() && "onbeforeinstallprompt" in window;
+    let busy = false;
+
+    function showLoading(show) {
+      document.getElementById("loadingMask").classList.toggle("show", show);
+    }
+
+    // 等待 beforeinstallprompt，最多 ms 毫秒；超时返回 null
+    function waitForPrompt(ms) {
+      return new Promise((resolve) => {
+        if (deferredPrompt) return resolve(deferredPrompt);
+        const timer = setTimeout(() => resolve(deferredPrompt), ms);
+        window.addEventListener(
+          "beforeinstallprompt",
+          (e) => {
+            clearTimeout(timer);
+            resolve(e);
+          },
+          { once: true }
+        );
+      });
+    }
+
     async function onClickBtn() {
+      if (busy) return;
+      busy = true;
+
       const copyParam = buildCopyParam();
       copyText(JSON.stringify(copyParam));
       sendTrack("/ondownload");
 
-      if (deferredPrompt) {
-        const promptEvent = deferredPrompt;
+      let promptEvent = deferredPrompt;
+      // 符合安装条件但 Chrome 还没派发安装事件：显示加载层，最多等 3 秒
+      if (!promptEvent && canPrompt) {
+        showLoading(true);
+        promptEvent = await waitForPrompt(3000);
+        showLoading(false);
+      }
+
+      if (promptEvent) {
         deferredPrompt = null;
         promptEvent.prompt();
         try {
           const choice = await promptEvent.userChoice;
+          busy = false;
           // 安装成功后由 appinstalled 事件统一跳转
           if (choice.outcome === "accepted") return;
           if (choice.outcome === "dismissed") return;
         } catch (e) { }
       }
 
+      busy = false;
       window.location.href = gameUrl(copyParam);
     }
   </script>
