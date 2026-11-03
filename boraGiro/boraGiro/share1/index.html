@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR" style="cursor: pointer">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="BoraGiro" />
+  <meta property="og:description" content="🎰 Muitos jogos pra você curtir!
+🏆 Prêmios incríveis esperando por você!
+🎁 Bônus e benefícios especiais!
+💰 Compartilhe e ganhe comissões!
+🚀 Convide seus amigos e aproveite!" />
+  <meta property="og:image" content="https://app.boragiro.net/ogimage.jpg?v=1" />
+  <meta property="og:image:secure_url" content="https://app.boragiro.net/ogimage.jpg?v=1" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://app.boragiro.net/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <title>BoraGiro</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto", "Arial", sans-serif;
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      max-width: 550px;
+      background: #fdf8e8;
+      overflow-x: hidden;
+    }
+
+    /* ===== 整页设计图 + 叠加按钮 ===== */
+    /* .page 高度 = 背景图高度，按钮用百分比定位，任何屏宽都与设计稿对齐 */
+    .page {
+      position: relative;
+      width: 100%;
+    }
+
+    .page .bg {
+      width: 100%;
+      height: auto;
+      -webkit-user-drag: none;
+      user-select: none;
+    }
+
+    .btn {
+      position: absolute;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-drag: none;
+      user-select: none;
+      animation: pulse 1.8s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .btn:active {
+      animation: none;
+      transform: scale(.97);
+    }
+
+    /* 顶部按钮：hero 下方 */
+    .btn-top {
+      top: 24.45%;
+      left: 2.75%;
+      width: 94.5%;
+    }
+
+    /* 底部按钮：通栏，带棕榈叶 */
+    .btn-bottom {
+      top: 91.25%;
+      left: 0;
+      width: 100%;
+      animation: none;
+    }
+
+    /* 三张游戏卡片的点击热区 */
+    .hot {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 51.6%;
+      height: 28.4%;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.025);
+      }
+    }
+
+    /* ===== 等待安装提示的加载层 ===== */
+    .loading-mask {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 99;
+      background: rgba(0, 0, 0, .6);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .loading-mask.show {
+      display: flex;
+    }
+
+    .loading-mask .spinner {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, .3);
+      border-top-color: #fff;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="page">
+      <img class="bg" src="files/background.jpg" alt="BoraGiro - Instale e comece a jogar" />
+
+      <!-- 顶部安装按钮 -->
+      <img class="btn btn-top" src="files/btn1.png" alt="Instalar aplicativo" onclick="onClickBtn()" />
+
+      <!-- 游戏卡片热区 -->
+      <div class="hot" onclick="onClickBtn()"></div>
+
+      <!-- 底部安装按钮 -->
+      <img class="btn btn-bottom" src="files/btn2.png" alt="Instalar aplicativo" onclick="onClickBtn()" />
+    </div>
+  </div>
+  <script src="files/common.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const APK_NAME = "boragiro.prod.2.2.apk";
+    const APK_BASE = "https://downloads.afbgaming.app/";
+    const API_BASE = "https://api.anubisriches.com/api/advertising";
+
+    function sendTrack(endpoint) {
+      fetch(getUrl(API_BASE + endpoint)).catch(() => { });
+    }
+
+    window.onload = function () {
+      sendTrack("/onshow");
+    };
+
+    function downloadApk() {
+      const a = document.createElement("a");
+      a.href = APK_BASE + APK_NAME;
+      a.download = "";
+      a.addEventListener("click", (e) => e.stopPropagation());
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => a.remove(), 5000);
+    }
+
+    function onClickBtn() {
+      const leadId = urlParams.get("leadId") || "";
+      const fbc = urlParams.get("fbclid") || "";
+      const fbp = getCookie("_fbp") || "";
+      const { origin, pathname } = window.location;
+
+      const copyParam = {
+        fbc,
+        fbp,
+        leadId,
+        link: getUrl(origin + pathname),
+      };
+      copyText(JSON.stringify(copyParam));
+      downloadApk();
+      sendTrack("/ondownload");
+    }
+  </script>
+</body>
+
+</html>
