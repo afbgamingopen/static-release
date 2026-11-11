@@ -1,0 +1,1141 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="BoraGiro" />
+  <link rel="apple-touch-icon" href="files/icon-192.png" />
+  <title>BoraGiro</title>
+  <style>
+    /* 以 375 设计稿为基准：1rem = 屏宽 / 10，最大 50px（桌面端内容宽 500px） */
+    html {
+      font-size: 37.5px;
+      font-size: min(10vw, 50px);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      font-family: Roboto, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    img {
+      display: block;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 10rem;
+      margin: 0 auto;
+      padding-top: 1px;
+      padding-bottom: calc(1.0667rem + env(safe-area-inset-bottom));
+      overflow-x: hidden;
+      background: #fff;
+    }
+
+    /* ===== 顶部：图标 / 名称 / 开发者 ===== */
+    .app-head {
+      display: flex;
+      padding: 0 0.48rem;
+      margin-top: 0.48rem;
+    }
+
+    .app-head .icon {
+      width: 1.92rem;
+      height: 1.92rem;
+      flex: none;
+      border-radius: 0.32rem;
+      box-shadow: 0 1px 3px rgba(60, 64, 67, .3);
+    }
+
+    .app-head .info {
+      padding-top: 0.1333rem;
+      margin-left: 0.64rem;
+    }
+
+    .app-head .name {
+      font-weight: 500;
+      font-size: 0.64rem;
+      line-height: 0.75rem;
+      color: #202124;
+    }
+
+    .app-head .dev {
+      margin-top: 0.1333rem;
+      font-weight: 500;
+      font-size: 0.4267rem;
+      color: #01875f;
+    }
+
+    .app-head .verified {
+      margin-top: 0.1333rem;
+      font-size: 0.2933rem;
+      color: #5f6368;
+    }
+
+    /* ===== 评分 / 下载量 / 年龄 ===== */
+    .stats {
+      display: flex;
+      margin: 0.8rem 0.5333rem 0;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .stats .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stats .val {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.0533rem;
+      height: 0.64rem;
+      font-size: 0.4rem;
+      line-height: 0.5333rem;
+      font-weight: bold;
+      color: #202124;
+    }
+
+    .stats .val img {
+      width: 0.3733rem;
+      height: 0.3733rem;
+    }
+
+    .stats .label {
+      margin-top: 0.1333rem;
+      font-size: 0.3333rem;
+      line-height: 0.4rem;
+      color: #5f6368;
+    }
+
+    .age-badge {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 0.08rem;
+      background: #000;
+      color: #fff;
+      font-size: 0.32rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== 安装按钮 ===== */
+    .install-wrap {
+      margin-top: 1.0667rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .install-btn {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 8.64rem;
+      height: 1.4933rem;
+      background: #01875f;
+      border-radius: 0.2133rem;
+      cursor: pointer;
+      transition: transform .3s ease, opacity .3s ease;
+    }
+
+    .install-btn:active {
+      transform: scale(.95);
+      opacity: .8;
+    }
+
+    .install-btn::before {
+      content: " ";
+      position: absolute;
+      left: 0;
+      top: -4.8rem;
+      width: 0.8rem;
+      height: 100%;
+      background-color: #fff;
+      animation: shiny-btn-anim 7s ease-in-out infinite;
+    }
+
+    @keyframes shiny-btn-anim {
+      0% {
+        opacity: 0;
+        transform: scale(0) rotate(45deg);
+      }
+
+      80% {
+        opacity: .5;
+        transform: scale(0) rotate(45deg);
+      }
+
+      81% {
+        opacity: 1;
+        transform: scale(4) rotate(45deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(50) rotate(45deg);
+      }
+    }
+
+    .install-btn .t1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.1333rem;
+      font-weight: 500;
+      font-size: 0.3733rem;
+      line-height: 0.48rem;
+      color: #fe0;
+    }
+
+    .install-btn .t1 img {
+      width: 0.2933rem;
+      height: 0.4267rem;
+    }
+
+    .install-btn .t2 {
+      font-weight: 500;
+      font-size: 0.2933rem;
+      line-height: 0.4rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    /* ===== 加载失败提示 ===== */
+    .tip-row {
+      display: flex;
+      align-items: flex-start;
+      margin: 0.7rem 0.48rem 0.5rem 0.67rem;
+    }
+
+    .tip-row .mini-icon {
+      width: 0.5467rem;
+      height: 0.5467rem;
+      flex: none;
+      border-radius: 0.08rem;
+    }
+
+    .tip-row .r {
+      margin-left: 0.25rem;
+    }
+
+    .tip-row .text {
+      font-size: 0.32rem;
+      line-height: 0.4533rem;
+      color: rgba(0, 0, 0, .65);
+    }
+
+    .tip-row .link {
+      margin-top: 0.22rem;
+      font-size: 0.3733rem;
+      line-height: 0.72rem;
+      font-weight: 500;
+      color: #03875f;
+      cursor: pointer;
+    }
+
+    /* ===== 截图 ===== */
+    .shots {
+      display: flex;
+      gap: 0.32rem;
+      margin-top: 0.8rem;
+      padding: 0 0.48rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .shots::-webkit-scrollbar {
+      display: none;
+    }
+
+    .shots img {
+      height: 5.9733rem;
+      flex: none;
+      border-radius: 0.16rem;
+      scroll-snap-align: start;
+      scroll-margin-left: 0.48rem;
+      cursor: pointer;
+    }
+
+    /* ===== 通用区块 ===== */
+    .block {
+      margin: 0.5333rem 0.5067rem 0;
+    }
+
+    .block+.block {
+      margin-top: 0.8rem;
+    }
+
+    .block-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .block-title {
+      font-weight: bold;
+      font-size: 0.5333rem;
+      line-height: 0.6667rem;
+      color: #202124;
+    }
+
+    .block-arrow {
+      margin-right: 0.2133rem;
+      width: 0.3733rem;
+      height: 0.3733rem;
+    }
+
+    .about {
+      margin-top: 0.6933rem;
+      font-weight: bold;
+      font-size: 0.3733rem;
+      line-height: 1.5;
+      letter-spacing: 0.0107rem;
+      color: #5f6368;
+    }
+
+    .about p {
+      margin: 0 0 0.32rem;
+    }
+
+    .sub-title {
+      margin-top: 0.6933rem;
+      font-weight: 500;
+      font-size: 0.3733rem;
+      line-height: 0.5333rem;
+      color: #202124;
+    }
+
+    .sub-text {
+      margin-top: 0.1333rem;
+      font-size: 0.3733rem;
+      line-height: 0.5333rem;
+      color: #5f6368;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2133rem;
+      margin-top: 0.7467rem;
+    }
+
+    .tag {
+      padding: 0.1067rem 0.4rem;
+      border: 1px solid #dadce0;
+      border-radius: 0.4267rem;
+      font-size: 0.3733rem;
+      color: #5f6368;
+    }
+
+    /* ===== 数据安全 ===== */
+    .safety-desc {
+      margin-top: 0.6933rem;
+      font-weight: 500;
+      font-size: 0.4rem;
+      line-height: 1.5;
+      letter-spacing: 0.0107rem;
+      color: #5f6368;
+    }
+
+    .safety-card {
+      margin-top: 0.8rem;
+      padding-top: 0.0267rem;
+      border: 1px solid #dadce0;
+      border-radius: 0.2133rem;
+    }
+
+    .safety-row {
+      display: flex;
+      align-items: flex-start;
+      margin: 0.56rem 0.32rem 0 0.56rem;
+    }
+
+    .safety-row img {
+      width: 0.5333rem;
+      height: 0.5333rem;
+      flex: none;
+    }
+
+    .safety-row .txt {
+      margin-left: 0.5333rem;
+      font-weight: 500;
+      font-size: 0.3867rem;
+      line-height: 0.48rem;
+      color: #5f6368;
+    }
+
+    .safety-row .txt small {
+      display: block;
+      margin-top: 0.08rem;
+      font-weight: 400;
+      font-size: 0.3467rem;
+    }
+
+    .safety-more {
+      margin: 0.7733rem 0.8267rem 0.4267rem;
+      font-size: 0.3733rem;
+      line-height: 0.5333rem;
+      color: #01875f;
+    }
+
+    /* ===== 评分与评论 ===== */
+    .verified-note {
+      display: flex;
+      align-items: center;
+      margin-top: 0.3733rem;
+      font-weight: 500;
+      font-size: 0.3467rem;
+      line-height: 0.48rem;
+      color: #5f6368;
+    }
+
+    .verified-note img {
+      margin-left: 0.16rem;
+      width: 0.3733rem;
+      height: 0.3733rem;
+    }
+
+    .device-tabs {
+      display: flex;
+      margin-top: 0.9867rem;
+    }
+
+    .device-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.1333rem;
+      height: 0.8533rem;
+      border-radius: 0.4267rem;
+      font-size: 0.3467rem;
+      color: #5f6368;
+    }
+
+    .device-tab img {
+      width: 0.5333rem;
+      height: 0.5333rem;
+    }
+
+    .device-tab.active {
+      width: 3.1467rem;
+      margin-right: 0.32rem;
+      background: #e6f3ef;
+      color: #3d3d3d;
+    }
+
+    .device-tab.normal {
+      width: 2.6933rem;
+      border: 1px solid #dadce0;
+    }
+
+    .score {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 1.04rem;
+    }
+
+    .score-left {
+      width: 4rem;
+    }
+
+    .score-value {
+      font-size: 1.4667rem;
+      line-height: 2.0533rem;
+      color: #202124;
+    }
+
+    .score-stars {
+      display: flex;
+      align-items: center;
+      gap: 0.16rem;
+    }
+
+    .score-stars img {
+      width: 0.3467rem;
+      height: 0.32rem;
+    }
+
+    .score-count {
+      margin-top: 0.2133rem;
+      font-size: 0.3733rem;
+      line-height: 0.5333rem;
+      color: #5f6368;
+    }
+
+    .score-right {
+      flex: 1;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      height: 0.48rem;
+    }
+
+    .bar-row .n {
+      margin-right: 0.4rem;
+      font-size: 0.3467rem;
+      line-height: 0.48rem;
+      color: #5f6368;
+    }
+
+    .bar-row .bar {
+      flex: 1;
+      height: 0.1067rem;
+      border-radius: 0.0533rem;
+      background: #ebedf0;
+    }
+
+    .bar-row .bar i {
+      display: block;
+      height: 100%;
+      border-radius: 0.0533rem;
+      background: #01875f;
+    }
+
+    .review {
+      margin-top: 0.8533rem;
+    }
+
+    .review-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .review-user {
+      display: flex;
+      align-items: center;
+    }
+
+    .review-user img {
+      width: 0.8533rem;
+      height: 0.8533rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .review-user .nm {
+      margin-left: 0.4267rem;
+      font-size: 0.3733rem;
+      line-height: 0.5333rem;
+      color: #5f6368;
+    }
+
+    .review-more {
+      margin-right: 0.4267rem;
+      width: 0.1067rem;
+      height: 0.4267rem;
+    }
+
+    .review-meta {
+      display: flex;
+      align-items: center;
+      margin-top: 0.48rem;
+    }
+
+    .review-meta img {
+      width: 0.24rem;
+      height: 0.2133rem;
+    }
+
+    .review-meta img+img {
+      margin-left: 0.1867rem;
+    }
+
+    .review-meta .dt {
+      margin-left: 0.2933rem;
+      font-size: 0.32rem;
+      line-height: 0.4533rem;
+      color: #5f6368;
+    }
+
+    .review-text {
+      margin-top: 0.2667rem;
+      padding-right: 0.4rem;
+      font-weight: 500;
+      font-size: 0.3733rem;
+      line-height: 1.5;
+      letter-spacing: 0.0107rem;
+      color: #5f6368;
+    }
+
+    .review-useful {
+      margin-top: 0.4267rem;
+      padding-right: 0.4rem;
+      font-weight: 500;
+      font-size: 0.3733rem;
+      line-height: 1.5;
+      color: #5f6368;
+    }
+
+    .review-ask {
+      display: flex;
+      align-items: center;
+      margin-top: 0.32rem;
+      font-weight: 500;
+      font-size: 0.3733rem;
+      color: #5f6368;
+    }
+
+    .review-ask .yn {
+      width: 1.76rem;
+      height: 0.64rem;
+      margin-left: 0.32rem;
+      border: 1px solid #dadce0;
+      border-radius: 0.32rem;
+      font-weight: 400;
+      font-size: 0.3467rem;
+      line-height: 0.62rem;
+      text-align: center;
+      color: #202124;
+      cursor: pointer;
+    }
+
+    .review-ask .yn:first-of-type {
+      margin-left: 0.4rem;
+    }
+
+    .review-ask .yn.on {
+      background: #e6f3ef;
+      border-color: #01875f;
+      color: #01875f;
+    }
+
+    .all-reviews {
+      margin: 0.8rem 0 0 0.1333rem;
+      font-size: 0.3733rem;
+      line-height: 0.5333rem;
+      color: #01875f;
+      cursor: pointer;
+    }
+
+    .whats-new-title {
+      margin-top: 0.88rem;
+      font-size: 0.48rem;
+      line-height: 0.6667rem;
+      color: #202124;
+    }
+
+    .whats-new {
+      font-weight: 500;
+      font-size: 0.3467rem;
+      line-height: 0.48rem;
+      color: #5f6368;
+    }
+
+    .whats-new div {
+      margin-top: 0.3rem;
+    }
+
+    .whats-new div:first-child {
+      margin-top: 0.5867rem;
+    }
+
+    /* ===== 快速安装弹窗 ===== */
+    .pop-mask {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, .5);
+    }
+
+    .pop-mask.show {
+      display: flex;
+    }
+
+    .pop {
+      width: 8.24rem;
+      padding: 0.7733rem 0 0.72rem;
+      border-radius: 0.2133rem;
+      background: #fff;
+    }
+
+    .pop-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6933rem;
+      line-height: 0.8533rem;
+      color: #202124;
+    }
+
+    .pop-title img {
+      width: 0.8533rem;
+      height: 0.8533rem;
+      margin-right: 0.2133rem;
+    }
+
+    .pop-safe {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.28rem;
+      height: 0.9333rem;
+      margin: 0.5067rem auto 0;
+      border-radius: 0.4667rem;
+      background: #d6fdc8;
+      font-size: 0.4533rem;
+      color: #028760;
+    }
+
+    .pop-safe img {
+      width: 0.3467rem;
+      height: 0.4rem;
+      margin-right: 0.1333rem;
+    }
+
+    .pop-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 7.0133rem;
+      height: 1.1733rem;
+      margin: 0.6933rem auto 0;
+      border-radius: 0.5867rem;
+      background: #028760;
+      font-size: 0.4rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .pop-btn:active {
+      opacity: .8;
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(
+      window,
+      document,
+      "script",
+      "https://connect.facebook.net/en_US/fbevents.js",
+    );
+    fbq("init", "1887508619326040");
+    fbq("track", "PageView");
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display: none"
+      src="https://www.facebook.com/tr?id=1887508619326040&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+
+<body>
+  <div class="page">
+    <!-- 顶部：图标 / 名称 / 开发者 -->
+    <div class="app-head">
+      <img class="icon" src="files/icon-192.png" alt="BoraGiro" />
+      <div class="info">
+        <div class="name">BoraGiro</div>
+        <div class="dev">BoraGiro</div>
+        <div class="verified">Verificado pelo aplicativo</div>
+      </div>
+    </div>
+
+    <!-- 评分 / 下载量 / 年龄 -->
+    <div class="stats">
+      <div class="item">
+        <div class="val">4.8<img src="files/gp/star-dark.png" alt="" /></div>
+        <div class="label">24K avaliações</div>
+      </div>
+      <div class="item">
+        <div class="val">35 K+</div>
+        <div class="label">Downloads</div>
+      </div>
+      <div class="item">
+        <div class="val"><span class="age-badge">18</span></div>
+        <div class="label">Rated for 18+</div>
+      </div>
+    </div>
+
+    <!-- 安装按钮 -->
+    <div class="install-wrap">
+      <div class="install-btn" onclick="showInstall()">
+        <div class="t1"><img src="files/gp/lightning.png" alt="" />Rapid Instalar</div>
+        <div class="t2">Baixe dentro de 15 segundos</div>
+      </div>
+    </div>
+
+    <!-- 加载失败提示 -->
+    <div class="tip-row">
+      <img class="mini-icon" src="files/icon-192.png" alt="" />
+      <div class="r">
+        <div class="text">Esta é uma plataforma de jogos emocionante para uma experiência empolgante. Se a página não
+          puder ser carregada, clique aqui para</div>
+        <div class="link" onclick="showInstall()">Baixar</div>
+      </div>
+    </div>
+
+    <!-- 截图 -->
+    <div class="shots">
+      <img src="files/shot1.png" alt="screenshot" onclick="showInstall()" />
+      <img src="files/shot2.png" alt="screenshot" onclick="showInstall()" />
+      <img src="files/shot3.png" alt="screenshot" onclick="showInstall()" />
+    </div>
+
+    <!-- 关于 -->
+    <div class="block">
+      <div class="block-head">
+        <div class="block-title">Sobre este jogo</div>
+        <img class="block-arrow" src="files/gp/arrow-right.png" alt="" />
+      </div>
+      <div class="about">
+        <p>BoraGiro reúne os slots mais populares em um só app: Fortune, Olympus, Mahjong Ways e centenas de outros
+          jogos. Instale em segundos, ganhe bônus diários e saque seus ganhos rapidamente a qualquer hora.</p>
+        <p>
+          &#127873; Bônus de boas-vindas para novos jogadores<br />
+          &#9889; Instalação leve, não ocupa espaço no seu celular<br />
+          &#128176; Saques rápidos e seguros 24 horas por dia
+        </p>
+      </div>
+      <div class="sub-title">Atualizado em</div>
+      <div class="sub-text" id="updatedAt">8 de nov. de 2026</div>
+      <div class="tags">
+        <span class="tag">Cassino</span>
+        <span class="tag">Slots</span>
+        <span class="tag">Popular</span>
+      </div>
+    </div>
+
+    <!-- 数据安全 -->
+    <div class="block">
+      <div class="block-head">
+        <div class="block-title">Segurança dos dados</div>
+        <img class="block-arrow" src="files/gp/arrow-right.png" alt="" />
+      </div>
+      <div class="safety-desc">
+        Sua segurança começa com o entendimento de como os desenvolvedores coletam e compartilham seus dados. As
+        práticas de segurança e privacidade de dados podem variar de acordo com o uso, a região e a idade. O
+        desenvolvedor forneceu as informações a seguir, que podem ser atualizadas ao longo do tempo.
+      </div>
+      <div class="safety-card">
+        <div class="safety-row">
+          <img src="files/gp/data-share.png" alt="" />
+          <div class="txt">Os dados não são compartilhados com terceiros
+            <small>Saiba mais sobre como os desenvolvedores declaram o compartilhamento</small>
+          </div>
+        </div>
+        <div class="safety-row">
+          <img src="files/gp/data-collect.png" alt="" />
+          <div class="txt">Este app pode coletar estes tipos de dados
+            <small>Local, Atividade no app e Identificadores do dispositivo e outros</small>
+          </div>
+        </div>
+        <div class="safety-row">
+          <img src="files/gp/data-lock.png" alt="" />
+          <div class="txt">Os dados são criptografados em trânsito</div>
+        </div>
+        <div class="safety-row">
+          <img src="files/gp/data-delete.png" alt="" />
+          <div class="txt">Você pode solicitar a exclusão dos dados</div>
+        </div>
+        <div class="safety-more">Mais detalhes</div>
+      </div>
+    </div>
+
+    <!-- 评分与评论 -->
+    <div class="block">
+      <div class="block-head">
+        <div class="block-title">Classificações e resenhas</div>
+        <img class="block-arrow" src="files/gp/arrow-right.png" alt="" />
+      </div>
+      <div class="verified-note">As notas e avaliações são verificadas<img src="files/gp/info.png" alt="" /></div>
+      <div class="device-tabs">
+        <div class="device-tab active"><img src="files/gp/phone.png" alt="" />Telefone</div>
+        <div class="device-tab normal"><img src="files/gp/tablet.png" alt="" />Tablet</div>
+      </div>
+
+      <div class="score">
+        <div class="score-left">
+          <div class="score-value">4.8</div>
+          <div class="score-stars">
+            <img src="files/gp/star.png" alt="" />
+            <img src="files/gp/star.png" alt="" />
+            <img src="files/gp/star.png" alt="" />
+            <img src="files/gp/star.png" alt="" />
+            <img src="files/gp/star.png" alt="" />
+          </div>
+          <div class="score-count">24,6 K avaliações</div>
+        </div>
+        <div class="score-right">
+          <div class="bar-row"><span class="n">5</span>
+            <div class="bar"><i style="width: 92%"></i></div>
+          </div>
+          <div class="bar-row"><span class="n">4</span>
+            <div class="bar"><i style="width: 12%"></i></div>
+          </div>
+          <div class="bar-row"><span class="n">3</span>
+            <div class="bar"><i style="width: 4%"></i></div>
+          </div>
+          <div class="bar-row"><span class="n">2</span>
+            <div class="bar"><i style="width: 0%"></i></div>
+          </div>
+          <div class="bar-row"><span class="n">1</span>
+            <div class="bar"><i style="width: 0%"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review">
+        <div class="review-head">
+          <div class="review-user">
+            <img src="files/gp/avatar1.jpg" alt="" />
+            <div class="nm">João Silva</div>
+          </div>
+          <img class="review-more" src="files/gp/more.png" alt="" />
+        </div>
+        <div class="review-meta">
+          <img src="files/gp/star.png" alt="" /><img src="files/gp/star.png" alt="" /><img src="files/gp/star.png"
+            alt="" /><img src="files/gp/star.png" alt="" /><img src="files/gp/star.png" alt="" />
+          <div class="dt" data-days-ago="2"></div>
+        </div>
+        <div class="review-text">Divertido e com muitas recompensas. O saque caiu na hora no Pix. Recomendo!</div>
+        <div class="review-useful">Essa avaliação foi marcada como útil por 44 pessoas</div>
+        <div class="review-ask">Você achou isso útil?<span class="yn">Sim</span><span class="yn">Não</span></div>
+      </div>
+
+      <div class="review">
+        <div class="review-head">
+          <div class="review-user">
+            <img src="files/gp/avatar2.jpg" alt="" />
+            <div class="nm">Angelita Da Silva</div>
+          </div>
+          <img class="review-more" src="files/gp/more.png" alt="" />
+        </div>
+        <div class="review-meta">
+          <img src="files/gp/star.png" alt="" /><img src="files/gp/star.png" alt="" /><img src="files/gp/star.png"
+            alt="" /><img src="files/gp/star.png" alt="" /><img src="files/gp/star.png" alt="" />
+          <div class="dt" data-days-ago="5"></div>
+        </div>
+        <div class="review-text">Este jogo é muito bom, sem anúncios, muito saudável de jogar. Recomendo bastante e
+          espero que continue melhorando, lançando mais jogos desse tipo.</div>
+        <div class="review-ask">Você achou isso útil?<span class="yn">Sim</span><span class="yn">Não</span></div>
+      </div>
+
+      <div class="review">
+        <div class="review-head">
+          <div class="review-user">
+            <img src="files/gp/avatar3.jpg" alt="" />
+            <div class="nm">Rubens Vieira dos Santos</div>
+          </div>
+          <img class="review-more" src="files/gp/more.png" alt="" />
+        </div>
+        <div class="review-meta">
+          <img src="files/gp/star.png" alt="" /><img src="files/gp/star.png" alt="" /><img src="files/gp/star.png"
+            alt="" /><img src="files/gp/star.png" alt="" /><img src="files/gp/star.png" alt="" />
+          <div class="dt" data-days-ago="9"></div>
+        </div>
+        <div class="review-text">Muito divertido, não fica travando e não é cheio de anúncios. Muito bom mesmo!</div>
+        <div class="review-useful">Essa avaliação foi marcada como útil por 52 pessoas</div>
+        <div class="review-ask">Você achou isso útil?<span class="yn">Sim</span><span class="yn">Não</span></div>
+      </div>
+
+      <div class="all-reviews" onclick="showInstall()">Ver todas as avaliações</div>
+
+      <div class="whats-new-title">O que há de novo</div>
+      <div class="whats-new">
+        <div>Melhore sua experiência!</div>
+        <div>- Ganhe mais bônus: mais recompensas esperam por você!</div>
+        <div>- Correções de bugs: os bugs foram corrigidos para uma experiência mais fluida. &#10024;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 快速安装弹窗 -->
+  <div class="pop-mask" id="downloadPopup" onclick="this.classList.remove('show')">
+    <div class="pop" onclick="event.stopPropagation()">
+      <div class="pop-title"><img src="files/fast.webp" alt="" />Rapid Instalar</div>
+      <div class="pop-safe"><img src="files/gp/shield.png" alt="" />Effective</div>
+      <div class="pop-btn" onclick="install(event)">Instalar Agora</div>
+    </div>
+  </div>
+
+  <script src="files/common.js?v=2"></script>
+  <script>
+    // 评论日期 / 更新日期按当前日期动态生成
+    (function () {
+      function daysAgo(n) {
+        const d = new Date();
+        d.setDate(d.getDate() - n);
+        return d;
+      }
+      try {
+        document.querySelectorAll("[data-days-ago]").forEach(function (el) {
+          el.textContent = daysAgo(+el.dataset.daysAgo).toLocaleDateString("pt-BR", {
+            day: "numeric", month: "long", year: "numeric",
+          });
+        });
+        document.getElementById("updatedAt").textContent = daysAgo(3).toLocaleDateString("pt-BR", {
+          day: "numeric", month: "short", year: "numeric",
+        });
+      } catch (e) { }
+
+      // “Você achou isso útil?” 按钮切换
+      document.querySelectorAll(".review-ask").forEach(function (row) {
+        row.querySelectorAll(".yn").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            row.querySelectorAll(".yn").forEach(function (b) { b.classList.toggle("on", b === btn); });
+          });
+        });
+      });
+    })();
+  </script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const API_BASE = "https://api.anubisriches.com/api/advertising";
+    const H5_URL = "https://h5.boragiro.net/index.html?channel=955162";
+
+    function sendTrack(endpoint) {
+      fetch(getUrl(API_BASE + endpoint)).catch(() => { });
+    }
+
+    function gameUrl(params) {
+      const base = H5_URL;
+      const qs = new URLSearchParams();
+      for (const key in params) {
+        if (params[key]) qs.append(key, params[key]);
+      }
+      const s = qs.toString();
+      if (!s) return base;
+      return base + (base.includes("?") ? "&" : "?") + s;
+    }
+
+    let deferredPrompt = null;
+    const isStandalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      window.navigator.standalone === true;
+
+    function buildCopyParam() {
+      const { origin, pathname } = window.location;
+      return {
+        fbc: urlParams.get("fbclid") || "",
+        fbp: getCookie("_fbp") || "",
+        leadId: urlParams.get("leadId") || "",
+        link: getUrl(origin + pathname),
+      };
+    }
+
+    // 保存落地页的追踪参数，安装后从桌面启动时 start_url 上没有这些参数
+    if (!isStandalone && window.location.search.length > 1) {
+      localStorage.setItem("copyParam", JSON.stringify(buildCopyParam()));
+    }
+
+    if (isStandalone) {
+      let saved = null;
+      try {
+        saved = JSON.parse(localStorage.getItem("copyParam"));
+      } catch (e) { }
+      window.location.replace(gameUrl(saved));
+    }
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").catch(() => { });
+    }
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+
+    window.addEventListener("appinstalled", () => {
+      deferredPrompt = null;
+      window.location.replace(gameUrl(buildCopyParam()));
+    });
+
+    window.onload = function () {
+      if (!isStandalone) sendTrack("/onshow");
+    };
+
+    async function onClickBtn() {
+      const copyParam = buildCopyParam();
+      copyText(JSON.stringify(copyParam));
+      sendTrack("/ondownload");
+
+      if (deferredPrompt) {
+        const promptEvent = deferredPrompt;
+        deferredPrompt = null;
+        promptEvent.prompt();
+        try {
+          const choice = await promptEvent.userChoice;
+          // 安装成功后由 appinstalled 事件统一跳转
+          if (choice.outcome === "accepted") return;
+          if (choice.outcome === "dismissed") return;
+        } catch (e) { }
+      }
+
+      window.location.href = gameUrl(copyParam);
+    }
+
+    function install(e) {
+      e.stopPropagation();
+      document.getElementById("downloadPopup").classList.remove("show");
+      onClickBtn()
+    }
+
+    function showInstall() {
+      if (isIOS()) {
+        onClickBtn()
+      } else {
+        document.getElementById("downloadPopup").classList.add("show");
+      }
+    }
+  </script>
+</body>
+
+</html>
