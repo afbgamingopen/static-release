@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="BoraGiro - Instale e comece a jogar!" />
+  <meta property="og:description" content="🎰 Muitos jogos pra você curtir!
+🏆 Prêmios incríveis esperando por você!
+🎁 Bônus e benefícios especiais!
+💰 Compartilhe e ganhe comissões!
+🚀 Convide seus amigos e aproveite!" />
+  <meta property="og:image" content="https://boragiro.velora88.net/ogimage.jpg" />
+  <meta property="og:image:secure_url" content="https://boragiro.velora88.net/ogimage.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://boragiro.velora88.net/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BoraGiro - Instale e comece a jogar!" />
+  <meta name="twitter:description" content="🎰 Muitos jogos pra você curtir!
+🏆 Prêmios incríveis esperando por você!
+🎁 Bônus e benefícios especiais!
+💰 Compartilhe e ganhe comissões!
+🚀 Convide seus amigos e aproveite!" />
+  <link rel="shortcut icon" href="/favicon-v2.ico" />
+  <link rel="manifest" href="manifest.json?v=2" />
+  <meta name="theme-color" content="#0297fe" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="BoraGiro" />
+  <link rel="apple-touch-icon" href="files/icon-192-v2.png" />
+  <title>BoraGiro</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto", "Arial", sans-serif;
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      max-width: 550px;
+      background: #fdf8e8;
+      overflow-x: hidden;
+    }
+
+    /* ===== 整页设计图 + 叠加按钮 ===== */
+    /* .page 高度 = 背景图高度，按钮用百分比定位，任何屏宽都与设计稿对齐 */
+    .page {
+      position: relative;
+      width: 100%;
+    }
+
+    .page .bg {
+      width: 100%;
+      height: auto;
+      -webkit-user-drag: none;
+      user-select: none;
+    }
+
+    /* ===== 双按钮（参考 nileStar/advertising5）：左 Telegram，右 下载 ===== */
+    /* --u = 页面宽度的 1%（页面最大 550px），尺寸全部按比例缩放 */
+    .btn-container {
+      --u: calc(min(100vw, 550px) / 100);
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      top: 35%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(var(--u) * 3.64);
+    }
+
+    .btn-container .btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(var(--u) * 1.4);
+      box-sizing: border-box;
+      width: calc(var(--u) * 40);
+      height: calc(var(--u) * 13.5);
+      padding: 0 calc(var(--u) * 1.6);
+      border: 1px solid rgba(255, 255, 255, .55);
+      border-radius: calc(var(--u) * 2);
+      box-shadow:
+        inset 0 calc(var(--u) * .5) 0 rgba(255, 255, 255, .4),
+        inset 0 calc(var(--u) * -1.1) 0 rgba(0, 0, 0, .2),
+        0 calc(var(--u) * .8) calc(var(--u) * 1.6) rgba(0, 0, 0, .5);
+      color: #fff;
+      font-family: "Arial Black", "Arial", sans-serif;
+      font-weight: 900;
+      white-space: nowrap;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      transition: transform .1s;
+    }
+
+    .btn-container .btn:active {
+      transform: scale(.95);
+    }
+
+    .btn-tg {
+      background: linear-gradient(180deg, #33c6ff 0%, #14a2f2 55%, #0a86dc 100%);
+      font-size: calc(var(--u) * 5);
+      text-shadow:
+        0 0 2px #0b4f8a, 1px 1px 0 #0b4f8a, -1px 1px 0 #0b4f8a, 1px -1px 0 #0b4f8a, -1px -1px 0 #0b4f8a,
+        0 2px 0 #0b4f8a;
+    }
+
+    .btn-tg .tg-icon {
+      flex: none;
+      width: calc(var(--u) * 8.6);
+      height: calc(var(--u) * 8.6);
+      border-radius: 50%;
+      background: #0b7ccc;
+      box-shadow: inset 0 calc(var(--u) * .3) calc(var(--u) * .6) rgba(0, 0, 0, .25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-tg .tg-icon svg {
+      width: 58%;
+      height: 58%;
+      margin-left: -6%;
+    }
+
+    .btn-dl {
+      background: linear-gradient(180deg, #ffa02c 0%, #ff6b1c 55%, #f0471b 100%);
+      font-size: calc(var(--u) * 6.4);
+      text-shadow:
+        0 0 2px #8a1f08, 1px 1px 0 #8a1f08, -1px 1px 0 #8a1f08, 1px -1px 0 #8a1f08, -1px -1px 0 #8a1f08,
+        0 2px 0 #8a1f08;
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    const FB_PIXEL_ID = "2142333253026129";
+    if (FB_PIXEL_ID) {
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", FB_PIXEL_ID);
+      fbq("track", "PageView");
+    }
+  </script>
+  <!-- End Meta Pixel Code -->
+</head>
+
+<body>
+  <div class="container">
+    <div class="page">
+      <img class="bg" src="files/background.jpg" alt="BoraGiro - Instale e comece a jogar" />
+
+      <!-- 双按钮：左 Telegram，右 下载 -->
+      <div class="btn-container">
+        <div class="btn btn-tg" onclick="goToTelegram(event)">
+          <span class="tg-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#e8f7ff"
+                d="M1.5 11.2L21.3 3.6c.92-.34 1.73.22 1.43 1.6l-3.37 15.9c-.25 1.13-.92 1.4-1.87.87l-5.15-3.8-2.48 2.4c-.27.27-.51.51-1.03.51l.36-5.22 9.5-8.58c.41-.36-.09-.57-.64-.2L6.32 14.5l-5.07-1.58c-1.1-.34-1.12-1.1.25-1.64z" />
+            </svg>
+          </span>
+          <span>Telegram</span>
+        </div>
+        <div class="btn btn-dl" onclick="onClickBtn()">Baixar</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="files/common.js?v=2"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const APK_NAME = "boragiro.prod.3.2.896423.apk";
+    const APK_BASE = "https://downloads.afbgaming.app/";
+    const API_BASE = "https://api.anubisriches.com/api/advertising";
+
+    function sendTrack(endpoint) {
+      fetch(getUrl(API_BASE + endpoint)).catch(() => { });
+    }
+
+    window.onload = function () {
+      sendTrack("/onshow");
+    };
+
+    function downloadApk() {
+      const a = document.createElement("a");
+      a.href = APK_BASE + APK_NAME;
+      a.download = "";
+      a.addEventListener("click", (e) => e.stopPropagation());
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => a.remove(), 5000);
+    }
+
+    function onClickBtn() {
+      const leadId = urlParams.get("leadId") || "";
+      const fbc = urlParams.get("fbclid") || "";
+      const fbp = getCookie("_fbp") || "";
+      const { origin, pathname } = window.location;
+
+      const copyParam = {
+        fbc,
+        fbp,
+        leadId,
+        link: getUrl(origin + pathname),
+      };
+      copyText(JSON.stringify(copyParam));
+      downloadApk();
+      sendTrack("/ondownload");
+    }
+
+    function goToTelegram(e) {
+      e.stopPropagation();
+      window.open("https://t.me/BoraGiro_Game");
+    }
+  </script>
+</body>
+
+</html>
