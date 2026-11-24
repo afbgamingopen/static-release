@@ -1,1 +1,0 @@
-import{eq as e,eD as t,b$ as a}from"./index.f8feaed5.js";const l=({atEndEdge:l,atStartEdge:o,layout:s},n)=>{let d,r=0;const u=e=>e<0&&o.value||e>0&&l.value;return{hasReachedEdge:u,onWheel:l=>{e(d);let{deltaX:o,deltaY:h}=l;l.shiftKey&&0!==h&&(o=h,h=0);const c="horizontal"===s.value?o:h;u(c)||(r+=c,t()||0===c||l.preventDefault(),d=a(()=>{n(r),r=0}))}}};export{l as u};
